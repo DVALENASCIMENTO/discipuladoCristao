@@ -17,20 +17,7 @@ const CACHE_NAME = "discipulado-cristao-v1";
     ARQUIVOS PRINCIPAIS
 ==========================================================*/
 
-const ARQUIVOS = [
-
-    "./",
-
-    "./index.html",
-
-    "./css/style.css",
-
-    "./js/app.js",
-
-    "./manifest.json"
-
-];
-
+const ARQUIVOS = [];
 
 /*==========================================================
     INSTALAÇÃO
@@ -118,94 +105,81 @@ self.addEventListener(
     FETCH
 ==========================================================*/
 
-self.addEventListener(
+self.addEventListener("fetch", event => {
 
-    "fetch",
+    if (event.request.method !== "GET") {
+        return;
+    }
 
-    event => {
+    const url = new URL(event.request.url);
+
+    // NÃO FAZER CACHE DOS ARQUIVOS PRINCIPAIS
+    if (
+
+        url.pathname.endsWith(".html") ||
+        url.pathname.endsWith(".css") ||
+        url.pathname.endsWith(".js") ||
+        url.pathname.endsWith("manifest.json")
+
+    ) {
 
         event.respondWith(
 
-            caches.match(
+            fetch(event.request)
 
-                event.request
-
-            )
-
-            .then(resposta => {
-
-                if (resposta) {
-
-                    return resposta;
-
-                }
-
-                return fetch(
-
-                    event.request
-
-                )
-
-                .then(networkResponse => {
-
-                    if (
-
-                        event.request.method === "GET"
-
-                    ) {
-
-                        const copia = networkResponse.clone();
-
-                        caches.open(
-
-                            CACHE_NAME
-
-                        )
-
-                        .then(cache => {
-
-                            cache.put(
-
-                                event.request,
-
-                                copia
-
-                            );
-
-                        });
-
-                    }
-
-                    return networkResponse;
-
-                })
-
-                .catch(() => {
-
-                    if (
-
-                        event.request.destination === "document"
-
-                    ) {
-
-                        return caches.match(
-
-                            "./index.html"
-
-                        );
-
-                    }
-
-                });
-
-            })
+                .catch(() => caches.match(event.request))
 
         );
 
+        return;
+
     }
 
-);
+    // CACHE PARA IMAGENS, ÁUDIOS, PDFs...
 
+    event.respondWith(
+
+        caches.match(event.request)
+
+            .then(cacheResponse => {
+
+                if (cacheResponse) {
+
+                    return cacheResponse;
+
+                }
+
+                return fetch(event.request)
+
+                    .then(networkResponse => {
+
+                        if (networkResponse.ok) {
+
+                            caches.open(CACHE_NAME)
+
+                                .then(cache => {
+
+                                    cache.put(
+
+                                        event.request,
+
+                                        networkResponse.clone()
+
+                                    );
+
+                                });
+
+                        }
+
+                        return networkResponse;
+
+                    });
+
+            })
+
+    );
+
+});
 
 /*==========================================================
     MENSAGENS
