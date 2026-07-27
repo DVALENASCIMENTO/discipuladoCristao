@@ -8,19 +8,6 @@
 "use strict";
 
 
-/*==========================================================
-    REGISTRO DO SERVICE WORKER
-==========================================================*/
-
-if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker.register("service-worker.js");
-
-    });
-
-}
 
 
 /*==========================================================
