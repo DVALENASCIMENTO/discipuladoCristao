@@ -1104,3 +1104,96 @@ window.addEventListener(
 /*==========================================================
     FIM DO ARQUIVO
 ==========================================================*/
+
+/*==========================================================
+    ACORDEON DAS LIÇÕES
+==========================================================*/
+
+const botoes = document.querySelectorAll(".licao-btn");
+
+/* Fechar todas */
+
+function fecharTodos() {
+
+    document.querySelectorAll(".licao").forEach(licao => {
+
+        licao.querySelectorAll(".subtopico").forEach(sub => {
+
+            sub.style.display = "none";
+
+        });
+
+    });
+
+    botoes.forEach(botao => {
+
+        botao.classList.remove("ativa");
+
+    });
+
+}
+
+/* Abrir uma lição */
+
+function abrirLicao(indice) {
+
+    fecharTodos();
+
+    const botao = botoes[indice];
+
+    if (!botao) return;
+
+    const secao = botao.closest(".licao");
+
+    secao.querySelectorAll(".subtopico").forEach(sub => {
+
+        sub.style.display = "block";
+
+    });
+
+    botao.classList.add("ativa");
+
+}
+
+/* Restaurar última lição */
+
+const ultimaLicao = localStorage.getItem("licaoAberta");
+
+if (ultimaLicao !== null) {
+
+    abrirLicao(Number(ultimaLicao));
+
+} else {
+
+    abrirLicao(0);
+
+}
+
+/* Clique */
+
+botoes.forEach((botao, indice) => {
+
+    botao.addEventListener("click", () => {
+
+        const aberta = botao.classList.contains("ativa");
+
+        fecharTodos();
+
+        if (!aberta) {
+
+            abrirLicao(indice);
+
+            localStorage.setItem(
+                "licaoAberta",
+                indice
+            );
+
+        } else {
+
+            localStorage.removeItem("licaoAberta");
+
+        }
+
+    });
+
+});

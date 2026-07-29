@@ -922,3 +922,66 @@ body {
 /*==========================================================
 FIM
 ==========================================================*/
+
+/*==========================================================
+BOTÃO DA LIÇÃO
+==========================================================*/
+
+.licao-btn{
+
+    width: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #8C6A16,
+        #D4AF37
+    );
+
+    color: #111;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    text-align: left;
+
+    padding: 16px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    transition: .3s;
+
+}
+
+.licao-btn::before{
+
+    content: "▸";
+
+    font-size: 14px;
+
+    transition: .3s;
+
+}
+
+.licao-btn.ativa::before{
+
+    content: "▾";
+
+}
+
+.licao-btn:hover{
+
+    filter: brightness(1.05);
+
+}
+
