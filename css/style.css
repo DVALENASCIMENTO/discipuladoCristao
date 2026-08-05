@@ -985,3 +985,133 @@ BOTÃO DA LIÇÃO
 
 }
 
+
+
+.hero{
+
+    background:
+    linear-gradient(rgba(0,0,0,.65),
+    rgba(0,0,0,.65)),
+    url("../imagens/banner_discipuladoCristao.png");
+
+    background-size:cover;
+    background-position:center;
+
+    min-height:430px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#fff;
+
+    padding:40px 20px;
+
+}
+
+.hero-overlay{
+
+    max-width:900px;
+
+}
+
+.logo{
+
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    padding:8px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 0 25px rgba(0,0,0,.5);
+
+}
+
+.hero h1{
+
+    font-size:3rem;
+
+    margin-bottom:10px;
+
+}
+
+.hero h2{
+
+    color:#d4af37;
+
+    margin-bottom:20px;
+
+    font-weight:400;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.7;
+
+    font-size:1.1rem;
+
+}
+
+.hero-botoes{
+
+    margin-top:35px;
+
+}
+
+.hero-botoes a{
+
+    text-decoration:none;
+
+    padding:14px 28px;
+
+    border-radius:6px;
+
+    margin:8px;
+
+    display:inline-block;
+
+    font-weight:bold;
+
+}
+
+.btn-principal{
+
+    background:#d4af37;
+
+    color:#000;
+
+}
+
+.btn-principal:hover{
+
+    background:#f0c84d;
+
+}
+
+.btn-secundario{
+
+    border:2px solid #fff;
+
+    color:#fff;
+
+}
+
+.btn-secundario:hover{
+
+    background:#fff;
+
+    color:#000;
+
+}
