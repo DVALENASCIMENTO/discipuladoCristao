@@ -1115,3 +1115,238 @@ BOTÃO DA LIÇÃO
     color:#000;
 
 }
+
+
+
+/* =========================================================
+   BOTÕES DE ACESSO — BIBLE 365 + ESCOLA BÍBLICA ATALAIA
+   ========================================================= */
+
+.botoes-materiais {
+    width: min(1100px, 92%);
+    margin: 28px auto;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.botoes-materiais .botao-material,
+.botoes-materiais .study-card {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 82px;
+    width: min(100%, 420px);
+    padding: 18px 26px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.28);
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: .2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.16),
+        inset 0 1px 0 rgba(255,255,255,.28);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+}
+
+
+/* =========================================================
+   EFEITO DE BRILHO
+   ========================================================= */
+
+.botoes-materiais .botao-material::before,
+.botoes-materiais .study-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.22) 45%,
+        transparent 70%
+    );
+
+    transform: translateX(-120%);
+    transition: transform .65s ease;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.botoes-materiais .botao-material:hover,
+.botoes-materiais .study-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 34px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.35);
+
+    filter: brightness(1.05);
+}
+
+
+.botoes-materiais .botao-material:hover::before,
+.botoes-materiais .study-card:hover::before {
+    transform: translateX(120%);
+}
+
+
+/* =========================================================
+   CLIQUE
+   ========================================================= */
+
+.botoes-materiais .botao-material:active,
+.botoes-materiais .study-card:active {
+    transform: translateY(-1px) scale(.99);
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE — FOCO PELO TECLADO
+   ========================================================= */
+
+.botoes-materiais .botao-material:focus-visible,
+.botoes-materiais .study-card:focus-visible {
+    outline: 3px solid rgba(255,255,255,.9);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   BIBLE 365
+   ========================================================= */
+
+.botoes-materiais .botao-material {
+    color: #fff;
+
+    background: linear-gradient(
+        135deg,
+        #173b73 0%,
+        #2563a8 52%,
+        #3b82c4 100%
+    );
+}
+
+
+/* Círculo 365 */
+
+.botoes-materiais .botao-material::after {
+    content: "365";
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.16);
+
+    border: 1px solid rgba(255,255,255,.35);
+
+    font-size: .78rem;
+    font-weight: 900;
+    letter-spacing: .5px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+
+/* =========================================================
+   ESCOLA BÍBLICA ATALAIA
+   ========================================================= */
+
+.botoes-materiais .study-card {
+    min-height: 100px;
+    padding: 10px 22px;
+
+    color: #fff;
+
+    background: linear-gradient(
+        135deg,
+        #5b160f 0%,
+        #8f2d1f 48%,
+        #b84a2f 100%
+    );
+}
+
+
+/* Imagem da EBA */
+
+.botoes-materiais .study-card img {
+    width: 72px;
+    height: 72px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    flex: 0 0 72px;
+
+    border: 2px solid rgba(255,255,255,.65);
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.22);
+}
+
+
+/* Texto da EBA */
+
+.botoes-materiais .study-card span {
+    display: block;
+
+    text-align: center;
+
+    line-height: 1.25;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .botoes-materiais {
+        width: min(94%, 420px);
+        gap: 14px;
+    }
+
+    .botoes-materiais .botao-material,
+    .botoes-materiais .study-card {
+        width: 100%;
+        min-height: 76px;
+        border-radius: 16px;
+    }
+
+    .botoes-materiais .study-card img {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+    }
+}
