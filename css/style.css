@@ -1350,3 +1350,126 @@ BOTÃO DA LIÇÃO
         flex-basis: 58px;
     }
 }
+
+
+
+
+/* ==========================================
+   BOTÕES DAS LIÇÕES
+========================================== */
+
+.licao .pdf {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    margin: 10px 8px 5px 0;
+    padding: 13px 22px;
+
+    min-width: 210px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: linear-gradient(
+        135deg,
+        #1f2937,
+        #111827
+    );
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+/* Hover */
+.licao .pdf:hover {
+    transform: translateY(-3px);
+
+    background: linear-gradient(
+        135deg,
+        #374151,
+        #1f2937
+    );
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+}
+
+/* Clique */
+.licao .pdf:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 7px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================
+   BOTÃO VISUALIZAR AULA
+========================================== */
+
+.licao .pdf:first-of-type {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+}
+
+.licao .pdf:first-of-type:hover {
+    background: linear-gradient(
+        135deg,
+        #3b82f6,
+        #2563eb
+    );
+}
+
+/* ==========================================
+   BOTÃO QUESTIONÁRIO
+========================================== */
+
+.licao .pdf + .pdf {
+    background: linear-gradient(
+        135deg,
+        #15803d,
+        #166534
+    );
+}
+
+.licao .pdf + .pdf:hover {
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #15803d
+    );
+}
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+
+@media (max-width: 600px) {
+
+    .licao .pdf {
+        width: 100%;
+        min-width: 0;
+        margin: 7px 0;
+        padding: 14px 18px;
+    }
+
+}
