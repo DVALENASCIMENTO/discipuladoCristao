@@ -1,0 +1,1437 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Questionário do Estudo 2 — A Obra do Espírito Santo. Discipulado Cristão — Ministério Atalaia.">
+<title>Questionário — Estudo 2 | Ministério Atalaia</title>
+
+<style>
+:root {
+    --azul: #142b49;
+    --azul2: #203f65;
+    --dourado: #c49a45;
+    --fundo: #f2f4f7;
+    --texto: #202a36;
+    --verde: #23864c;
+    --vermelho: #c0392b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+header {
+    text-align: center;
+    padding: 25px 10px;
+    border-bottom: 3px solid var(--dourado);
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px;
+    border: 2px solid var(--dourado);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dourado);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+header h1 {
+    color: var(--azul);
+    margin: 5px 0;
+    font-size: 27px;
+}
+
+header h2 {
+    color: var(--azul2);
+    font-size: 21px;
+    margin: 8px 0;
+}
+
+header p {
+    margin: 4px 0;
+    color: #555;
+}
+
+.identificacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--azul);
+}
+
+.campo input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cbd2da;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+.campo input:focus {
+    outline: 2px solid var(--dourado);
+    border-color: var(--dourado);
+}
+
+.aviso {
+    background: #f7f3e9;
+    border-left: 4px solid var(--dourado);
+    padding: 14px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.progresso-area {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px;
+}
+
+.progresso-texto {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--azul);
+    margin-bottom: 8px;
+}
+
+.progresso {
+    height: 13px;
+    background: #e4e8ed;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progresso-barra {
+    height: 100%;
+    width: 0%;
+    background: var(--verde);
+    transition: width .3s;
+}
+
+.questao {
+    border: 1px solid #dce1e7;
+    border-radius: 9px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #fff;
+}
+
+.questao h3 {
+    margin: 0 0 15px;
+    color: var(--azul);
+    font-size: 18px;
+}
+
+.numero {
+    color: var(--dourado);
+    font-weight: bold;
+}
+
+.opcoes {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.opcao {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px;
+    border: 1px solid #cbd2da;
+    border-radius: 7px;
+    cursor: pointer;
+    background: #fff;
+    color: #111 !important;
+    font-size: 16px !important;
+    line-height: 1.5;
+    min-height: 48px;
+    transition: background .2s, border .2s;
+}
+
+.opcao:hover {
+    background: #f0f4f8;
+    border-color: var(--azul2);
+}
+
+.opcao input {
+    margin-top: 5px;
+    flex-shrink: 0;
+    accent-color: var(--azul);
+    width: 17px;
+    height: 17px;
+}
+
+.opcao.selecionada {
+    border: 2px solid var(--azul2);
+    background: #edf3fa;
+}
+
+.opcao.correta {
+    border: 2px solid var(--verde);
+    background: #e8f6ed;
+}
+
+.opcao.incorreta {
+    border: 2px solid var(--vermelho);
+    background: #fcebea;
+}
+
+.feedback {
+    display: none;
+    margin-top: 13px;
+    padding: 13px;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.feedback.visivel {
+    display: block;
+}
+
+.feedback.acerto {
+    background: #e8f6ed;
+    color: #176238;
+}
+
+.feedback.erro {
+    background: #fcebea;
+    color: #922b21;
+}
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 14px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover {
+    opacity: .9;
+    transform: translateY(-1px);
+}
+
+.btn-finalizar {
+    background: var(--azul);
+    color: white;
+}
+
+.btn-reiniciar {
+    background: #e4e8ed;
+    color: var(--azul);
+}
+
+.btn-certificado {
+    background: var(--dourado);
+    color: #fff;
+}
+
+#resultado {
+    display: none;
+    border: 2px solid var(--dourado);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+#resultado h2 {
+    color: var(--azul);
+}
+
+.nota {
+    font-size: 38px;
+    font-weight: bold;
+    color: var(--azul);
+    margin: 10px;
+}
+
+#listaErros {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#listaErros li {
+    margin-bottom: 8px;
+}
+
+#certificado {
+    display: none;
+}
+
+footer {
+    text-align: center;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    margin-top: 35px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* CERTIFICADO */
+
+.certificado-folha {
+    position: relative;
+    width: 100%;
+    min-height: 540px;
+    padding: 35px;
+    border: 9px double var(--dourado);
+    outline: 1px solid var(--azul);
+    outline-offset: -17px;
+    text-align: center;
+    overflow: hidden;
+    background: #fff;
+    color: var(--azul);
+}
+
+.certificado-folha::before {
+    content: "✝";
+    position: absolute;
+    font-size: 260px;
+    color: rgba(20,43,73,.045);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 0;
+}
+
+.cert-conteudo {
+    position: relative;
+    z-index: 1;
+}
+
+.cert-logo {
+    font-size: 48px;
+    color: var(--dourado);
+    margin: 5px;
+}
+
+.cert-ministerio {
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 16px;
+}
+
+.cert-titulo {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    color: var(--azul);
+    margin: 15px 0;
+}
+
+.cert-texto {
+    font-size: 18px;
+    margin: 15px auto;
+}
+
+.cert-nome {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--azul);
+    border-bottom: 2px solid var(--dourado);
+    display: inline-block;
+    padding: 5px 35px;
+    margin: 15px 0;
+}
+
+.cert-detalhes {
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.cert-rodape {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 45px;
+}
+
+.assinatura {
+    width: 40%;
+    border-top: 1px solid var(--azul);
+    padding-top: 8px;
+    font-size: 13px;
+}
+
+@media(max-width:650px) {
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        padding: 17px;
+    }
+
+    .identificacao {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    header h2 {
+        font-size: 18px;
+    }
+
+    .certificado-folha {
+        padding: 25px 15px;
+    }
+
+    .cert-titulo {
+        font-size: 27px;
+    }
+
+    .cert-nome {
+        font-size: 23px;
+        padding: 5px;
+    }
+
+    .cert-rodape {
+        margin-top: 25px;
+    }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #certificado,
+    #certificado * {
+        visibility: visible !important;
+    }
+
+    #certificado {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .certificado-folha {
+        min-height: 180mm;
+        width: 100%;
+        page-break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">✝</div>
+    <p><strong>DISCIPULADO CRISTÃO — MINISTÉRIO ATALAIA</strong></p>
+    <h1>QUESTIONÁRIO DE AVALIAÇÃO</h1>
+    <h2>Estudo 2 — A Obra do Espírito Santo</h2>
+    <p>Fundamentos da Fé | 40 questões de múltipla escolha</p>
+</header>
+
+<section class="identificacao">
+    <div class="campo">
+        <label for="nome">Nome completo do aluno</label>
+        <input type="text" id="nome" placeholder="Digite seu nome completo" autocomplete="name">
+    </div>
+
+    <div class="campo">
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+    </div>
+</section>
+
+<div class="aviso">
+    <strong>Orientações:</strong>
+    Leia atentamente cada questão e escolha apenas uma alternativa.
+    Ao concluir as 40 questões, clique em <strong>Finalizar questionário</strong>
+    para receber sua avaliação.
+</div>
+
+<div class="progresso-area">
+    <div class="progresso-texto">
+        <span id="contador">0 de 40 respondidas</span>
+        <span id="percentual">0%</span>
+    </div>
+    <div class="progresso">
+        <div class="progresso-barra" id="barra"></div>
+    </div>
+</div>
+
+<form id="formulario">
+    <div id="questoes"></div>
+
+    <div class="botoes">
+        <button type="button" class="btn-finalizar" id="finalizar">
+            Finalizar questionário
+        </button>
+
+        <button type="button" class="btn-reiniciar" id="reiniciar">
+            Reiniciar
+        </button>
+    </div>
+</form>
+
+<section id="resultado">
+    <h2>Resultado da avaliação</h2>
+    <p id="mensagemResultado"></p>
+    <div class="nota" id="nota"></div>
+    <p id="situacao"></p>
+
+    <div id="listaErros"></div>
+
+    <div class="botoes">
+        <button type="button" class="btn-certificado" id="abrirCertificado">
+            Visualizar certificado
+        </button>
+    </div>
+</section>
+
+<section id="certificado">
+    <div class="certificado-folha">
+        <div class="cert-conteudo">
+            <div class="cert-logo">✝</div>
+            <div class="cert-ministerio">MINISTÉRIO ATALAIA</div>
+            <p>DISCIPULADO CRISTÃO</p>
+
+            <h1 class="cert-titulo">CERTIFICADO DE CONCLUSÃO</h1>
+
+            <p class="cert-texto">
+                Certificamos que
+            </p>
+
+            <div class="cert-nome" id="certNome"></div>
+
+            <p class="cert-texto">
+                concluiu a avaliação do estudo:
+            </p>
+
+            <h2>A OBRA DO ESPÍRITO SANTO</h2>
+
+            <div class="cert-detalhes">
+                <p>Curso: Discipulado Cristão — Fundamentos da Fé</p>
+                <p id="certCPF"></p>
+                <p id="certNota"></p>
+                <p id="certData"></p>
+            </div>
+
+            <p>
+                <em>
+                    "Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós..."
+                    <br>Atos 1:8
+                </em>
+            </p>
+
+            <div class="cert-rodape">
+                <div class="assinatura">
+                    Ministério Atalaia
+                </div>
+
+                <div class="assinatura">
+                    Coordenação de Ensino Bíblico
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <button type="button" class="btn-certificado" onclick="window.print()">
+            Imprimir / Salvar certificado em PDF
+        </button>
+    </div>
+</section>
+
+<footer>
+    <strong>MINISTÉRIO ATALAIA</strong>
+    <p>Discipulado Cristão — Crescendo no conhecimento da Palavra de Deus.</p>
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+/* ==========================================
+   QUESTÕES — ESTUDO 2
+   A OBRA DO ESPÍRITO SANTO
+========================================== */
+
+const perguntas = [
+
+{
+q: "Segundo o ensino bíblico, quem é o Espírito Santo?",
+a: [
+"Uma força impessoal criada pelos homens.",
+"Uma influência religiosa sem personalidade.",
+"A terceira pessoa da Santíssima Trindade.",
+"Um anjo enviado para orientar a Igreja."
+],
+c: 2,
+e: "O Espírito Santo é apresentado nas Escrituras como pessoa divina, distinto do Pai e do Filho, e participante da obra de Deus."
+},
+
+{
+q: "Qual foi a promessa de Jesus aos seus discípulos antes de sua ascensão?",
+a: [
+"Que nunca enfrentariam perseguições.",
+"Que receberiam o Espírito Santo.",
+"Que governariam todas as nações.",
+"Que não precisariam mais orar."
+],
+c: 1,
+e: "Jesus prometeu aos discípulos o recebimento do Espírito Santo, que lhes daria poder para testemunhar."
+},
+
+{
+q: "Em qual passagem Jesus prometeu que os discípulos receberiam poder ao descer sobre eles o Espírito Santo?",
+a: [
+"Atos 1:8.",
+"João 3:16.",
+"Mateus 5:3.",
+"Romanos 12:2."
+],
+c: 0,
+e: "Atos 1:8 registra a promessa de poder para testemunhar após a vinda do Espírito Santo."
+},
+
+{
+q: "O que aconteceu no dia de Pentecostes, conforme Atos 2?",
+a: [
+"Os discípulos abandonaram Jerusalém.",
+"O templo foi destruído.",
+"Os discípulos receberam o Espírito Santo.",
+"Jesus voltou fisicamente à Terra."
+],
+c: 2,
+e: "Em Atos 2, o Espírito Santo foi derramado sobre os discípulos reunidos em Jerusalém."
+},
+
+{
+q: "Qual é uma das principais obras do Espírito Santo na vida do pecador?",
+a: [
+"Convencer do pecado, da justiça e do juízo.",
+"Conceder riquezas materiais a todos.",
+"Eliminar a necessidade de arrependimento.",
+"Impedir qualquer dificuldade na vida."
+],
+c: 0,
+e: "João 16:8 ensina que o Espírito Santo convence o mundo do pecado, da justiça e do juízo."
+},
+
+{
+q: "Segundo João 14:26, o Espírito Santo é chamado de:",
+a: [
+"Rei de Israel.",
+"Consolador e Mestre.",
+"Príncipe deste mundo.",
+"Profeta de Jerusalém."
+],
+c: 1,
+e: "Jesus apresenta o Espírito Santo como Consolador, que ensina e faz lembrar aquilo que Ele ensinou."
+},
+
+{
+q: "Qual é a função do Espírito Santo em relação à verdade?",
+a: [
+"Substituir a Palavra de Deus.",
+"Conduzir os discípulos a toda a verdade.",
+"Ensinar que cada pessoa possui sua própria verdade.",
+"Eliminar a necessidade de conhecer as Escrituras."
+],
+c: 1,
+e: "João 16:13 apresenta o Espírito da verdade conduzindo os discípulos a toda a verdade."
+},
+
+{
+q: "Segundo Romanos 8:14, aqueles que são guiados pelo Espírito de Deus são:",
+a: [
+"Filhos de Deus.",
+"Governantes de todas as nações.",
+"Isentos de provações.",
+"Superiores aos demais seres humanos."
+],
+c: 0,
+e: "Romanos 8:14 ensina que os que são guiados pelo Espírito de Deus são filhos de Deus."
+},
+
+{
+q: "O que significa andar no Espírito, conforme Gálatas 5?",
+a: [
+"Viver segundo os desejos da carne.",
+"Viver sob a direção do Espírito Santo.",
+"Abandonar a comunhão cristã.",
+"Buscar somente interesses materiais."
+],
+c: 1,
+e: "Gálatas 5:16 ensina a andar no Espírito e não cumprir as concupiscências da carne."
+},
+
+{
+q: "Qual fruto é apresentado em Gálatas 5:22?",
+a: [
+"Orgulho, vaidade e ambição.",
+"Amor, gozo, paz e longanimidade.",
+"Riqueza, fama e poder.",
+"Medo, inveja e contenda."
+],
+c: 1,
+e: "Gálatas 5:22 apresenta o fruto do Espírito, incluindo amor, gozo, paz e longanimidade."
+},
+
+{
+q: "Qual destas características faz parte do fruto do Espírito?",
+a: [
+"Ciúme.",
+"Discórdia.",
+"Benignidade.",
+"Vingança."
+],
+c: 2,
+e: "A benignidade está entre as características do fruto do Espírito descritas em Gálatas 5:22."
+},
+
+{
+q: "O fruto do Espírito deve ser entendido como:",
+a: [
+"Uma manifestação do caráter transformado pelo Espírito.",
+"Uma recompensa financeira.",
+"Um título ministerial.",
+"Uma habilidade exclusivamente intelectual."
+],
+c: 0,
+e: "O fruto do Espírito evidencia a transformação do caráter e a vida conduzida por Deus."
+},
+
+{
+q: "Qual é a relação entre o Espírito Santo e a santificação?",
+a: [
+"O Espírito Santo conduz o cristão a uma vida de santidade.",
+"Ele torna desnecessária a obediência.",
+"Ele permite que o cristão viva deliberadamente no pecado.",
+"Ele substitui a responsabilidade pessoal."
+],
+c: 0,
+e: "A santificação envolve a obra de Deus na vida do cristão, conduzindo-o a uma vida separada para Ele."
+},
+
+{
+q: "Segundo 1 Coríntios 6:19, o corpo do cristão é chamado de:",
+a: [
+"Templo do Espírito Santo.",
+"Morada dos anjos.",
+"Palácio dos profetas.",
+"Casa dos reis."
+],
+c: 0,
+e: "1 Coríntios 6:19 ensina que o corpo é templo do Espírito Santo."
+},
+
+{
+q: "Qual atitude é apresentada em Efésios 4:30 como algo que não devemos fazer?",
+a: [
+"Orar.",
+"Perdoar.",
+"Entristecer o Espírito Santo.",
+"Praticar a bondade."
+],
+c: 2,
+e: "Efésios 4:30 adverte os cristãos a não entristecerem o Espírito Santo de Deus."
+},
+
+{
+q: "O que significa ser cheio do Espírito Santo, conforme Efésios 5:18?",
+a: [
+"Viver sob a influência e direção do Espírito.",
+"Ter uma posição de destaque social.",
+"Não precisar mais estudar a Bíblia.",
+"Ser incapaz de enfrentar problemas."
+],
+c: 0,
+e: "Efésios 5:18 apresenta a orientação para ser cheio do Espírito, em contraste com a embriaguez."
+},
+
+{
+q: "Qual é a relação entre oração e Espírito Santo?",
+a: [
+"A oração não possui relação com a vida espiritual.",
+"O cristão pode orar no Espírito.",
+"A oração deve ser substituída por rituais.",
+"Somente líderes podem orar."
+],
+c: 1,
+e: "Judas 1:20 orienta os cristãos a orarem no Espírito Santo."
+},
+
+{
+q: "Segundo Romanos 8:26, o Espírito Santo ajuda o cristão em sua:",
+a: [
+"Fraqueza.",
+"Busca por fama.",
+"Ambição política.",
+"Competição social."
+],
+c: 0,
+e: "Romanos 8:26 ensina que o Espírito ajuda em nossas fraquezas e intercede por nós."
+},
+
+{
+q: "Qual é uma obra do Espírito Santo na vida da Igreja?",
+a: [
+"Produzir divisão como objetivo.",
+"Capacitar os cristãos para testemunhar de Cristo.",
+"Eliminar a necessidade de comunhão.",
+"Substituir a missão evangelística."
+],
+c: 1,
+e: "O Espírito Santo capacita a Igreja para cumprir sua missão de testemunhar de Jesus Cristo."
+},
+
+{
+q: "Em Atos 4:31, o que aconteceu quando os discípulos oraram?",
+a: [
+"O lugar onde estavam reunidos foi movido, e todos foram cheios do Espírito Santo.",
+"Todos deixaram de anunciar a Palavra.",
+"Os discípulos foram dispensados da missão.",
+"A Igreja deixou de se reunir."
+],
+c: 0,
+e: "Atos 4:31 relata que, após a oração, os discípulos foram cheios do Espírito Santo e anunciavam a Palavra com ousadia."
+},
+
+{
+q: "Qual é a finalidade dos dons espirituais segundo 1 Coríntios 12?",
+a: [
+"Exaltar a capacidade humana.",
+"Promover competição entre cristãos.",
+"Edificar e beneficiar a Igreja.",
+"Conceder superioridade pessoal."
+],
+c: 2,
+e: "Os dons são manifestações do Espírito concedidas para proveito comum, conforme 1 Coríntios 12:7."
+},
+
+{
+q: "Quem distribui os dons espirituais conforme sua vontade?",
+a: [
+"Cada pessoa por decisão própria.",
+"Os líderes conforme preferência pessoal.",
+"O Espírito Santo.",
+"A sociedade."
+],
+c: 2,
+e: "1 Coríntios 12:11 ensina que o mesmo Espírito opera e distribui a cada um como quer."
+},
+
+{
+q: "Qual capítulo bíblico apresenta uma relação de manifestações dos dons espirituais?",
+a: [
+"1 Coríntios 12.",
+"Salmos 23.",
+"Gênesis 1.",
+"Rute 2."
+],
+c: 0,
+e: "1 Coríntios 12 apresenta diferentes manifestações e dons concedidos pelo Espírito."
+},
+
+{
+q: "O dom de discernimento de espíritos está relacionado a:",
+a: [
+"Discernir as manifestações espirituais.",
+"Prever todos os acontecimentos políticos.",
+"Conhecer automaticamente todos os pensamentos.",
+"Conquistar riquezas."
+],
+c: 0,
+e: "O discernimento de espíritos é apresentado em 1 Coríntios 12:10 como uma manifestação espiritual."
+},
+
+{
+q: "Qual é a finalidade do dom de profecia no contexto da edificação da Igreja?",
+a: [
+"Promover a vaidade pessoal.",
+"Edificar, exortar e consolar.",
+"Substituir as Escrituras.",
+"Produzir competição."
+],
+c: 1,
+e: "1 Coríntios 14:3 apresenta a profecia como edificação, exortação e consolação."
+},
+
+{
+q: "Segundo 1 Coríntios 13, qual deve ser o fundamento do exercício dos dons?",
+a: [
+"Fama.",
+"Poder social.",
+"Amor.",
+"Reconhecimento público."
+],
+c: 2,
+e: "1 Coríntios 13 ensina a importância indispensável do amor."
+},
+
+{
+q: "O Espírito Santo concede poder ao cristão para:",
+a: [
+"Testemunhar de Jesus Cristo.",
+"Buscar vingança.",
+"Dominar outras pessoas.",
+"Viver sem responsabilidade."
+],
+c: 0,
+e: "Atos 1:8 relaciona o poder do Espírito Santo à missão de testemunhar de Cristo."
+},
+
+{
+q: "Qual é o papel do Espírito Santo na compreensão das Escrituras?",
+a: [
+"Conduzir o cristão à compreensão da verdade.",
+"Anular o estudo bíblico.",
+"Permitir interpretações sem fundamento.",
+"Substituir a leitura da Palavra."
+],
+c: 0,
+e: "O Espírito da verdade guia os discípulos à verdade, conforme João 16:13."
+},
+
+{
+q: "O que o cristão deve fazer para não apagar o Espírito?",
+a: [
+"Desprezar toda orientação espiritual.",
+"Viver em obediência e sensibilidade à sua direção.",
+"Abandonar a oração.",
+"Rejeitar a Palavra."
+],
+c: 1,
+e: "1 Tessalonicenses 5:19 orienta: não apagar o Espírito."
+},
+
+{
+q: "Segundo 1 Tessalonicenses 5:21, qual deve ser a atitude diante das manifestações?",
+a: [
+"Desprezar tudo sem examinar.",
+"Examinar tudo e reter o bem.",
+"Aceitar tudo sem discernimento.",
+"Rejeitar toda instrução."
+],
+c: 1,
+e: "A orientação bíblica é examinar tudo e reter o que é bom."
+},
+
+{
+q: "Qual é a relação entre o Espírito Santo e a adoção espiritual?",
+a: [
+"O Espírito testifica que somos filhos de Deus.",
+"Ele concede cidadania terrena.",
+"Ele elimina a necessidade de fé.",
+"Ele torna todos os seres humanos líderes."
+],
+c: 0,
+e: "Romanos 8:15-16 apresenta o Espírito de adoção que testifica com o nosso espírito que somos filhos de Deus."
+},
+
+{
+q: "Segundo João 14:16-17, Jesus prometeu que o Consolador:",
+a: [
+"Estaria com os discípulos para sempre.",
+"Ficaria somente um dia.",
+"Seria enviado apenas aos governantes.",
+"Substituiria a necessidade de fé."
+],
+c: 0,
+e: "Jesus prometeu outro Consolador para estar com os seus discípulos para sempre."
+},
+
+{
+q: "O Espírito Santo habita em:",
+a: [
+"Apenas nos edifícios religiosos.",
+"Nos que pertencem a Cristo.",
+"Somente nos líderes políticos.",
+"Somente nos profetas do Antigo Testamento."
+],
+c: 1,
+e: "Romanos 8:9 ensina que quem não tem o Espírito de Cristo não pertence a Ele."
+},
+
+{
+q: "Qual atitude demonstra sensibilidade à direção do Espírito Santo?",
+a: [
+"Persistir deliberadamente na desobediência.",
+"Buscar a vontade de Deus e obedecer à sua Palavra.",
+"Ignorar a correção bíblica.",
+"Agir sempre por impulso."
+],
+c: 1,
+e: "A vida conduzida pelo Espírito envolve submissão à vontade de Deus e obediência à Palavra."
+},
+
+{
+q: "O Espírito Santo é chamado de Espírito da verdade em qual evangelho?",
+a: [
+"Mateus.",
+"Marcos.",
+"Lucas.",
+"João."
+],
+c: 3,
+e: "O Evangelho de João apresenta o Espírito Santo como Espírito da verdade, especialmente em João 14 a 16."
+},
+
+{
+q: "Qual é a relação entre o Espírito Santo e Jesus Cristo?",
+a: [
+"O Espírito Santo glorifica a Cristo.",
+"O Espírito Santo nega a obra de Cristo.",
+"O Espírito Santo substitui Jesus como Salvador.",
+"O Espírito Santo ensina a abandonar o evangelho."
+],
+c: 0,
+e: "João 16:14 ensina que o Espírito Santo glorifica Jesus Cristo."
+},
+
+{
+q: "Qual passagem ensina que ninguém pode dizer que Jesus é o Senhor, senão pelo Espírito Santo?",
+a: [
+"1 Coríntios 12:3.",
+"Salmos 91:1.",
+"Gênesis 12:1.",
+"Mateus 6:9."
+],
+c: 0,
+e: "1 Coríntios 12:3 apresenta a atuação do Espírito Santo no reconhecimento de Jesus como Senhor."
+},
+
+{
+q: "Qual deve ser a postura do discípulo diante dos dons espirituais?",
+a: [
+"Usá-los para autopromoção.",
+"Buscar a edificação da Igreja com amor e responsabilidade.",
+"Transformá-los em motivo de divisão.",
+"Considerá-los uma forma de superioridade."
+],
+c: 1,
+e: "Os dons devem ser exercidos com amor, ordem e propósito de edificação da Igreja."
+},
+
+{
+q: "O que caracteriza uma vida verdadeiramente conduzida pelo Espírito Santo?",
+a: [
+"Uma vida de obediência, santidade e fruto espiritual.",
+"Uma vida sem necessidade de arrependimento.",
+"Uma vida voltada exclusivamente para bens materiais.",
+"Uma vida sem compromisso com a Palavra."
+],
+c: 0,
+e: "A direção do Espírito se evidencia na transformação do caráter, na obediência e no fruto espiritual."
+},
+
+{
+q: "Qual deve ser a atitude do discípulo diante da obra do Espírito Santo?",
+a: [
+"Desprezar sua atuação.",
+"Buscar comunhão com Deus, obedecer à Palavra e permitir sua transformação.",
+"Viver sem oração.",
+"Depender exclusivamente de emoções."
+],
+c: 1,
+e: "O discípulo deve viver em comunhão com Deus, guiado pelo Espírito e fundamentado nas Escrituras."
+}
+
+];
+
+/* ==========================================
+   RENDERIZAÇÃO DAS QUESTÕES
+========================================== */
+
+const areaQuestoes = document.getElementById("questoes");
+const total = perguntas.length;
+let finalizado = false;
+
+function renderizarQuestoes() {
+    areaQuestoes.innerHTML = "";
+
+    perguntas.forEach((pergunta, indice) => {
+        const artigo = document.createElement("article");
+        artigo.className = "questao";
+        artigo.id = "questao-" + indice;
+
+        const titulo = document.createElement("h3");
+        titulo.innerHTML =
+            '<span class="numero">QUESTÃO ' +
+            String(indice + 1).padStart(2, "0") +
+            '.</span> ' + pergunta.q;
+
+        const opcoes = document.createElement("div");
+        opcoes.className = "opcoes";
+
+        pergunta.a.forEach((alternativa, letra) => {
+            const label = document.createElement("label");
+            label.className = "opcao";
+            label.dataset.questao = indice;
+            label.dataset.alternativa = letra;
+
+            const radio = document.createElement("input");
+            radio.type = "radio";
+            radio.name = "questao" + indice;
+            radio.value = letra;
+
+            const texto = document.createElement("span");
+            texto.textContent =
+                String.fromCharCode(65 + letra) + ") " + alternativa;
+
+            radio.addEventListener("change", () => {
+                if (finalizado) return;
+
+                opcoes.querySelectorAll(".opcao").forEach(item => {
+                    item.classList.remove("selecionada");
+                });
+
+                label.classList.add("selecionada");
+                atualizarProgresso();
+            });
+
+            label.appendChild(radio);
+            label.appendChild(texto);
+            opcoes.appendChild(label);
+        });
+
+        const feedback = document.createElement("div");
+        feedback.className = "feedback";
+        feedback.id = "feedback-" + indice;
+
+        artigo.appendChild(titulo);
+        artigo.appendChild(opcoes);
+        artigo.appendChild(feedback);
+
+        areaQuestoes.appendChild(artigo);
+    });
+}
+
+/* ==========================================
+   PROGRESSO
+========================================== */
+
+function atualizarProgresso() {
+    const respondidas = perguntas.filter((p, i) => {
+        return document.querySelector(
+            'input[name="questao' + i + '"]:checked'
+        );
+    }).length;
+
+    const porcentagem = Math.round((respondidas / total) * 100);
+
+    document.getElementById("contador").textContent =
+        respondidas + " de " + total + " respondidas";
+
+    document.getElementById("percentual").textContent =
+        porcentagem + "%";
+
+    document.getElementById("barra").style.width =
+        porcentagem + "%";
+}
+
+/* ==========================================
+   FINALIZAR E CORRIGIR
+========================================== */
+
+function finalizarQuestionario() {
+    if (finalizado) return;
+
+    const nome = document.getElementById("nome").value.trim();
+    const cpf = document.getElementById("cpf").value.trim();
+
+    if (!nome) {
+        alert("Digite o nome completo do aluno.");
+        document.getElementById("nome").focus();
+        return;
+    }
+
+    if (!cpfValido(cpf)) {
+        alert("Informe um CPF válido.");
+        document.getElementById("cpf").focus();
+        return;
+    }
+
+    const respostas = perguntas.map((p, i) => {
+        const selecionada = document.querySelector(
+            'input[name="questao' + i + '"]:checked'
+        );
+
+        return selecionada ? Number(selecionada.value) : null;
+    });
+
+    const faltantes = respostas.filter(r => r === null).length;
+
+    if (faltantes > 0) {
+        const confirmar = confirm(
+            "Você deixou " + faltantes +
+            " questão(ões) sem resposta. Deseja finalizar mesmo assim?"
+        );
+
+        if (!confirmar) {
+            const primeira = respostas.indexOf(null);
+            document.getElementById("questao-" + primeira)
+                .scrollIntoView({ behavior: "smooth", block: "center" });
+            return;
+        }
+    }
+
+    finalizado = true;
+
+    let acertos = 0;
+    const erros = [];
+
+    perguntas.forEach((pergunta, i) => {
+        const artigo = document.getElementById("questao-" + i);
+        const alternativas = artigo.querySelectorAll(".opcao");
+        const resposta = respostas[i];
+        const feedback = document.getElementById("feedback-" + i);
+
+        alternativas.forEach((label, letra) => {
+            const radio = label.querySelector("input");
+            radio.disabled = true;
+
+            if (letra === pergunta.c) {
+                label.classList.add("correta");
+            }
+
+            if (resposta === letra && letra !== pergunta.c) {
+                label.classList.add("incorreta");
+            }
+        });
+
+        feedback.classList.add("visivel");
+
+        if (resposta === pergunta.c) {
+            acertos++;
+            feedback.classList.add("acerto");
+            feedback.innerHTML =
+                "<strong>Resposta correta!</strong> " + pergunta.e;
+        } else {
+            feedback.classList.add("erro");
+
+            const correta = pergunta.a[pergunta.c];
+
+            feedback.innerHTML =
+                "<strong>Resposta incorreta.</strong><br>" +
+                "<strong>Resposta correta:</strong> " +
+                String.fromCharCode(65 + pergunta.c) + ") " +
+                correta + "<br><br>" + pergunta.e;
+
+            erros.push({
+                numero: i + 1,
+                pergunta: pergunta.q,
+                correta: correta
+            });
+        }
+    });
+
+    const nota = Math.round((acertos / total) * 100);
+    const percentualAcerto = acertos + " de " + total;
+
+    document.getElementById("nota").textContent =
+        nota + "%";
+
+    document.getElementById("mensagemResultado").textContent =
+        nome + ", sua avaliação foi concluída.";
+
+    document.getElementById("situacao").textContent =
+        "Você acertou " + percentualAcerto + " questões.";
+
+    document.getElementById("listaErros").innerHTML =
+        erros.length
+        ? "<h3>Questões que precisam de revisão:</h3><ol>" +
+          erros.map(e =>
+            "<li><strong>Questão " + e.numero + ":</strong> " +
+            e.pergunta + "<br><strong>Resposta:</strong> " +
+            e.correta + "</li>"
+          ).join("") + "</ol>"
+        : "<p>Parabéns! Você acertou todas as questões.</p>";
+
+    document.getElementById("resultado").style.display = "block";
+
+    document.getElementById("certNome").textContent = nome;
+    document.getElementById("certCPF").textContent =
+        "CPF: " + cpf;
+    document.getElementById("certNota").textContent =
+        "Resultado: " + acertos + " de " + total +
+        " questões — " + nota + "% de aproveitamento";
+
+    document.getElementById("certData").textContent =
+        "Data: " + new Date().toLocaleDateString("pt-BR");
+
+    document.getElementById("finalizar").disabled = true;
+
+    document.getElementById("resultado").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* ==========================================
+   CPF
+========================================== */
+
+function formatarCPF(valor) {
+    return valor
+        .replace(/\D/g, "")
+        .slice(0, 11)
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d)/, "$1.$2")
+        .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
+
+document.getElementById("cpf").addEventListener("input", function() {
+    this.value = formatarCPF(this.value);
+});
+
+function cpfValido(cpf) {
+    cpf = cpf.replace(/\D/g, "");
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+
+    for (let i = 0; i < 9; i++) {
+        soma += Number(cpf[i]) * (10 - i);
+    }
+
+    let resto = (soma * 10) % 11;
+    if (resto === 10) resto = 0;
+
+    if (resto !== Number(cpf[9])) return false;
+
+    soma = 0;
+
+    for (let i = 0; i < 10; i++) {
+        soma += Number(cpf[i]) * (11 - i);
+    }
+
+    resto = (soma * 10) % 11;
+    if (resto === 10) resto = 0;
+
+    return resto === Number(cpf[10]);
+}
+
+/* ==========================================
+   CERTIFICADO
+========================================== */
+
+document.getElementById("abrirCertificado")
+    .addEventListener("click", function() {
+
+        document.getElementById("certificado").style.display = "block";
+
+        document.getElementById("certificado").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    });
+
+/* ==========================================
+   REINICIAR
+========================================== */
+
+document.getElementById("reiniciar")
+    .addEventListener("click", function() {
+
+        if (!confirm("Deseja realmente reiniciar o questionário?")) {
+            return;
+        }
+
+        finalizado = false;
+
+        document.getElementById("formulario").reset();
+
+        document.getElementById("resultado").style.display = "none";
+        document.getElementById("certificado").style.display = "none";
+        document.getElementById("finalizar").disabled = false;
+
+        renderizarQuestoes();
+        atualizarProgresso();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+/* ==========================================
+   INICIALIZAÇÃO
+========================================== */
+
+document.getElementById("finalizar")
+    .addEventListener("click", finalizarQuestionario);
+
+renderizarQuestoes();
+atualizarProgresso();
+
+</script>
+
+</body>
+</html>

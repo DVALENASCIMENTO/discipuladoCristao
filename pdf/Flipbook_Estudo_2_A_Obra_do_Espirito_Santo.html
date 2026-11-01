@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estudo 2 — A Obra do Espírito Santo | Discipulado Cristão — Ministério Atalaia">
+<title>Estudo 2 — A Obra do Espírito Santo | Ministério Atalaia</title>
+<style>
+:root{
+  --ink:#20251f;--muted:#687168;--gold:#b68a45;--gold-light:#e8d6b2;
+  --paper:#fffdf7;--paper2:#f4efe4;--green:#263b32;--green2:#172820;
+  --line:#e5ddce;--shadow:0 18px 55px rgba(18,28,22,.22)
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 10%,#52695b 0,#263b32 42%,#172820 100%);font-family:Georgia,"Times New Roman",serif;color:var(--ink);min-height:100vh}
+.topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px clamp(14px,4vw,38px);background:rgba(19,35,27,.94);color:#fff;border-bottom:1px solid rgba(232,214,178,.25);backdrop-filter:blur(10px);font-family:Arial,sans-serif}
+.brand{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e8d6b2;font-weight:700}
+.top-actions{display:flex;align-items:center;gap:8px}
+.top-actions button,.controls button{border:1px solid rgba(232,214,178,.5);background:transparent;color:#fff;padding:9px 13px;border-radius:7px;cursor:pointer;font-size:13px}
+.top-actions button:hover,.controls button:hover{background:rgba(232,214,178,.15)}
+.progress-wrap{height:3px;background:rgba(255,255,255,.12)}
+.progress{height:100%;width:0;background:var(--gold-light);transition:width .25s}
+.stage{min-height:calc(100vh - 104px);display:flex;align-items:center;justify-content:center;padding:28px 14px 22px}
+.book-shell{width:min(100%,930px);perspective:1800px}
+.book{position:relative;width:100%;min-height:610px;display:grid;grid-template-columns:1fr 1fr;filter:drop-shadow(var(--shadow))}
+.page{position:relative;min-height:610px;padding:clamp(25px,4vw,52px);background:var(--paper);overflow:hidden}
+.page.left{border-radius:8px 0 0 8px;background:linear-gradient(90deg,#eee7d9 0,#fffdf7 5%,#fffdf7 100%)}
+.page.right{border-radius:0 8px 8px 0;background:linear-gradient(270deg,#eee7d9 0,#fffdf7 5%,#fffdf7 100%)}
+.page:after{content:"";position:absolute;top:0;bottom:0;width:18px;pointer-events:none}
+.page.left:after{right:0;background:linear-gradient(90deg,transparent,rgba(0,0,0,.055))}
+.page.right:after{left:0;background:linear-gradient(270deg,transparent,rgba(0,0,0,.055))}
+.page-inner{height:100%;position:relative;z-index:1}
+.page-number{position:absolute;bottom:20px;color:#9b927f;font:11px Arial,sans-serif;letter-spacing:1px}
+.left .page-number{left:32px}.right .page-number{right:32px}
+.kicker{font:700 11px Arial,sans-serif;letter-spacing:2.2px;text-transform:uppercase;color:var(--gold);margin:0 0 15px}
+h1,h2,h3{color:var(--green);line-height:1.18}
+h1{font-size:clamp(32px,5vw,53px);margin:12px 0}
+h2{font-size:clamp(22px,3vw,30px);margin:0 0 18px}
+h3{font-size:19px;margin:22px 0 9px}
+p,li{font-size:15px;line-height:1.72}
+p{margin:0 0 12px}
+ul,ol{padding-left:22px}
+blockquote{margin:18px 0;padding:14px 18px;border-left:3px solid var(--gold);background:#f5f0e5;color:#37463b;font-size:17px;line-height:1.6;font-style:italic}
+.ref{font:700 11px Arial,sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:#9a7841;margin-top:8px}
+.cover{height:100%;min-height:510px;display:flex;flex-direction:column;justify-content:center;text-align:center;align-items:center;background:radial-gradient(circle at 50% 38%,rgba(210,177,119,.15),transparent 40%)}
+.cover .ornament{width:76px;height:76px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:32px;margin-bottom:28px}
+.cover h1{font-size:clamp(36px,5vw,58px);letter-spacing:1px}
+.cover .subtitle{font:700 12px Arial,sans-serif;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-top:18px}
+.cover .ministry{font:12px Arial,sans-serif;letter-spacing:2px;color:#6f796d;margin-top:55px;text-transform:uppercase}
+.cover .verse{max-width:420px;margin:24px auto 0;font-size:16px;font-style:italic;color:#536054}
+.section-label{display:inline-block;padding:6px 10px;border:1px solid var(--gold-light);color:#96713b;font:700 10px Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:12px}
+.callout{padding:14px 16px;background:#edf1eb;border:1px solid #dce5da;border-radius:5px;margin:15px 0}
+.callout strong{color:var(--green)}
+.small{font-size:13px;color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info{padding:12px;background:#f5f0e5;border-radius:5px}
+.info b{display:block;color:#8b6b37;margin-bottom:5px;font:700 11px Arial,sans-serif;text-transform:uppercase;letter-spacing:1px}
+ul.compact li{margin-bottom:5px}
+.table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.table th,.table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}
+.table th{color:#8b6b37;font:700 10px Arial,sans-serif;text-transform:uppercase;letter-spacing:1px}
+.controls{display:flex;align-items:center;justify-content:center;gap:14px;padding:0 12px 24px;font-family:Arial,sans-serif}
+.controls button{background:#263b32;padding:11px 19px}
+.controls button:disabled{opacity:.35;cursor:not-allowed}
+.counter{color:#f4ead7;font:12px Arial,sans-serif;min-width:90px;text-align:center}
+.mobile-hint{display:none;color:#eadfc9;font:12px Arial,sans-serif;text-align:center;padding:0 12px 18px}
+@media(max-width:700px){
+ .stage{padding:18px 10px 12px;align-items:flex-start}
+ .book{display:block;min-height:0}
+ .page{display:none;min-height:75vh;border-radius:8px!important;padding:28px 25px 55px}
+ .page.active{display:block}
+ .page:after{display:none}
+ .page-number{bottom:17px}
+ .mobile-hint{display:block}
+ .topbar{padding:10px 12px}.brand{font-size:10px;letter-spacing:1px}
+ .top-actions button{padding:8px;font-size:11px}
+ p,li{font-size:14px}
+}
+@media print{
+ body{background:#fff}
+ .topbar,.progress-wrap,.controls,.mobile-hint{display:none!important}
+ .stage{display:block;padding:0}
+ .book-shell{width:100%}
+ .book{display:block;filter:none}
+ .page{display:block!important;page-break-after:always;min-height:0;height:270mm;border-radius:0;padding:25mm}
+ .page-number{bottom:12mm}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Ministério Atalaia · Discipulado Cristão</div>
+  <div class="top-actions">
+    <button type="button" onclick="window.print()">Imprimir / PDF</button>
+    <button type="button" id="fullscreenBtn">Tela cheia</button>
+  </div>
+</header>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<main class="stage">
+<div class="book-shell"><div class="book" id="book">
+
+<section class="page left active"><div class="page-inner cover">
+  <div class="ornament">✧</div>
+  <p class="kicker">Fundamentos da fé</p>
+  <h1>A Obra do<br>Espírito Santo</h1>
+  <div class="subtitle">Estudo 2</div>
+  <p class="verse">“Mas, quando vier aquele Espírito de verdade, ele vos guiará em toda a verdade.”</p>
+  <p class="ref">João 16:13</p>
+  <div class="ministry">Discipulado Cristão<br>Ministério Atalaia</div>
+</div><span class="page-number">01</span></section>
+
+<section class="page right"><div class="page-inner">
+  <p class="kicker">Apresentação</p><h2>Objetivo do estudo</h2>
+  <p>Compreender as diferentes maneiras pelas quais o Espírito Santo atua na vida do discípulo, transformando seu caráter, orientando suas decisões, fortalecendo sua fé e capacitando-o para cumprir a missão de Cristo.</p>
+  <h3>Texto-chave</h3>
+  <blockquote>“Mas, quando vier aquele Espírito de verdade, ele vos guiará em toda a verdade.”</blockquote>
+  <p class="ref">João 16:13</p>
+  <div class="callout"><strong>Verdade central</strong><p>O Espírito Santo não atua somente em momentos de culto ou experiências extraordinárias. Ele trabalha diariamente na vida do discípulo, conduzindo-o à comunhão, à santidade e à obediência a Deus.</p></div>
+  <h3>Neste estudo, aprenderemos que o Espírito Santo:</h3>
+  <ul class="compact"><li>Convence do pecado e guia à verdade;</li><li>Ensina e orienta a caminhada cristã;</li><li>Transforma o caráter e fortalece;</li><li>Capacita para testemunhar e auxilia na oração;</li><li>Conduz a uma vida de obediência.</li></ul>
+</div><span class="page-number">02</span></section>
+
+<section class="page left"><div class="page-inner">
+  <p class="kicker">Introdução</p><h2>Conhecer sua pessoa e compreender sua obra</h2>
+  <p>No estudo anterior, aprendemos sobre quem é o Espírito Santo. Compreendemos que Ele é o Espírito de Deus, o Consolador prometido por Jesus, que ensina, guia e acompanha aqueles que pertencem a Cristo.</p>
+  <p>Entretanto, conhecer quem é o Espírito Santo é apenas o começo. Também precisamos compreender o que Ele realiza na vida do cristão.</p>
+  <p>A Bíblia apresenta uma atuação profunda do Espírito Santo na experiência do discípulo. Ele trabalha no interior do ser humano e o conduz a uma vida de comunhão, santidade e obediência a Deus.</p>
+  <blockquote>O crescimento espiritual não consiste apenas em acumular informações, mas em permitir que a verdade de Deus transforme nossa maneira de viver.</blockquote>
+  <p>Vamos examinar cada dimensão dessa atuação à luz das Escrituras, buscando compreender tanto o ensino bíblico quanto sua aplicação prática.</p>
+</div><span class="page-number">03</span></section>
+
+<section class="page right"><div class="page-inner">
+  <span class="section-label">01 · Convencimento</span><h2>O Espírito Santo convence do pecado</h2>
+  <p class="ref">João 16:8</p>
+  <blockquote>“E, quando ele vier, convencerá o mundo do pecado, e da justiça e do juízo.”</blockquote>
+  <p>Uma das primeiras obras do Espírito Santo na experiência de conversão é convencer o ser humano acerca do pecado. O pecado representa a transgressão da vontade de Deus e afeta diretamente o relacionamento do homem com seu Criador.</p>
+  <h3>1.1. O Espírito revela a realidade do pecado</h3>
+  <p>O ser humano precisa reconhecer sua condição espiritual e compreender que necessita de salvação. O Espírito Santo mostra que existe algo que precisa ser tratado e transformado.</p>
+  <h3>1.2. Convencimento não é apenas remorso</h3>
+  <p>O remorso pode levar alguém a lamentar as consequências de seus atos. O arrependimento envolve reconhecer o pecado e voltar-se para Deus.</p>
+  <p class="ref">Leitura complementar: Atos 2:37-38</p>
+</div><span class="page-number">04</span></section>
+
+<section class="page left"><div class="page-inner">
+  <h2>O arrependimento e a resposta do discípulo</h2>
+  <p>Após ouvir a pregação de Pedro, seus ouvintes ficaram compungidos em seu coração e perguntaram o que deveriam fazer. Pedro respondeu chamando-os ao arrependimento.</p>
+  <p>O verdadeiro arrependimento não consiste apenas em reconhecer que erramos, mas em tomar uma nova direção diante de Deus.</p>
+  <p class="ref">2 Coríntios 7:10</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>O discípulo precisa manter um coração sensível à correção de Deus. Não deve justificar seus erros, esconder seus pecados ou resistir àquilo que a Palavra revela.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho reconhecido meus erros diante de Deus?</li><li>Existe alguma prática que preciso abandonar?</li><li>Tenho permitido que a Palavra corrija minha maneira de viver?</li></ul>
+  <blockquote>O Espírito Santo não nos conduz à acomodação com o pecado, mas ao reconhecimento da necessidade de uma vida transformada.</blockquote>
+</div><span class="page-number">05</span></section>
+
+<section class="page right"><div class="page-inner">
+  <span class="section-label">02 · Verdade</span><h2>O Espírito Santo guia à verdade</h2>
+  <p class="ref">João 16:13</p>
+  <blockquote>“Mas, quando vier aquele Espírito de verdade, ele vos guiará em toda a verdade.”</blockquote>
+  <p>Jesus apresenta o Espírito Santo como o Espírito da verdade. Sua atuação está relacionada à revelação e à compreensão da verdade divina.</p>
+  <h3>2.1. A verdade de Deus é o fundamento da fé</h3>
+  <p>Vivemos em uma sociedade com muitas opiniões, filosofias e ensinamentos religiosos. O discípulo não pode fundamentar sua fé simplesmente naquilo que as pessoas dizem. Sua referência deve ser a Palavra de Deus.</p>
+  <p class="ref">Atos 17:11</p>
+  <p>Os bereanos examinavam diariamente as Escrituras para verificar se aquilo que ouviam correspondia à verdade. Esse exemplo demonstra a importância de uma fé fundamentada na Palavra.</p>
+</div><span class="page-number">06</span></section>
+
+<section class="page left"><div class="page-inner">
+  <h2>Discernimento espiritual</h2>
+  <h3>2.2. O discípulo precisa desenvolver discernimento</h3>
+  <p>Nem todo ensinamento apresentado em nome de Deus está necessariamente de acordo com as Escrituras. Por isso, precisamos desenvolver discernimento espiritual e examinar aquilo que recebemos.</p>
+  <p class="ref">1 João 4:1</p>
+  <p>A Bíblia orienta os cristãos a provarem os espíritos, para verificar se procedem de Deus.</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>Uma experiência pessoal, uma revelação alegada ou uma pregação nunca deve ser utilizada para substituir ou contradizer a autoridade das Escrituras.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho estudado a Bíblia regularmente?</li><li>Costumo examinar os ensinamentos que recebo?</li><li>Minha fé está fundamentada na Palavra ou apenas na opinião de outras pessoas?</li></ul>
+  <p><strong>Lição:</strong> O discípulo que deseja crescer espiritualmente precisa amar a verdade e fundamentar sua fé nas Escrituras.</p>
+</div><span class="page-number">07</span></section>
+
+<section class="page right"><div class="page-inner">
+  <span class="section-label">03 · Ensino</span><h2>O Espírito Santo ensina</h2>
+  <p class="ref">João 14:26</p>
+  <blockquote>“Esse vos ensinará todas as coisas.”</blockquote>
+  <p>Jesus ensinou que o Espírito Santo teria uma função essencial no ensino e na lembrança de suas palavras. Ele auxilia o discípulo na compreensão das verdades espirituais e na aplicação dos ensinamentos de Cristo.</p>
+  <h3>3.1. Auxílio na compreensão espiritual</h3>
+  <p>A Bíblia não deve ser tratada como um livro de leitura superficial. Precisamos estudá-la com reverência, dedicação e dependência de Deus.</p>
+  <p>Ao abrir as Escrituras, devemos orar pedindo entendimento e sabedoria para compreender aquilo que estamos lendo.</p>
+  <p class="ref">1 Coríntios 2:12-13</p>
+</div><span class="page-number">08</span></section>
+
+<section class="page left"><div class="page-inner">
+  <h2>O ensino precisa produzir transformação</h2>
+  <h3>3.2. Conhecimento e prática</h3>
+  <p>Conhecimento bíblico sem obediência não representa maturidade cristã. Podemos conhecer muitos versículos e estudar diversos assuntos, mas precisamos colocar em prática aquilo que aprendemos.</p>
+  <p class="ref">Tiago 1:22</p>
+  <blockquote>“E sede cumpridores da palavra, e não somente ouvintes.”</blockquote>
+  <div class="callout"><strong>Aplicação prática</strong><p>Antes de estudar a Bíblia, ore. Durante o estudo, procure compreender o contexto. Depois, identifique como aquela verdade deve ser aplicada à sua vida.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho estudado a Bíblia com dedicação?</li><li>Procuro colocar em prática aquilo que aprendo?</li><li>Meu conhecimento bíblico tem produzido mudanças em meu comportamento?</li></ul>
+  <p><strong>Lição:</strong> O Espírito Santo nos ensina para que conheçamos a verdade e vivamos de acordo com ela.</p>
+</div><span class="page-number">09</span></section>
+
+<section class="page right"><div class="page-inner">
+  <span class="section-label">04 · Direção</span><h2>O Espírito Santo guia o discípulo</h2>
+  <p class="ref">Romanos 8:14</p>
+  <blockquote>“Porque todos os que são guiados pelo Espírito de Deus, esses são filhos de Deus.”</blockquote>
+  <p>A caminhada cristã envolve direção espiritual. O discípulo não deve viver orientado exclusivamente por suas emoções, impulsos ou desejos pessoais. Ele precisa aprender a buscar a vontade de Deus.</p>
+  <h3>4.1. A direção envolve a vida diária</h3>
+  <p>A orientação espiritual não está relacionada apenas às grandes decisões. Ela também deve influenciar nossas atitudes cotidianas: como falamos, tratamos as pessoas, reagimos diante de injustiças e fazemos escolhas.</p>
+  <h3>4.2. A direção precisa estar fundamentada nas Escrituras</h3>
+  <p>Nem todo desejo pessoal representa uma orientação divina. Precisamos examinar nossas decisões à luz dos princípios bíblicos.</p>
+  <p class="ref">Salmos 119:105</p>
+</div><span class="page-number">10</span></section>
+
+<section class="page left"><div class="page-inner">
+  <h2>Buscar a vontade de Deus</h2>
+  <p>A Palavra de Deus é apresentada como lâmpada para os pés e luz para o caminho. Ela oferece princípios para orientar a vida do discípulo.</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>Antes de tomar decisões importantes, busque a Deus em oração, examine as Escrituras e procure agir com sabedoria.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho buscado a direção de Deus nas minhas decisões?</li><li>Minhas escolhas estão de acordo com os princípios bíblicos?</li><li>Tenho permitido que meus impulsos controlem minhas atitudes?</li></ul>
+  <p><strong>Lição:</strong> Ser guiado pelo Espírito significa desenvolver uma vida orientada pela vontade de Deus.</p>
+</div><span class="page-number">11</span></section>
+
+<section class="page right"><div class="page-inner">
+  <span class="section-label">05 · Transformação</span><h2>O Espírito Santo transforma o caráter</h2>
+  <p class="ref">Gálatas 5:22-23</p>
+  <blockquote>“Mas o fruto do Espírito é: amor, alegria, paz, longanimidade, benignidade, bondade, fé, mansidão, temperança.”</blockquote>
+  <p>Uma das evidências importantes da atuação do Espírito Santo é a transformação do caráter. O propósito de Deus não é apenas modificar comportamentos externos, mas trabalhar profundamente na vida interior do discípulo.</p>
+  <h3>5.1. O fruto revela uma vida transformada</h3>
+  <p>Paulo apresenta características que devem ser desenvolvidas na vida daquele que segue a Cristo. Elas alcançam nossos relacionamentos, reações, escolhas e atitudes.</p>
+</div><span class="page-number">12</span></section>
+
+<section class="page left"><div class="page-inner">
+  <h2>As características do fruto do Espírito</h2>
+  <table class="table"><thead><tr><th>Característica</th><th>Significado prático</th></tr></thead><tbody>
+  <tr><td>Amor</td><td>Amar a Deus e ao próximo.</td></tr><tr><td>Alegria</td><td>Viver com contentamento em Deus.</td></tr><tr><td>Paz</td><td>Desenvolver tranquilidade e confiança.</td></tr><tr><td>Longanimidade</td><td>Exercitar paciência e perseverança.</td></tr><tr><td>Benignidade</td><td>Agir com bondade e consideração.</td></tr><tr><td>Bondade</td><td>Praticar aquilo que é correto.</td></tr><tr><td>Fé</td><td>Desenvolver fidelidade e confiança.</td></tr><tr><td>Mansidão</td><td>Agir com humildade e equilíbrio.</td></tr><tr><td>Temperança</td><td>Exercer domínio próprio.</td></tr></tbody></table>
+  <p class="small">Referência: Gálatas 5:22-23.</p>
+</div><span class="page-number">13</span></section>
+
+<section class="page right"><div class="page-inner">
+  <h2>A transformação é contínua</h2>
+  <h3>5.2. Crescimento progressivo</h3>
+  <p>A maturidade espiritual não é alcançada de uma hora para outra. É uma caminhada na qual aprendemos a abandonar atitudes antigas e desenvolver comportamentos que agradam a Deus.</p>
+  <p>Se antes éramos dominados pela ira, precisamos aprender a controlar nossas reações. Se antes não sabíamos perdoar, precisamos aprender a liberar perdão. Se antes éramos dominados pelo orgulho, precisamos desenvolver humildade.</p>
+  <p class="ref">2 Coríntios 3:18</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>Não avalie sua caminhada espiritual apenas pelo conhecimento adquirido ou pelas experiências vividas. Observe se está crescendo em amor, paciência, humildade, bondade e domínio próprio.</p></div>
+  <p><strong>Lição:</strong> A atuação do Espírito Santo deve produzir mudanças reais em nosso caráter.</p>
+</div><span class="page-number">14</span></section>
+
+<section class="page left"><div class="page-inner">
+  <span class="section-label">06 · Fortalecimento</span><h2>O Espírito Santo fortalece</h2>
+  <p class="ref">Atos 1:8</p>
+  <blockquote>“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas.”</blockquote>
+  <p>A vida cristã não está livre de dificuldades. Jesus nunca prometeu que seus discípulos viveriam sem enfrentar perseguições, provações ou desafios. Entretanto, Deus concede auxílio e capacitação para que seus servos permaneçam firmes.</p>
+  <h3>6.1. O Espírito capacita o discípulo</h3>
+  <p>Em Atos 1:8, Jesus anuncia que os discípulos receberiam poder quando o Espírito Santo viesse sobre eles. Essa promessa estava relacionada diretamente à missão de testemunhar de Cristo.</p>
+</div><span class="page-number">15</span></section>
+
+<section class="page right"><div class="page-inner">
+  <h2>Dependência de Deus</h2>
+  <h3>6.2. Não confiar somente na própria força</h3>
+  <p>A capacitação do Espírito não deve ser confundida com capacidade humana, posição religiosa ou prestígio ministerial. É uma capacitação concedida por Deus para cumprir seus propósitos.</p>
+  <p class="ref">Efésios 3:16</p>
+  <p>Paulo ora para que os cristãos sejam fortalecidos com poder pelo Espírito de Deus no homem interior.</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>Quando enfrentar dificuldades, não abandone sua fé. Continue buscando a Deus, permaneça na Palavra e dependa da força que vem do Senhor.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho enfrentado minhas dificuldades dependendo de Deus?</li><li>Minha fé permanece firme nos momentos difíceis?</li><li>Tenho buscado fortalecimento espiritual por meio da oração e da Palavra?</li></ul>
+</div><span class="page-number">16</span></section>
+
+<section class="page left"><div class="page-inner">
+  <span class="section-label">07 · Missão</span><h2>O Espírito Santo capacita para testemunhar</h2>
+  <p class="ref">Atos 1:8</p>
+  <p>A promessa de Jesus não terminava na capacitação espiritual dos discípulos. Ela estava diretamente relacionada ao cumprimento da missão cristã. O Espírito Santo capacita o cristão para testemunhar de Jesus Cristo.</p>
+  <h3>7.1. Testemunhar faz parte da missão</h3>
+  <p>Todo cristão possui a responsabilidade de anunciar o evangelho conforme as oportunidades e capacidades que Deus concede.</p>
+  <p>O testemunho pode acontecer por meio da pregação, do ensino, de conversas, do serviço cristão e de uma vida que demonstre os valores do Reino de Deus.</p>
+  <p class="ref">Mateus 28:19-20</p>
+</div><span class="page-number">17</span></section>
+
+<section class="page right"><div class="page-inner">
+  <h2>O testemunho aponta para Cristo</h2>
+  <h3>7.2. A mensagem é mais importante que a eloquência</h3>
+  <p>O centro da mensagem cristã não é a capacidade do pregador, mas a pessoa e a obra de Jesus Cristo. Precisamos permanecer fiéis à mensagem do evangelho.</p>
+  <p class="ref">1 Coríntios 2:4-5</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>Procure oportunidades para falar de Jesus, ensinar a Palavra e ajudar outras pessoas a conhecerem o evangelho.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho testemunhado de Jesus?</li><li>Minha maneira de viver aponta para Cristo?</li><li>Tenho aproveitado oportunidades para compartilhar o evangelho?</li></ul>
+  <p><strong>Lição:</strong> O Espírito Santo capacita o discípulo para participar da missão de Cristo.</p>
+</div><span class="page-number">18</span></section>
+
+<section class="page left"><div class="page-inner">
+  <span class="section-label">08 · Oração</span><h2>O Espírito Santo ajuda na oração</h2>
+  <p class="ref">Romanos 8:26</p>
+  <blockquote>“E da mesma maneira também o Espírito ajuda as nossas fraquezas; porque não sabemos o que havemos de pedir como convém.”</blockquote>
+  <p>A oração é essencial para a vida cristã. Entretanto, existem momentos nos quais enfrentamos situações tão difíceis que não conseguimos expressar adequadamente aquilo que estamos sentindo.</p>
+  <h3>8.1. O Espírito conhece nossas limitações</h3>
+  <p>O ser humano possui limitações emocionais, físicas e espirituais. Existem momentos de angústia, sofrimento e incerteza. Nessas circunstâncias, podemos ter dificuldade até mesmo para encontrar palavras durante a oração.</p>
+  <p>Romanos 8:26 ensina que não estamos desamparados em nossas fraquezas.</p>
+</div><span class="page-number">19</span></section>
+
+<section class="page right"><div class="page-inner">
+  <h2>Uma vida constante de oração</h2>
+  <h3>8.2. A oração precisa fazer parte da rotina</h3>
+  <p>Não devemos procurar a Deus somente quando enfrentamos dificuldades. A oração precisa fazer parte de nossa rotina espiritual.</p>
+  <p class="ref">1 Tessalonicenses 5:17</p>
+  <blockquote>“Orai sem cessar.”</blockquote>
+  <div class="callout"><strong>Aplicação prática</strong><p>Mesmo quando não souber o que dizer, aproxime-se de Deus. Abra seu coração diante dele. Ore com sinceridade, reconhecendo suas limitações e confiando no cuidado do Pai.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho desenvolvido uma vida constante de oração?</li><li>Busco a Deus somente nos momentos difíceis?</li><li>Tenho aprendido a depender do Espírito Santo em minhas fraquezas?</li></ul>
+</div><span class="page-number">20</span></section>
+
+<section class="page left"><div class="page-inner">
+  <span class="section-label">09 · Obediência</span><h2>O Espírito Santo conduz à obediência</h2>
+  <p class="ref">João 14:15</p>
+  <blockquote>“Se me amais, guardai os meus mandamentos.”</blockquote>
+  <p>A verdadeira caminhada cristã não deve ser fundamentada apenas na busca por experiências espirituais. O discípulo precisa desenvolver uma vida de obediência a Deus.</p>
+  <h3>9.1. A obediência demonstra amor por Cristo</h3>
+  <p>Jesus ensinou que o amor por Ele deve ser demonstrado por meio da obediência aos seus mandamentos. Não basta afirmar que amamos a Deus. Precisamos permitir que esse amor influencie nossas atitudes.</p>
+</div><span class="page-number">21</span></section>
+
+<section class="page right"><div class="page-inner">
+  <h2>Obediência nas decisões práticas</h2>
+  <h3>9.2. Obedecer exige decisões</h3>
+  <p>Existem situações nas quais obedecer significa abandonar determinadas práticas. Em outras, significa perdoar, pedir perdão, abandonar o orgulho, controlar a língua ou agir corretamente mesmo quando ninguém está observando.</p>
+  <p class="ref">Tiago 1:22</p>
+  <div class="callout"><strong>Aplicação prática</strong><p>A maturidade cristã envolve submissão à vontade de Deus. Precisamos aprender a obedecer mesmo quando nossas vontades pessoais entram em conflito com os princípios bíblicos.</p></div>
+  <h3>Para refletir</h3>
+  <ul><li>Tenho obedecido aos ensinamentos de Jesus?</li><li>Existe alguma área da minha vida na qual preciso mudar?</li><li>Minhas atitudes demonstram meu amor por Cristo?</li></ul>
+</div><span class="page-number">22</span></section>
+
+<section class="page left"><div class="page-inner">
+  <span class="section-label">Síntese doutrinária</span><h2>A obra do Espírito Santo em resumo</h2>
+  <p>O Espírito Santo atua na vida do discípulo de maneira profunda e abrangente. As dimensões estudadas se relacionam e apontam para uma vida de comunhão, transformação, missão e obediência.</p>
+  <table class="table"><thead><tr><th>Obra</th><th>Referência</th></tr></thead><tbody>
+  <tr><td>Convence do pecado</td><td>João 16:8</td></tr><tr><td>Guia à verdade</td><td>João 16:13</td></tr><tr><td>Ensina</td><td>João 14:26</td></tr><tr><td>Guia os filhos de Deus</td><td>Romanos 8:14</td></tr><tr><td>Transforma o caráter</td><td>Gálatas 5:22-23</td></tr><tr><td>Fortalece e capacita</td><td>Atos 1:8</td></tr><tr><td>Ajuda na oração</td><td>Romanos 8:26</td></tr><tr><td>Conduz à obediência</td><td>João 14:15</td></tr></tbody></table>
+</div><span class="page-number">23</span></section>
+
+<section class="page right"><div class="page-inner">
+  <p class="kicker">Conclusão</p><h2>Uma vida transformada pelo Espírito</h2>
+  <p>Aprendemos que o Espírito Santo realiza uma obra indispensável na vida do discípulo. Ele convence do pecado, conduz à verdade, ensina as Escrituras, orienta a caminhada cristã, transforma o caráter, fortalece nas dificuldades, capacita para testemunhar, auxilia na oração e conduz a uma vida de obediência.</p>
+  <p>Portanto, não devemos buscar apenas conhecer informações sobre o Espírito Santo. Precisamos desenvolver uma vida de dependência de Deus.</p>
+  <p>O verdadeiro crescimento espiritual envolve conhecimento bíblico, comunhão, transformação e obediência.</p>
+  <blockquote>O objetivo não é apenas saber mais sobre o Espírito Santo, mas permitir que nossa vida seja transformada segundo a vontade de Deus.</blockquote>
+  <p>Que nossa caminhada cristã demonstre cada vez mais a atuação do Espírito Santo em nossas palavras, decisões, relacionamentos e atitudes.</p>
+</div><span class="page-number">24</span></section>
+
+<section class="page left"><div class="page-inner">
+  <p class="kicker">Para guardar no coração</p><h2>João 16:13</h2>
+  <blockquote>“Mas, quando vier aquele Espírito de verdade, ele vos guiará em toda a verdade.”</blockquote>
+  <div class="callout"><strong>Desafio da semana</strong><p>Durante os próximos sete dias, transforme o aprendizado em prática:</p>
+  <ol><li>Leia diariamente um trecho da Bíblia.</li><li>Separe um momento para oração.</li><li>Identifique uma atitude que precisa ser transformada.</li><li>Pratique uma característica do fruto do Espírito.</li><li>Compartilhe com alguém uma verdade do evangelho.</li><li>Examine suas decisões à luz da Palavra.</li><li>Reflita sobre o que Deus está ensinando por meio deste estudo.</li></ol></div>
+</div><span class="page-number">25</span></section>
+
+<section class="page right"><div class="page-inner">
+  <p class="kicker">Oração final</p><h2>Vamos orar</h2>
+  <p>Senhor nosso Deus e nosso Pai, agradecemos por mais este momento de aprendizado da tua Palavra.</p>
+  <p>Obrigado pelo Espírito Santo e por sua obra em nossa vida. Convence-nos quando estivermos andando por caminhos que não te agradam. Ensina-nos a amar a verdade e guia-nos por meio da tua Palavra.</p>
+  <p>Dá-nos entendimento para compreender as Escrituras e sabedoria para praticá-las. Transforma nosso caráter e produz em nós amor, alegria, paz, longanimidade, benignidade, bondade, fé, mansidão e temperança.</p>
+  <p>Fortalece-nos diante das dificuldades e capacita-nos para testemunhar de Jesus Cristo. Ajuda-nos em nossas fraquezas e em nossa vida de oração. Ensina-nos a depender de ti e não confiar somente em nossa própria força.</p>
+  <p>Que a obra do Espírito Santo seja percebida em nossa maneira de viver. Que nossas palavras, atitudes e decisões glorifiquem o teu nome.</p>
+  <p>Queremos crescer espiritualmente, obedecer à tua Palavra e permanecer firmes em Cristo. Conduze-nos pelo teu Espírito todos os dias.</p>
+  <p><strong>Em nome de Jesus. Amém!</strong></p>
+</div><span class="page-number">26</span></section>
+
+<section class="page left"><div class="page-inner">
+  <p class="kicker">Próximo estudo</p><h2>Estudo 3 — O Espírito Santo habita no crente</h2>
+  <p class="ref">Referência bíblica: 1 Coríntios 6:19</p>
+  <p>No próximo estudo do Discipulado Cristão — Ministério Atalaia, vamos estudar o ensino bíblico de que o corpo do cristão é templo do Espírito Santo e compreender o significado dessa verdade para a vida do discípulo.</p>
+  <div class="callout"><strong>Continue firme no discipulado</strong><p>Estude a Palavra de Deus, cultive uma vida de oração e cresça no conhecimento de Jesus Cristo.</p></div>
+  <div class="cover" style="min-height:180px">
+    <div class="ornament" style="width:52px;height:52px;font-size:23px;margin-bottom:12px">✧</div>
+    <p class="kicker">Ministério Atalaia</p>
+    <h2 style="margin:0">Proclamando a Verdade.<br>Formando Discípulos.</h2>
+  </div>
+</div><span class="page-number">27</span></section>
+
+</div></div>
+</main>
+<div class="mobile-hint">Em telas menores, cada página é exibida individualmente. Use os controles para avançar.</div>
+<nav class="controls" aria-label="Navegação do flipbook">
+  <button id="prev" type="button" disabled>← Anterior</button>
+  <span class="counter" id="counter">Página 1 de 27</span>
+  <button id="next" type="button">Próxima →</button>
+</nav>
+<script>
+const pages=[...document.querySelectorAll('.page')];
+let current=0;
+const prev=document.getElementById('prev'),next=document.getElementById('next');
+const counter=document.getElementById('counter'),progress=document.getElementById('progress');
+function showPage(index){
+ current=Math.max(0,Math.min(index,pages.length-1));
+ pages.forEach((p,i)=>p.classList.toggle('active',i===current));
+ // Em desktop, as páginas aparecem em pares; no celular, uma página por vez.
+ if(window.matchMedia('(min-width: 701px)').matches){
+   pages.forEach((p,i)=>p.style.display=(i===current||i===current+1)?'block':'none');
+   if(current%2!==0) pages[current-1].style.display='block';
+ }else{
+   pages.forEach((p,i)=>p.style.display=i===current?'block':'none');
+ }
+ prev.disabled=current===0;
+ next.disabled=current>=pages.length-1;
+ counter.textContent=`Página ${current+1} de ${pages.length}`;
+ progress.style.width=`${((current+1)/pages.length)*100}%`;
+}
+prev.addEventListener('click',()=>showPage(current-1));
+next.addEventListener('click',()=>showPage(current+1));
+document.addEventListener('keydown',e=>{
+ if(e.key==='ArrowRight'||e.key==='PageDown')showPage(current+1);
+ if(e.key==='ArrowLeft'||e.key==='PageUp')showPage(current-1);
+});
+document.getElementById('fullscreenBtn').addEventListener('click',()=>{
+ if(!document.fullscreenElement){document.documentElement.requestFullscreen?.();}
+ else{document.exitFullscreen?.();}
+});
+window.addEventListener('resize',()=>showPage(current));
+showPage(0);
+</script>
+</body>
+</html>
