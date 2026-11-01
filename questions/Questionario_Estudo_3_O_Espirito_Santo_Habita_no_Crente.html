@@ -1,0 +1,1458 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Questionário do Estudo 3 — O Espírito Santo Habita no Crente. Ministério Atalaia.">
+<title>Questionário — Estudo 3 | Ministério Atalaia</title>
+
+<style>
+:root {
+    --azul: #082b52;
+    --azul2: #123e70;
+    --dourado: #e9ad19;
+    --fundo: #eef2f6;
+    --verde: #16834b;
+    --vermelho: #c62828;
+    --texto: #263445;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: linear-gradient(120deg, #061d3c, #124779);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    border-bottom: 5px solid var(--dourado);
+}
+
+header .marca {
+    color: var(--dourado);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+header h1 {
+    margin: 12px 0 5px;
+    font-size: clamp(23px, 4vw, 34px);
+}
+
+header p {
+    margin: 5px;
+    color: #e4edf7;
+}
+
+header .subtitulo {
+    color: var(--dourado);
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.container {
+    width: min(950px, 94%);
+    margin: 25px auto 50px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.07);
+}
+
+.card h2 {
+    color: var(--azul);
+    margin-top: 0;
+}
+
+.identificacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.campo label {
+    color: var(--azul);
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #aeb9c5;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #111;
+    background: #fff;
+}
+
+.campo input:focus {
+    outline: 2px solid var(--dourado);
+    border-color: var(--azul);
+}
+
+.instrucao {
+    background: #fff8e5;
+    border-left: 5px solid var(--dourado);
+    padding: 15px;
+    border-radius: 5px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.progresso-area {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: white;
+    padding: 15px;
+    border-radius: 9px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    margin-bottom: 20px;
+}
+
+.progresso-texto {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--azul);
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.barra-fundo {
+    height: 13px;
+    background: #dce2e9;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.barra {
+    width: 0;
+    height: 100%;
+    background: var(--verde);
+    transition: width .2s;
+}
+
+.questao {
+    background: white;
+    border-radius: 10px;
+    padding: 22px;
+    margin-bottom: 17px;
+    border: 1px solid #dce2e9;
+    box-shadow: 0 3px 12px rgba(0,0,0,.04);
+}
+
+.questao h3 {
+    color: var(--azul);
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 0 17px;
+}
+
+.numero {
+    display: inline-block;
+    background: var(--azul);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 7px;
+    font-size: 14px;
+}
+
+.opcoes {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.opcao {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 14px;
+    border: 2px solid #cbd3dc;
+    border-radius: 7px;
+    background: #fff;
+    color: #111 !important;
+    cursor: pointer;
+    font-size: 16px !important;
+    line-height: 1.5;
+    text-align: left;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.opcao:hover {
+    border-color: var(--azul2);
+    background: #f1f6fc;
+}
+
+.opcao.selecionada {
+    border-color: var(--azul);
+    background: #eaf2fb;
+}
+
+.letra {
+    display: inline-flex !important;
+    flex: 0 0 29px;
+    width: 29px;
+    height: 29px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--azul);
+    color: white !important;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.opcao.selecionada .letra {
+    background: var(--dourado);
+    color: var(--azul) !important;
+}
+
+.opcao.correta {
+    border-color: var(--verde);
+    background: #e7f6ed;
+}
+
+.opcao.errada {
+    border-color: var(--vermelho);
+    background: #fff0f0;
+}
+
+.opcao:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.explicacao {
+    display: none;
+    margin-top: 15px;
+    padding: 14px;
+    border-radius: 7px;
+    line-height: 1.6;
+    background: #edf3f9;
+    border-left: 4px solid var(--azul2);
+    color: #172b40;
+}
+
+.explicacao.mostrar {
+    display: block;
+}
+
+.botoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+button.acao {
+    border: 0;
+    border-radius: 7px;
+    padding: 14px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-principal {
+    background: var(--azul);
+    color: white;
+}
+
+.btn-dourado {
+    background: var(--dourado);
+    color: var(--azul);
+}
+
+.btn-secundario {
+    background: #e0e6ed;
+    color: var(--azul);
+}
+
+button.acao:hover {
+    filter: brightness(1.08);
+}
+
+.resultado {
+    display: none;
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    margin-top: 25px;
+}
+
+.resultado.mostrar {
+    display: block;
+}
+
+.pontuacao {
+    color: var(--azul);
+    font-size: 42px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 9px 18px;
+    border-radius: 20px;
+    background: #e7f6ed;
+    color: var(--verde);
+    font-weight: bold;
+}
+
+.status.reprovado {
+    background: #fff0f0;
+    color: var(--vermelho);
+}
+
+.resumo {
+    margin: 20px auto;
+    max-width: 500px;
+    line-height: 1.8;
+    text-align: left;
+    background: #f2f5f8;
+    padding: 17px;
+    border-radius: 8px;
+}
+
+#certificado {
+    display: none;
+    background: white;
+    color: #172b40;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 30px;
+}
+
+#certificado.mostrar {
+    display: block;
+}
+
+.certificado-borda {
+    border: 9px double var(--dourado);
+    padding: 35px;
+    min-height: 560px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.certificado-borda::before {
+    content: "✝";
+    position: absolute;
+    font-size: 260px;
+    color: rgba(8,43,82,.035);
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+.certificado-conteudo {
+    position: relative;
+    z-index: 1;
+}
+
+.certificado-marca {
+    color: var(--dourado);
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 16px;
+}
+
+.certificado-borda h1 {
+    color: var(--azul);
+    font-size: 34px;
+    margin: 30px 0 10px;
+}
+
+.certificado-borda h2 {
+    color: #9b7418;
+    font-size: 22px;
+    margin: 12px 0 28px;
+}
+
+.nome-certificado {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--azul);
+    border-bottom: 2px solid var(--dourado);
+    padding: 12px;
+    margin: 25px auto;
+    max-width: 700px;
+    overflow-wrap: anywhere;
+}
+
+.certificado-borda p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.assinatura {
+    margin: 55px auto 0;
+    padding-top: 10px;
+    border-top: 1px solid #56616d;
+    max-width: 300px;
+    font-weight: bold;
+}
+
+.certificado-rodape {
+    margin-top: 30px;
+    color: var(--azul);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+footer {
+    text-align: center;
+    color: #697888;
+    padding: 20px;
+    font-size: 13px;
+}
+
+@media(max-width:650px) {
+    .identificacao {
+        grid-template-columns: 1fr;
+    }
+
+    .card, .questao {
+        padding: 17px;
+    }
+
+    .opcao {
+        font-size: 15px !important;
+    }
+
+    .certificado-borda {
+        padding: 18px;
+    }
+
+    .certificado-borda h1 {
+        font-size: 26px;
+    }
+}
+
+@media print {
+    body.imprimindo-certificado * {
+        visibility: hidden !important;
+    }
+
+    body.imprimindo-certificado #certificado,
+    body.imprimindo-certificado #certificado * {
+        visibility: visible !important;
+    }
+
+    body.imprimindo-certificado #certificado {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 10px;
+    }
+
+    body.imprimindo-certificado .certificado-borda {
+        min-height: 175mm;
+        padding: 25px;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="marca">✝ MINISTÉRIO ATALAIA</div>
+    <h1>DISCIPULADO CRISTÃO</h1>
+    <p>Fundamentos da Fé</p>
+    <div class="subtitulo">O ESPÍRITO SANTO NA VIDA DO DISCÍPULO</div>
+    <p><strong>ESTUDO 3 — O ESPÍRITO SANTO HABITA NO CRENTE</strong></p>
+    <p>40 questões de múltipla escolha</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+    <h2>Identificação do aluno</h2>
+
+    <div class="identificacao">
+        <div class="campo">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" placeholder="Digite seu nome completo" autocomplete="name">
+        </div>
+
+        <div class="campo">
+            <label for="cpf">CPF</label>
+            <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+        </div>
+    </div>
+
+    <div class="instrucao">
+        <strong>Orientações:</strong> Leia cada questão com atenção e marque apenas uma alternativa. Ao responder, você poderá acompanhar seu progresso. Depois de responder às 40 questões, clique em <strong>Finalizar questionário</strong> para conferir seu resultado e as explicações.
+    </div>
+</section>
+
+<div class="progresso-area">
+    <div class="progresso-texto">
+        <span id="progressoTexto">0 de 40 respondidas</span>
+        <span id="porcentagem">0%</span>
+    </div>
+    <div class="barra-fundo">
+        <div class="barra" id="barra"></div>
+    </div>
+</div>
+
+<section id="questionario"></section>
+
+<div class="botoes" id="areaFinalizar">
+    <button class="acao btn-principal" onclick="finalizarQuestionario()">
+        Finalizar questionário
+    </button>
+</div>
+
+<section class="resultado" id="resultado">
+    <h2>Resultado do questionário</h2>
+    <div class="pontuacao" id="pontuacao">0/40</div>
+    <div id="statusResultado" class="status"></div>
+    <div class="resumo" id="resumoResultado"></div>
+
+    <p id="mensagemResultado"></p>
+
+    <div class="botoes">
+        <button class="acao btn-dourado" id="btnCertificado" onclick="mostrarCertificado()" style="display:none">
+            Ver certificado
+        </button>
+        <button class="acao btn-principal" id="btnImprimir" onclick="imprimirCertificado()" style="display:none">
+            Imprimir / Salvar certificado em PDF
+        </button>
+        <button class="acao btn-secundario" onclick="refazerQuestionario()">
+            Refazer questionário
+        </button>
+    </div>
+</section>
+
+<section id="certificado">
+    <div class="certificado-borda">
+        <div class="certificado-conteudo">
+            <div class="certificado-marca">✝ MINISTÉRIO ATALAIA</div>
+            <p>DISCIPULADO CRISTÃO — FUNDAMENTOS DA FÉ</p>
+
+            <h1>CERTIFICADO DE CONCLUSÃO</h1>
+            <h2>ESTUDO 3 — O ESPÍRITO SANTO HABITA NO CRENTE</h2>
+
+            <p>Certificamos que</p>
+
+            <div class="nome-certificado" id="nomeCertificado"></div>
+
+            <p>CPF: <strong id="cpfCertificado"></strong></p>
+
+            <p>
+                concluiu o questionário referente ao Estudo 3 do
+                Discipulado Cristão — Ministério Atalaia, demonstrando
+                aproveitamento satisfatório na avaliação.
+            </p>
+
+            <p>
+                <strong>Resultado:</strong>
+                <span id="resultadoCertificado"></span>
+            </p>
+
+            <p>
+                <strong>Data de emissão:</strong>
+                <span id="dataCertificado"></span>
+            </p>
+
+            <div class="assinatura">
+                Ministério Atalaia<br>
+                Discipulado Cristão
+            </div>
+
+            <div class="certificado-rodape">
+                PROCLAMANDO A VERDADE. FORMANDO DISCÍPULOS.
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    Ministério Atalaia — Discipulado Cristão
+</footer>
+
+<script>
+"use strict";
+
+/*
+  Cada questão possui:
+  - pergunta
+  - quatro alternativas
+  - índice da resposta correta
+  - explicação fundamentada no Estudo 3
+*/
+
+const questoes = [
+
+{
+p: "Qual é o tema principal do Estudo 3?",
+a: [
+"Os dons ministeriais da igreja",
+"O Espírito Santo habita no crente",
+"A história do templo de Jerusalém",
+"A volta de Jesus Cristo"
+],
+c: 1,
+e: "O Estudo 3 ensina que o Espírito Santo habita naquele que pertence a Cristo."
+},
+
+{
+p: "Qual é a referência bíblica principal deste estudo?",
+a: [
+"Atos 1:8",
+"João 14:26",
+"1 Coríntios 6:19",
+"Efésios 4:30"
+],
+c: 2,
+e: "O texto principal do estudo é 1 Coríntios 6:19, que ensina que o corpo do crente é templo do Espírito Santo."
+},
+
+{
+p: "Segundo 1 Coríntios 6:19, o que é o corpo do crente?",
+a: [
+"Um lugar sem importância espiritual",
+"O templo do Espírito Santo",
+"Um templo construído por mãos humanas",
+"Uma propriedade sem responsabilidade"
+],
+c: 1,
+e: "Paulo ensina que o corpo do crente é o templo do Espírito Santo."
+},
+
+{
+p: "Quem habita no crente, conforme o texto principal?",
+a: [
+"Somente os sentimentos religiosos",
+"O Espírito Santo",
+"Os anjos de Deus",
+"Os líderes da igreja"
+],
+c: 1,
+e: "1 Coríntios 6:19 afirma que o Espírito Santo habita no crente."
+},
+
+{
+p: "O que a palavra templo nos lembra no contexto do estudo?",
+a: [
+"Um lugar separado para Deus",
+"Um local de comércio",
+"Uma construção sem finalidade",
+"Um espaço destinado apenas a reuniões sociais"
+],
+c: 0,
+e: "O estudo explica que a palavra templo nos lembra um lugar separado para Deus."
+},
+
+{
+p: "Qual era a importância do templo no Antigo Testamento, conforme o estudo?",
+a: [
+"Era um local de comércio do povo",
+"Tinha importância especial na adoração de Israel",
+"Era utilizado somente para reuniões políticas",
+"Era uma residência dos sacerdotes"
+],
+c: 1,
+e: "O estudo afirma que o templo tinha importância especial na adoração do povo de Israel."
+},
+
+{
+p: "Qual verdade extraordinária encontramos no Novo Testamento, segundo o estudo?",
+a: [
+"Todo edifício é templo do Espírito Santo",
+"O Espírito Santo habita no crente",
+"O templo deixou de ter qualquer significado",
+"O crente não precisa de relacionamento com Deus"
+],
+c: 1,
+e: "O estudo destaca que, no Novo Testamento, o Espírito Santo habita no crente."
+},
+
+{
+p: "O que significa o crente possuir uma relação viva com Deus?",
+a: [
+"Conhecer apenas informações religiosas",
+"Ter relacionamento com Deus",
+"Frequentar reuniões sem transformação",
+"Depender exclusivamente de experiências emocionais"
+],
+c: 1,
+e: "O estudo ensina que Deus deseja relacionamento e que o discípulo possui uma relação viva com Ele."
+},
+
+{
+p: "Paulo disse que o crente apenas frequenta um templo?",
+a: [
+"Sim, essa é a afirmação de Paulo",
+"Não, Paulo afirma que o corpo é templo do Espírito Santo",
+"Sim, mas somente aos domingos",
+"Não, porque o corpo não possui importância"
+],
+c: 1,
+e: "O estudo destaca que Paulo não disse apenas que o crente frequenta um templo. Ele disse que o corpo é templo do Espírito Santo."
+},
+
+{
+p: "Segundo o estudo, a quem pertence nosso corpo?",
+a: [
+"Exclusivamente aos desejos pessoais",
+"Aos costumes da sociedade",
+"A Deus",
+"A outras pessoas"
+],
+c: 2,
+e: "Se o corpo é templo do Espírito Santo, nosso corpo pertence a Deus."
+},
+
+{
+p: "Quais partes da vida são mencionadas como pertencentes a Deus?",
+a: [
+"Somente os pensamentos",
+"Olhos, boca, mãos, pés e nossa vida",
+"Somente as mãos",
+"Somente o tempo de culto"
+],
+c: 1,
+e: "O estudo aplica essa verdade aos olhos, à boca, às mãos, aos pés e à vida do discípulo."
+},
+
+{
+p: "O que deve acontecer com nossa mente?",
+a: [
+"Deve ser submetida a Deus",
+"Deve seguir qualquer pensamento",
+"Não precisa de cuidado",
+"Deve ser guiada apenas pelas emoções"
+],
+c: 0,
+e: "O estudo afirma que nossa mente deve ser submetida a Deus."
+},
+
+{
+p: "Qual pergunta o discípulo deve fazer a si mesmo?",
+a: [
+"Como posso agradar a todos?",
+"Minha maneira de viver honra a Deus?",
+"Como posso evitar qualquer responsabilidade?",
+"Como posso fazer somente minha vontade?"
+],
+c: 1,
+e: "O estudo apresenta a pergunta: 'Minha maneira de viver honra a Deus?'"
+},
+
+{
+p: "O que significa a expressão 'não sois de vós mesmos'?",
+a: [
+"Que o crente não tem valor",
+"Que o discípulo pertence a Cristo e deve viver para Deus",
+"Que o cristão não precisa tomar decisões",
+"Que a vida não possui propósito"
+],
+c: 1,
+e: "A expressão confronta a ideia de viver apenas segundo a própria vontade. O discípulo pertence a Cristo."
+},
+
+{
+p: "Qual passagem complementa o ensino de 1 Coríntios 6:19?",
+a: [
+"1 Coríntios 6:20",
+"Salmos 23:1",
+"Gênesis 1:1",
+"Mateus 5:3"
+],
+c: 0,
+e: "O estudo utiliza 1 Coríntios 6:20 para mostrar que fomos comprados por bom preço."
+},
+
+{
+p: "Segundo 1 Coríntios 6:20, por que devemos glorificar a Deus no corpo?",
+a: [
+"Porque fomos comprados por bom preço",
+"Porque nosso corpo não tem importância",
+"Porque precisamos agradar às pessoas",
+"Porque a vida pertence somente a nós"
+],
+c: 0,
+e: "O versículo citado no estudo declara que fomos comprados por bom preço e, por isso, devemos glorificar a Deus no corpo."
+},
+
+{
+p: "O que significa seguir Jesus, conforme o terceiro ponto do estudo?",
+a: [
+"Fazer somente aquilo que desejamos",
+"Entregar a vida a Deus",
+"Viver sem responsabilidade",
+"Buscar apenas reconhecimento"
+],
+c: 1,
+e: "Seguir Jesus envolve entregar a vida a Deus e viver de acordo com a vontade dele."
+},
+
+{
+p: "Onde o discípulo deve glorificar a Deus?",
+a: [
+"Somente dentro da igreja",
+"Somente durante os cultos",
+"Em todos os lugares",
+"Somente em momentos de oração pública"
+],
+c: 2,
+e: "O estudo ensina que glorificamos a Deus em casa, no trabalho, na escola, na rua, nas conversas e nas decisões."
+},
+
+{
+p: "Qual é uma das perguntas práticas apresentadas no estudo sobre o uso do corpo?",
+a: [
+"Como você usa seus olhos?",
+"Quantas pessoas conhecem você?",
+"Qual é sua posição na igreja?",
+"Quantos livros você possui?"
+],
+c: 0,
+e: "O estudo pergunta como usamos nosso corpo, olhos, boca, mãos e tempo."
+},
+
+{
+p: "Como nossa vida deve testemunhar?",
+a: [
+"Que pertencemos a Cristo",
+"Que somos melhores que outras pessoas",
+"Que não precisamos mudar",
+"Que nossas escolhas não importam"
+],
+c: 0,
+e: "Nossa vida deve testemunhar que pertencemos a Cristo."
+},
+
+{
+p: "A presença do Espírito Santo deve ser reduzida a quê?",
+a: [
+"Uma experiência emocional",
+"Uma transformação completa e instantânea sem caminhada",
+"Uma informação teórica",
+"Nenhuma das alternativas"
+],
+c: 3,
+e: "O estudo ensina que a presença do Espírito Santo não deve ser reduzida a uma experiência emocional. Ele atua profundamente na vida do discípulo."
+},
+
+{
+p: "Qual destas ações é atribuída ao Espírito Santo no estudo?",
+a: [
+"Ensinar",
+"Conduzir ao orgulho",
+"Estimular a desobediência",
+"Impedir o crescimento espiritual"
+],
+c: 0,
+e: "O estudo afirma que o Espírito Santo ensina, guia, convence, transforma, fortalece e produz fruto."
+},
+
+{
+p: "Além dos sentimentos, o que devemos observar em nossa caminhada com Deus?",
+a: [
+"Se estamos crescendo em obediência",
+"Se somos reconhecidos por todos",
+"Se nunca enfrentamos dificuldades",
+"Se temos sempre emoções intensas"
+],
+c: 0,
+e: "O estudo ensina que não devemos medir a caminhada apenas pelo que sentimos, mas também pelo crescimento em obediência."
+},
+
+{
+p: "Qual atitude demonstra crescimento espiritual?",
+a: [
+"Abandonar a busca pela Palavra",
+"Amar e perdoar mais",
+"Tratar o pecado como algo normal",
+"Recusar toda correção"
+],
+c: 1,
+e: "O estudo apresenta perguntas sobre amar mais, perdoar mais, abandonar o pecado, buscar a Palavra e orar."
+},
+
+{
+p: "Se o corpo é templo do Espírito Santo, o que precisamos compreender?",
+a: [
+"Que nossas escolhas não importam",
+"Que temos responsabilidade sobre nossa maneira de viver",
+"Que não enfrentaremos tentações",
+"Que podemos viver de qualquer maneira"
+],
+c: 1,
+e: "O estudo ensina que ser templo do Espírito Santo envolve responsabilidade sobre a maneira de viver."
+},
+
+{
+p: "O que o discípulo deve fazer diante daquilo que desagrada a Deus?",
+a: [
+"Tratar como algo normal",
+"Fugir daquilo que desagrada a Deus",
+"Procurar justificativas para continuar",
+"Ignorar a Palavra"
+],
+c: 1,
+e: "O estudo orienta o discípulo a fugir daquilo que desagrada a Deus."
+},
+
+{
+p: "O que devemos cuidar diante dos nossos olhos?",
+a: [
+"Somente a aparência",
+"Aquilo que colocamos diante deles",
+"Nada, pois não importa",
+"Somente o que outras pessoas observam"
+],
+c: 1,
+e: "O estudo ensina a cuidar daquilo que colocamos diante dos olhos."
+},
+
+{
+p: "O que devemos fazer quando cairmos?",
+a: [
+"Esconder o erro para sempre",
+"Abandonar a caminhada",
+"Arrepender-nos e buscar o perdão de Deus",
+"Tratar o pecado como algo sem importância"
+],
+c: 2,
+e: "O estudo afirma que, quando cairmos, precisamos nos arrepender e buscar o perdão de Deus."
+},
+
+{
+p: "O que devemos fazer quando formos tentados?",
+a: [
+"Desistir de resistir",
+"Resistir",
+"Tratar a tentação como uma ordem",
+"Abandonar a fé"
+],
+c: 1,
+e: "O estudo orienta que, quando formos tentados, precisamos resistir."
+},
+
+{
+p: "O que significa santificação, conforme o estudo?",
+a: [
+"Ser separado para Deus e viver uma vida dedicada a Ele",
+"Ter reconhecimento público",
+"Não enfrentar dificuldades",
+"Frequentar um templo sem mudança de vida"
+],
+c: 0,
+e: "O estudo define santificação como ser separado para Deus e viver uma vida dedicada a Ele."
+},
+
+{
+p: "Qual referência bíblica é utilizada no estudo para ensinar sobre santidade?",
+a: [
+"1 Pedro 1:15-16",
+"Atos 2:1",
+"João 3:16",
+"Salmos 91:1"
+],
+c: 0,
+e: "O estudo cita 1 Pedro 1:15-16: 'Mas, como é santo aquele que vos chamou, sede vós também santos em toda a vossa maneira de viver.'"
+},
+
+{
+p: "O que a salvação inicia na vida do discípulo?",
+a: [
+"Uma caminhada sem mudanças",
+"Uma nova caminhada",
+"Uma vida sem responsabilidade",
+"Uma obrigação de agradar a todos"
+],
+c: 1,
+e: "O estudo afirma que a salvação inicia uma nova caminhada e que Deus deseja transformar nossa vida."
+},
+
+{
+p: "Como o Espírito Santo trabalha na vida do discípulo em relação à santificação?",
+a: [
+"Trabalha para que cresçamos espiritualmente",
+"Impede qualquer crescimento",
+"Faz com que o pecado seja normal",
+"Dispensa a obediência"
+],
+c: 0,
+e: "O estudo ensina que o Espírito Santo trabalha em nós para que cresçamos espiritualmente."
+},
+
+{
+p: "Qual advertência é apresentada em Efésios 4:30?",
+a: [
+"Não entristeçais o Espírito Santo de Deus",
+"Não procureis conhecer a Palavra",
+"Não cuideis da vossa vida",
+"Não glorifiqueis a Deus"
+],
+c: 0,
+e: "Efésios 4:30 é citado no estudo para mostrar que não devemos entristecer o Espírito Santo de Deus."
+},
+
+{
+p: "O que a advertência de Efésios 4:30 nos ensina?",
+a: [
+"Que nossas atitudes importam",
+"Que nossas escolhas não têm consequências",
+"Que somente as palavras dos outros importam",
+"Que não precisamos mudar"
+],
+c: 0,
+e: "O estudo explica que nossa maneira de falar, tratar as pessoas e fazer escolhas importa."
+},
+
+{
+p: "Como devemos reagir quando a Palavra de Deus nos confrontar?",
+a: [
+"Fugir da correção",
+"Endurecer o coração",
+"Não resistir à transformação de Deus",
+"Ignorar o que foi ensinado"
+],
+c: 2,
+e: "O estudo ensina: quando a Palavra confrontar, não devemos fugir; quando Deus mostrar algo a corrigir, não devemos resistir."
+},
+
+{
+p: "Qual frase deve acompanhar o discípulo em sua vida diária?",
+a: [
+"Eu pertenço a Deus",
+"Eu faço tudo o que quero",
+"Ninguém pode me corrigir",
+"Minha vida não tem direção"
+],
+c: 0,
+e: "O nono ponto do estudo repete a declaração: 'Eu pertenço a Deus', diante de tentações, decisões e situações cotidianas."
+},
+
+{
+p: "Qual é a conclusão central do Estudo 3?",
+a: [
+"O corpo não possui importância espiritual",
+"O Espírito Santo habita no crente e nossa vida deve glorificar a Deus",
+"Somente as emoções demonstram a fé",
+"O discípulo não precisa abandonar o pecado"
+],
+c: 1,
+e: "A conclusão destaca que o Espírito Santo habita no crente, nosso corpo é templo dele e nossa vida deve glorificar a Deus."
+},
+
+{
+p: "O que o novo convertido precisa compreender sobre sua caminhada?",
+a: [
+"Está apenas começando uma religião",
+"Está começando uma caminhada com Deus",
+"Não precisa aprender mais",
+"Já não precisa de transformação"
+],
+c: 1,
+e: "A conclusão ensina que o novo convertido não está apenas começando uma religião, mas uma caminhada com Deus."
+},
+
+{
+p: "Qual é o versículo apresentado em 'Para guardar no coração'?",
+a: [
+"Atos 1:8",
+"1 Coríntios 6:19",
+"Efésios 4:30",
+"1 Pedro 1:15"
+],
+c: 1,
+e: "O versículo para guardar no coração é 1 Coríntios 6:19: 'O vosso corpo é o templo do Espírito Santo, que habita em vós.'"
+},
+
+{
+p: "Qual é o tema do próximo estudo?",
+a: [
+"O fruto do Espírito",
+"O batismo nas águas",
+"O batismo no Espírito Santo",
+"A oração do discípulo"
+],
+c: 2,
+e: "O próximo estudo anunciado é o Estudo 4 — O Batismo no Espírito Santo."
+},
+
+{
+p: "Qual referência bíblica é indicada para o Estudo 4?",
+a: [
+"Atos 1:8",
+"1 Coríntios 6:19",
+"1 Pedro 1:16",
+"Efésios 4:30"
+],
+c: 0,
+e: "O próximo estudo terá como referência bíblica Atos 1:8."
+}
+
+];
+
+const letras = ["A", "B", "C", "D"];
+let respostas = new Array(questoes.length).fill(null);
+let finalizado = false;
+let notaFinal = 0;
+
+const areaQuestoes = document.getElementById("questionario");
+
+function criarQuestionario() {
+    areaQuestoes.innerHTML = "";
+
+    questoes.forEach((q, indice) => {
+        const artigo = document.createElement("article");
+        artigo.className = "questao";
+        artigo.id = "questao-" + indice;
+
+        const titulo = document.createElement("h3");
+        const numero = document.createElement("span");
+        numero.className = "numero";
+        numero.textContent = "Questão " + (indice + 1);
+
+        titulo.appendChild(numero);
+        titulo.appendChild(document.createTextNode(q.p));
+
+        const opcoes = document.createElement("div");
+        opcoes.className = "opcoes";
+
+        q.a.forEach((alternativa, i) => {
+            const botao = document.createElement("button");
+            botao.type = "button";
+            botao.className = "opcao";
+            botao.setAttribute("aria-pressed", "false");
+
+            const letra = document.createElement("span");
+            letra.className = "letra";
+            letra.textContent = letras[i];
+
+            const texto = document.createElement("span");
+            texto.textContent = alternativa;
+
+            botao.appendChild(letra);
+            botao.appendChild(texto);
+
+            botao.addEventListener("click", () => selecionarResposta(indice, i));
+
+            opcoes.appendChild(botao);
+        });
+
+        const explicacao = document.createElement("div");
+        explicacao.className = "explicacao";
+        explicacao.id = "explicacao-" + indice;
+
+        artigo.appendChild(titulo);
+        artigo.appendChild(opcoes);
+        artigo.appendChild(explicacao);
+
+        areaQuestoes.appendChild(artigo);
+    });
+
+    atualizarProgresso();
+}
+
+function selecionarResposta(indice, alternativa) {
+    if (finalizado) return;
+
+    respostas[indice] = alternativa;
+
+    const artigo = document.getElementById("questao-" + indice);
+    const botoes = artigo.querySelectorAll(".opcao");
+
+    botoes.forEach((botao, i) => {
+        botao.classList.toggle("selecionada", i === alternativa);
+        botao.setAttribute("aria-pressed", i === alternativa ? "true" : "false");
+    });
+
+    atualizarProgresso();
+}
+
+function atualizarProgresso() {
+    const respondidas = respostas.filter(r => r !== null).length;
+    const percentual = Math.round((respondidas / questoes.length) * 100);
+
+    document.getElementById("progressoTexto").textContent =
+        respondidas + " de " + questoes.length + " respondidas";
+
+    document.getElementById("porcentagem").textContent = percentual + "%";
+    document.getElementById("barra").style.width = percentual + "%";
+}
+
+function finalizarQuestionario() {
+    if (finalizado) return;
+
+    const nome = document.getElementById("nome").value.trim();
+    const cpf = document.getElementById("cpf").value.trim();
+
+    if (!nome) {
+        alert("Digite o nome completo do aluno.");
+        document.getElementById("nome").focus();
+        return;
+    }
+
+    if (!cpfValido(cpf)) {
+        alert("Digite um CPF válido.");
+        document.getElementById("cpf").focus();
+        return;
+    }
+
+    const faltantes = respostas.filter(r => r === null).length;
+
+    if (faltantes > 0) {
+        const confirmar = confirm(
+            "Ainda existem " + faltantes +
+            " questão(ões) sem resposta. Deseja finalizar mesmo assim?"
+        );
+
+        if (!confirmar) {
+            const primeira = respostas.findIndex(r => r === null);
+            document.getElementById("questao-" + primeira).scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+            return;
+        }
+    }
+
+    finalizado = true;
+
+    let acertos = 0;
+    let erros = 0;
+    let semResposta = 0;
+
+    questoes.forEach((q, indice) => {
+        const artigo = document.getElementById("questao-" + indice);
+        const botoes = artigo.querySelectorAll(".opcao");
+        const explicacao = document.getElementById("explicacao-" + indice);
+
+        if (respostas[indice] === null) {
+            semResposta++;
+            erros++;
+        } else if (respostas[indice] === q.c) {
+            acertos++;
+        } else {
+            erros++;
+        }
+
+        botoes.forEach((botao, i) => {
+            botao.disabled = true;
+
+            if (i === q.c) {
+                botao.classList.add("correta");
+            }
+
+            if (respostas[indice] === i && i !== q.c) {
+                botao.classList.add("errada");
+            }
+        });
+
+        const acertou = respostas[indice] === q.c;
+
+        explicacao.innerHTML =
+            "<strong>" + (acertou ? "Resposta correta!" : "Resposta incorreta.") +
+            "</strong><br>" +
+            "<strong>Alternativa correta:</strong> " + letras[q.c] + " — " +
+            escaparHTML(q.a[q.c]) +
+            "<br><strong>Explicação:</strong> " + escaparHTML(q.e);
+
+        explicacao.classList.add("mostrar");
+    });
+
+    notaFinal = acertos;
+    const percentual = Math.round((acertos / questoes.length) * 100);
+    const aprovado = percentual >= 70;
+
+    document.getElementById("pontuacao").textContent =
+        acertos + " / " + questoes.length;
+
+    const status = document.getElementById("statusResultado");
+    status.textContent = aprovado ? "APROVEITAMENTO SATISFATÓRIO" : "ESTUDE E TENTE NOVAMENTE";
+    status.className = aprovado ? "status" : "status reprovado";
+
+    document.getElementById("resumoResultado").innerHTML =
+        "<strong>Aluno:</strong> " + escaparHTML(nome) +
+        "<br><strong>Questões:</strong> " + questoes.length +
+        "<br><strong>Acertos:</strong> " + acertos +
+        "<br><strong>Erros:</strong> " + erros +
+        "<br><strong>Sem resposta:</strong> " + semResposta +
+        "<br><strong>Aproveitamento:</strong> " + percentual + "%";
+
+    document.getElementById("mensagemResultado").textContent =
+        aprovado
+        ? "Parabéns! Você concluiu a avaliação com aproveitamento satisfatório. Continue firme no discipulado e no estudo da Palavra de Deus."
+        : "Continue estudando o conteúdo desta lição. Revise as explicações apresentadas e tente novamente.";
+
+    document.getElementById("areaFinalizar").style.display = "none";
+
+    if (aprovado) {
+        document.getElementById("btnCertificado").style.display = "inline-block";
+        document.getElementById("btnImprimir").style.display = "inline-block";
+        preencherCertificado(nome, cpf, acertos, percentual);
+    }
+
+    document.getElementById("resultado").classList.add("mostrar");
+
+    document.getElementById("resultado").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function preencherCertificado(nome, cpf, acertos, percentual) {
+    document.getElementById("nomeCertificado").textContent = nome;
+    document.getElementById("cpfCertificado").textContent = cpf;
+    document.getElementById("resultadoCertificado").textContent =
+        acertos + " de " + questoes.length + " questões — " + percentual + "%";
+
+    document.getElementById("dataCertificado").textContent =
+        new Date().toLocaleDateString("pt-BR");
+}
+
+function mostrarCertificado() {
+    const certificado = document.getElementById("certificado");
+    certificado.classList.add("mostrar");
+
+    certificado.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function imprimirCertificado() {
+    document.getElementById("certificado").classList.add("mostrar");
+    document.body.classList.add("imprimindo-certificado");
+
+    window.print();
+
+    setTimeout(() => {
+        document.body.classList.remove("imprimindo-certificado");
+    }, 1000);
+}
+
+function refazerQuestionario() {
+    const confirmar = confirm("Deseja apagar as respostas e refazer o questionário?");
+
+    if (!confirmar) return;
+
+    respostas = new Array(questoes.length).fill(null);
+    finalizado = false;
+    notaFinal = 0;
+
+    document.getElementById("resultado").classList.remove("mostrar");
+    document.getElementById("certificado").classList.remove("mostrar");
+    document.getElementById("areaFinalizar").style.display = "flex";
+
+    criarQuestionario();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function escaparHTML(texto) {
+    return String(texto).replace(/[&<>"']/g, caractere => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[caractere]);
+}
+
+function cpfValido(valor) {
+    const cpf = valor.replace(/\D/g, "");
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+
+    for (let i = 0; i < 9; i++) {
+        soma += Number(cpf.charAt(i)) * (10 - i);
+    }
+
+    let digito = 11 - (soma % 11);
+    if (digito > 9) digito = 0;
+
+    if (digito !== Number(cpf.charAt(9))) {
+        return false;
+    }
+
+    soma = 0;
+
+    for (let i = 0; i < 10; i++) {
+        soma += Number(cpf.charAt(i)) * (11 - i);
+    }
+
+    digito = 11 - (soma % 11);
+    if (digito > 9) digito = 0;
+
+    return digito === Number(cpf.charAt(10));
+}
+
+/* Máscara automática do CPF */
+document.getElementById("cpf").addEventListener("input", function() {
+    let valor = this.value.replace(/\D/g, "").slice(0, 11);
+
+    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+    this.value = valor;
+});
+
+/* Inicialização */
+criarQuestionario();
+
+if (questoes.length !== 40) {
+    console.error("Atenção: o questionário deveria conter 40 questões.");
+}
+</script>
+
+</body>
+</html>

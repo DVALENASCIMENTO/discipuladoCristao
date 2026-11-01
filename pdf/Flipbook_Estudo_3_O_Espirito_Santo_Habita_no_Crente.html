@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Estudo 3 — O Espírito Santo Habita no Crente. Discipulado Cristão — Ministério Atalaia.">
+<title>Estudo 3 — O Espírito Santo Habita no Crente | Ministério Atalaia</title>
+
+<style>
+:root {
+    --azul: #082b52;
+    --azul2: #123e70;
+    --dourado: #e9ad19;
+    --texto: #263445;
+    --fundo: #e9edf2;
+    --branco: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.topo {
+    background: var(--azul);
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    border-bottom: 4px solid var(--dourado);
+}
+
+.topo .marca {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--dourado);
+}
+
+.topo h1 {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    margin: 7px 0 2px;
+}
+
+.topo p {
+    margin: 0;
+    font-size: 13px;
+    color: #dce7f4;
+}
+
+main {
+    max-width: 1050px;
+    margin: 20px auto;
+    padding: 0 14px;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 11px 17px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    transition: .2s;
+}
+
+button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.btn {
+    background: var(--azul);
+    color: white;
+}
+
+.btn-dourado {
+    background: var(--dourado);
+    color: var(--azul);
+}
+
+button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.indicador {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--azul);
+    margin: 12px 0;
+}
+
+.barra-fundo {
+    height: 7px;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    background: #d1d8e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra {
+    height: 100%;
+    width: 0;
+    background: var(--dourado);
+    transition: width .25s;
+}
+
+.flipbook {
+    position: relative;
+    max-width: 850px;
+    margin: auto;
+    min-height: 650px;
+}
+
+.pagina {
+    display: none;
+    background: white;
+    min-height: 650px;
+    padding: 55px 65px 65px;
+    border-radius: 5px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.13);
+    position: relative;
+    animation: aparecer .25s ease;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from { opacity: .5; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pagina::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background: linear-gradient(90deg, var(--azul), var(--dourado));
+}
+
+.pagina h2 {
+    color: var(--azul);
+    font-family: Arial, sans-serif;
+    font-size: 27px;
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.pagina h3 {
+    color: var(--azul2);
+    font-family: Arial, sans-serif;
+    font-size: 19px;
+    margin-top: 25px;
+}
+
+.pagina p {
+    font-size: 18px;
+    line-height: 1.85;
+    margin: 13px 0;
+    text-align: justify;
+}
+
+.pagina ul {
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.pagina blockquote {
+    margin: 25px 0;
+    padding: 20px 25px;
+    background: #f5f1e7;
+    border-left: 5px solid var(--dourado);
+    color: var(--azul);
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.pagina .referencia {
+    color: #a47711;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+
+.pagina .destaque {
+    color: var(--azul);
+    font-weight: bold;
+}
+
+.pagina .frase {
+    text-align: center;
+    font-size: 23px;
+    color: var(--azul);
+    font-weight: bold;
+    line-height: 1.6;
+    margin: 35px 0;
+}
+
+.capa {
+    background:
+        radial-gradient(circle at 85% 20%, rgba(233,173,25,.24), transparent 32%),
+        linear-gradient(140deg, #061d3c, #0d4279);
+    color: white;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 650px;
+    padding: 50px;
+}
+
+.capa.ativa {
+    display: flex;
+}
+
+.capa .simbolo {
+    color: var(--dourado);
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.capa .marca-capa {
+    color: var(--dourado);
+    font-family: Arial, sans-serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.capa h2 {
+    color: white;
+    font-size: 40px;
+    line-height: 1.2;
+    margin: 30px 0;
+}
+
+.capa h2 span {
+    color: var(--dourado);
+}
+
+.capa .subtitulo {
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    background: var(--dourado);
+    color: var(--azul);
+    padding: 13px 25px;
+    border-radius: 3px;
+}
+
+.capa .versiculo {
+    color: white;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-top: 35px;
+    max-width: 650px;
+    text-align: center;
+}
+
+.numero-pagina {
+    position: absolute;
+    bottom: 22px;
+    right: 30px;
+    color: #9aa5b2;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.sumario {
+    background: #f7f9fb;
+    border: 1px solid #e0e5eb;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.sumario button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 5px 0;
+    background: transparent;
+    color: var(--azul);
+    border-bottom: 1px solid #e0e5eb;
+    border-radius: 0;
+    padding: 10px 5px;
+}
+
+.sumario button:hover {
+    background: #eaf0f7;
+}
+
+.caixa-reflexao {
+    background: #eef3f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+    border-left: 5px solid var(--azul2);
+}
+
+.caixa-reflexao p {
+    margin: 8px 0;
+}
+
+.rodape {
+    text-align: center;
+    color: #77818d;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 20px 0;
+}
+
+@media(max-width:650px) {
+    main {
+        padding: 0 7px;
+    }
+
+    .pagina {
+        padding: 35px 23px 55px;
+        min-height: 650px;
+    }
+
+    .pagina h2 {
+        font-size: 23px;
+    }
+
+    .pagina p,
+    .pagina ul {
+        font-size: 16px;
+    }
+
+    .capa {
+        padding: 30px 20px;
+    }
+
+    .capa h2 {
+        font-size: 30px;
+    }
+
+    .controles button {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+
+    .flipbook {
+        min-height: 650px;
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    body {
+        background: white;
+    }
+
+    .topo,
+    .controles,
+    .indicador,
+    .barra-fundo,
+    .rodape {
+        display: none !important;
+    }
+
+    main {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .flipbook {
+        max-width: none;
+    }
+
+    .pagina,
+    .pagina.ativa,
+    .capa,
+    .capa.ativa {
+        display: flex !important;
+        flex-direction: column;
+        min-height: 0;
+        height: 267mm;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: always;
+        break-after: page;
+        padding: 20mm 15mm;
+    }
+
+    .pagina:not(.capa) {
+        display: block !important;
+    }
+
+    .numero-pagina {
+        bottom: 10mm;
+    }
+
+    .sumario button {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <div class="marca">✝ MINISTÉRIO ATALAIA</div>
+    <h1>DISCIPULADO CRISTÃO</h1>
+    <p>Fundamentos da Fé — O Espírito Santo na Vida do Discípulo</p>
+</header>
+
+<main>
+
+<div class="controles">
+    <button class="btn" id="anterior" onclick="mudarPagina(-1)">❮ Anterior</button>
+    <button class="btn" id="proximo" onclick="mudarPagina(1)">Próxima ❯</button>
+    <button class="btn-dourado" onclick="alternarTelaCheia()">⛶ Tela cheia</button>
+    <button class="btn" onclick="window.print()">Imprimir / PDF</button>
+</div>
+
+<div class="indicador">
+    Página <span id="atual">1</span> de <span id="total">18</span>
+</div>
+
+<div class="barra-fundo">
+    <div class="barra" id="barra"></div>
+</div>
+
+<div class="flipbook" id="flipbook">
+
+<!-- PÁGINA 1 — CAPA -->
+<section class="pagina capa ativa">
+    <div class="simbolo">✝</div>
+    <div class="marca-capa">DISCIPULADO CRISTÃO</div>
+    <h2>O ESPÍRITO SANTO<br><span>NA VIDA DO DISCÍPULO</span></h2>
+    <div class="subtitulo">ESTUDO 3</div>
+    <h2 style="font-size:30px;margin:25px 0;">
+        O ESPÍRITO SANTO<br>HABITA NO CRENTE
+    </h2>
+    <p class="versiculo">
+        “Ou não sabeis que o vosso corpo é o templo do Espírito Santo,
+        que habita em vós, proveniente de Deus, e que não sois de vós mesmos?”
+        <br><strong>1 Coríntios 6:19</strong>
+    </p>
+    <p style="color:#e9ad19;font-family:Arial,sans-serif;font-size:13px;">
+        MINISTÉRIO ATALAIA
+    </p>
+</section>
+
+<!-- PÁGINA 2 — SUMÁRIO -->
+<section class="pagina">
+    <h2>SUMÁRIO</h2>
+    <div class="sumario">
+        <button onclick="irPara(2)">Introdução</button>
+        <button onclick="irPara(3)">1. O Espírito Santo habita no crente</button>
+        <button onclick="irPara(4)">2. O crente é templo do Espírito Santo</button>
+        <button onclick="irPara(5)">3. Não sois de vós mesmos</button>
+        <button onclick="irPara(6)">4. O corpo deve glorificar a Deus</button>
+        <button onclick="irPara(7)">5. O Espírito Santo não é apenas uma experiência</button>
+        <button onclick="irPara(8)">6. O discípulo precisa cuidar da sua vida</button>
+        <button onclick="irPara(9)">7. O Espírito Santo e a santificação</button>
+        <button onclick="irPara(10)">8. O Espírito Santo deve ter liberdade para trabalhar em nós</button>
+        <button onclick="irPara(11)">9. Viva como templo do Espírito Santo</button>
+        <button onclick="irPara(12)">Conclusão</button>
+        <button onclick="irPara(13)">Oração final</button>
+        <button onclick="irPara(14)">Para guardar no coração</button>
+        <button onclick="irPara(15)">Próximo estudo</button>
+        <button onclick="irPara(16)">Reflexão pessoal</button>
+        <button onclick="irPara(17)">Aplicação prática</button>
+        <button onclick="irPara(18)">Encerramento</button>
+    </div>
+</section>
+
+<!-- PÁGINA 3 — INTRODUÇÃO -->
+<section class="pagina">
+    <h2>INTRODUÇÃO</h2>
+
+    <p>Shalom! Seja bem-vindo a mais um estudo do <strong>Discipulado Cristão — Ministério Atalaia.</strong></p>
+
+    <p>Nos dois estudos anteriores, aprendemos quem é o Espírito Santo e qual é a sua obra na vida do discípulo.</p>
+
+    <p>Hoje vamos estudar uma verdade muito importante:</p>
+
+    <p class="frase">O ESPÍRITO SANTO HABITA NO CRENTE.</p>
+
+    <p>Quando uma pessoa entrega sua vida a Jesus Cristo, começa uma nova realidade espiritual.</p>
+
+    <p>Deus não deseja apenas que o discípulo conheça informações sobre Ele. Deus deseja relacionamento.</p>
+
+    <p>E a Bíblia ensina que o Espírito Santo habita naquele que pertence a Cristo.</p>
+
+    <blockquote>
+        “Ou não sabeis que o vosso corpo é o templo do Espírito Santo,
+        que habita em vós, proveniente de Deus, e que não sois de vós mesmos?”
+    </blockquote>
+
+    <p class="referencia">1 CORÍNTIOS 6:19</p>
+
+    <p>Essa palavra precisa ser compreendida com reverência. Se o nosso corpo é templo do Espírito Santo, isso muda a maneira como devemos enxergar nossa própria vida.</p>
+</section>
+
+<!-- PÁGINA 4 — PONTO 1 -->
+<section class="pagina">
+    <h2>1. O ESPÍRITO SANTO HABITA NO CRENTE</h2>
+
+    <p>Paulo faz uma pergunta:</p>
+
+    <blockquote>“Não sabeis que o vosso corpo é o templo do Espírito Santo?”</blockquote>
+
+    <p>A palavra templo nos lembra um lugar separado para Deus.</p>
+
+    <p>No Antigo Testamento, o templo tinha uma importância especial na adoração do povo de Israel.</p>
+
+    <p>Mas, no Novo Testamento, encontramos uma verdade extraordinária:</p>
+
+    <p class="frase">O Espírito Santo habita no crente.</p>
+
+    <p>Isso significa que a presença de Deus não deve ser vista apenas como algo distante.</p>
+
+    <p>O discípulo possui uma relação viva com Deus.</p>
+
+    <p>O Espírito Santo habita naquele que pertence a Cristo.</p>
+
+    <p>Por isso, nossa vida precisa ser tratada com seriedade.</p>
+</section>
+
+<!-- PÁGINA 5 — PONTO 2 -->
+<section class="pagina">
+    <h2>2. O CRENTE É TEMPLO DO ESPÍRITO SANTO</h2>
+
+    <p>Paulo não disse apenas que o crente frequenta um templo.</p>
+
+    <p>Ele disse:</p>
+
+    <blockquote>“O vosso corpo é o templo do Espírito Santo.”</blockquote>
+
+    <p>Isso significa que nosso corpo pertence a Deus.</p>
+
+    <ul>
+        <li>Nossa vida pertence a Deus.</li>
+        <li>Nossos olhos pertencem a Deus.</li>
+        <li>Nossa boca pertence a Deus.</li>
+        <li>Nossas mãos pertencem a Deus.</li>
+        <li>Nossos pés pertencem a Deus.</li>
+        <li>Nossa mente deve ser submetida a Deus.</li>
+    </ul>
+
+    <p>Tudo aquilo que fazemos precisa ser analisado à luz dessa verdade.</p>
+
+    <div class="caixa-reflexao">
+        <p><strong>PERGUNTA PARA REFLEXÃO</strong></p>
+        <p>“Minha maneira de viver honra a Deus?”</p>
+    </div>
+
+    <p>Essa é uma pergunta importante para todo discípulo.</p>
+</section>
+
+<!-- PÁGINA 6 — PONTO 3 -->
+<section class="pagina">
+    <h2>3. “NÃO SOIS DE VÓS MESMOS”</h2>
+
+    <p>O mesmo versículo continua dizendo:</p>
+
+    <blockquote>“E que não sois de vós mesmos.”</blockquote>
+
+    <p>Essa frase confronta uma ideia muito comum:</p>
+
+    <p class="frase">“A vida é minha e eu faço o que quiser.”</p>
+
+    <p>A Bíblia apresenta outra realidade para aquele que pertence a Cristo.</p>
+
+    <p>Nós fomos comprados.</p>
+
+    <p>1 Coríntios 6:20 declara:</p>
+
+    <blockquote>“Porque fostes comprados por bom preço; glorificai, pois, a Deus no vosso corpo.”</blockquote>
+
+    <p>O discípulo precisa compreender que seguir Jesus envolve entregar a vida a Deus.</p>
+
+    <p>Não somos chamados para fazer apenas aquilo que desejamos.</p>
+
+    <p>Somos chamados para viver de acordo com a vontade de Deus.</p>
+</section>
+
+<!-- PÁGINA 7 — PONTO 4 -->
+<section class="pagina">
+    <h2>4. O CORPO DEVE GLORIFICAR A DEUS</h2>
+
+    <p>Paulo conclui:</p>
+
+    <blockquote>“Glorificai, pois, a Deus no vosso corpo.”</blockquote>
+
+    <p>Essa é uma aplicação prática muito importante.</p>
+
+    <p>Como você usa seu corpo?</p>
+    <p>Como você usa seus olhos?</p>
+    <p>Como você usa sua boca?</p>
+    <p>Como você usa suas mãos?</p>
+    <p>Como você utiliza seu tempo?</p>
+    <p>Como você se comporta quando ninguém está olhando?</p>
+
+    <p>O discípulo precisa entender que sua vida inteira pertence ao Senhor.</p>
+
+    <p>Glorificar a Deus não acontece somente quando estamos dentro de uma igreja.</p>
+
+    <p>Glorificamos a Deus em casa, no trabalho, na escola, na rua, nas conversas e nas decisões.</p>
+
+    <p class="frase">Em todos os lugares, nossa vida deve testemunhar que pertencemos a Cristo.</p>
+</section>
+
+<!-- PÁGINA 8 — PONTO 5 -->
+<section class="pagina">
+    <h2>5. O ESPÍRITO SANTO NÃO É APENAS UMA EXPERIÊNCIA</h2>
+
+    <p>É importante compreender isso.</p>
+
+    <p>A presença do Espírito Santo não deve ser reduzida a uma experiência emocional.</p>
+
+    <p>O Espírito Santo atua profundamente na vida do discípulo.</p>
+
+    <ul>
+        <li>Ele ensina.</li>
+        <li>Ele guia.</li>
+        <li>Ele convence.</li>
+        <li>Ele transforma.</li>
+        <li>Ele fortalece.</li>
+        <li>Ele produz fruto.</li>
+    </ul>
+
+    <p>Portanto, não devemos medir nossa caminhada com Deus apenas pelo que sentimos.</p>
+
+    <p>Precisamos observar também se estamos crescendo em obediência.</p>
+
+    <div class="caixa-reflexao">
+        <p><strong>EXAMINE SUA CAMINHADA:</strong></p>
+        <p>Estamos amando mais? Estamos perdoando mais? Estamos abandonando o pecado? Estamos buscando a Palavra? Estamos orando? Estamos vivendo de maneira diferente?</p>
+    </div>
+
+    <p>A presença do Espírito Santo deve produzir transformação.</p>
+</section>
+
+<!-- PÁGINA 9 — PONTO 6 -->
+<section class="pagina">
+    <h2>6. O DISCÍPULO PRECISA CUIDAR DA SUA VIDA</h2>
+
+    <p>Se nosso corpo é templo do Espírito Santo, precisamos compreender a responsabilidade que temos sobre nossa maneira de viver.</p>
+
+    <p>Isso envolve nossas escolhas.</p>
+
+    <p>Precisamos fugir daquilo que desagrada a Deus.</p>
+
+    <p>Precisamos cuidar daquilo que colocamos diante dos nossos olhos.</p>
+
+    <p>Precisamos cuidar das palavras que saem da nossa boca.</p>
+
+    <p>Precisamos cuidar dos pensamentos que alimentamos.</p>
+
+    <p>Precisamos cuidar das atitudes que praticamos.</p>
+
+    <p>Isso não significa que o cristão nunca enfrentará tentações ou dificuldades.</p>
+
+    <p>Significa que ele não deve tratar o pecado como algo normal.</p>
+
+    <blockquote>
+        Quando cairmos, precisamos nos arrepender e buscar o perdão de Deus.
+        Quando formos tentados, precisamos resistir.
+        Quando percebermos que estamos nos afastando da vontade de Deus, precisamos voltar.
+    </blockquote>
+</section>
+
+<!-- PÁGINA 10 — PONTO 7 -->
+<section class="pagina">
+    <h2>7. O ESPÍRITO SANTO E A SANTIFICAÇÃO</h2>
+
+    <p>O Espírito Santo trabalha em nossa santificação.</p>
+
+    <p>Santificação significa ser separado para Deus e viver uma vida dedicada a Ele.</p>
+
+    <blockquote>
+        “Mas, como é santo aquele que vos chamou, sede vós também santos em toda a vossa maneira de viver.”
+    </blockquote>
+
+    <p class="referencia">1 PEDRO 1:15-16</p>
+
+    <p>O discípulo não deve pensar:</p>
+
+    <p class="frase">“Eu já aceitei Jesus, então posso continuar vivendo exatamente como antes.”</p>
+
+    <p>Não.</p>
+
+    <p>A salvação inicia uma nova caminhada.</p>
+
+    <p>Deus deseja transformar nossa vida.</p>
+
+    <p>O Espírito Santo trabalha em nós para que cresçamos espiritualmente.</p>
+
+    <p>É um processo. Todos os dias precisamos aprender mais sobre Deus e abandonar aquilo que não agrada ao Senhor.</p>
+</section>
+
+<!-- PÁGINA 11 — PONTO 8 -->
+<section class="pagina">
+    <h2>8. O ESPÍRITO SANTO DEVE TER LIBERDADE PARA TRABALHAR EM NÓS</h2>
+
+    <p>Se o Espírito Santo habita em nós, precisamos permitir que Ele trabalhe em nossa vida.</p>
+
+    <blockquote>“E não entristeçais o Espírito Santo de Deus.”</blockquote>
+
+    <p class="referencia">EFÉSIOS 4:30</p>
+
+    <p>Essa advertência mostra que nossas atitudes importam.</p>
+
+    <p>Nossa maneira de falar importa.</p>
+
+    <p>Nossa maneira de tratar as pessoas importa.</p>
+
+    <p>Nossas escolhas importam.</p>
+
+    <p>Por isso, não devemos endurecer o coração quando Deus nos mostra algo que precisa ser mudado.</p>
+
+    <p>Quando a Palavra confrontar você, não fuja.</p>
+
+    <p>Quando Deus mostrar uma área que precisa ser corrigida, não resista.</p>
+
+    <p class="frase">Permita que Deus transforme você.</p>
+</section>
+
+<!-- PÁGINA 12 — PONTO 9 -->
+<section class="pagina">
+    <h2>9. VIVA COMO TEMPLO DO ESPÍRITO SANTO</h2>
+
+    <p>Agora precisamos trazer essa verdade para nossa vida diária.</p>
+
+    <p>Quando você acordar, lembre-se:</p>
+
+    <p class="frase">Eu pertenço a Deus.</p>
+
+    <p>Quando estiver diante de uma tentação:</p>
+
+    <p class="frase">Eu pertenço a Deus.</p>
+
+    <p>Quando estiver prestes a falar algo que pode ferir alguém:</p>
+
+    <p class="frase">Eu pertenço a Deus.</p>
+
+    <p>Quando precisar tomar uma decisão:</p>
+
+    <p class="frase">Eu pertenço a Deus.</p>
+
+    <p>Quando ninguém estiver olhando:</p>
+
+    <p class="frase">Eu pertenço a Deus.</p>
+
+    <p>Essa consciência muda nossa maneira de viver.</p>
+
+    <p>O discípulo não vive apenas para agradar a si mesmo. Ele deseja glorificar a Deus.</p>
+</section>
+
+<!-- PÁGINA 13 — CONCLUSÃO -->
+<section class="pagina">
+    <h2>CONCLUSÃO</h2>
+
+    <p>Hoje aprendemos uma verdade poderosa:</p>
+
+    <p class="frase">O ESPÍRITO SANTO HABITA NO CRENTE.</p>
+
+    <p>Nosso corpo é templo do Espírito Santo.</p>
+
+    <p>Não pertencemos mais a nós mesmos.</p>
+
+    <p>Fomos comprados por Cristo.</p>
+
+    <p>Por isso, nossa vida deve glorificar a Deus.</p>
+
+    <p>Precisamos cuidar daquilo que pensamos, daquilo que falamos, daquilo que fazemos e da maneira como tratamos as pessoas.</p>
+
+    <p>Precisamos abandonar o pecado e buscar uma vida de santidade.</p>
+
+    <p>E precisamos permitir que o Espírito Santo continue trabalhando em nós.</p>
+
+    <div class="caixa-reflexao">
+        <p><strong>NOVO CONVERTIDO, LEMBRE-SE:</strong></p>
+        <p>Você não está apenas começando uma religião. Você está começando uma caminhada com Deus.</p>
+    </div>
+
+    <p class="frase">Viva de maneira digna daquele que habita em você.</p>
+</section>
+
+<!-- PÁGINA 14 — ORAÇÃO -->
+<section class="pagina">
+    <h2>ORAÇÃO FINAL</h2>
+
+    <p>Vamos orar.</p>
+
+    <p>Senhor nosso Deus e nosso Pai,</p>
+
+    <p>nós te agradecemos por esta Palavra.</p>
+
+    <p>Obrigado porque o Senhor nos chamou para uma nova vida em Cristo.</p>
+
+    <p>Obrigado pelo Espírito Santo que habita no crente.</p>
+
+    <p>Ajuda-nos a compreender a grande responsabilidade de sermos templo do Espírito Santo.</p>
+
+    <p>Ensina-nos a cuidar da nossa vida.</p>
+
+    <p>Guarda nossos pensamentos. Guarda nossos olhos. Guarda nossa boca. Guarda nossas mãos. Guarda nossos pés.</p>
+
+    <p>Ajuda-nos a abandonar aquilo que não agrada ao Senhor.</p>
+
+    <p>Quando formos tentados, dá-nos força para resistir.</p>
+
+    <p>Quando errarmos, dá-nos um coração humilde para reconhecer nossos erros e buscar o perdão.</p>
+
+    <p>Não permita que endureçamos o nosso coração diante da tua Palavra.</p>
+</section>
+
+<!-- PÁGINA 15 — ORAÇÃO CONTINUA -->
+<section class="pagina">
+    <h2>ORAÇÃO FINAL</h2>
+
+    <p>Que o Espírito Santo continue trabalhando em nós.</p>
+
+    <p>Transforma nosso caráter.</p>
+
+    <p>Santifica nossa vida.</p>
+
+    <p>Ensina-nos a viver em obediência.</p>
+
+    <p>Que nossas atitudes glorifiquem o teu nome dentro e fora da igreja.</p>
+
+    <p>Que as pessoas possam perceber, através da nossa maneira de viver, que pertencemos a Jesus Cristo.</p>
+
+    <p>Nós entregamos nossa vida novamente em tuas mãos.</p>
+
+    <p>Conduze-nos pelo teu Espírito.</p>
+
+    <p>Em nome de Jesus.</p>
+
+    <p class="frase">Amém.</p>
+</section>
+
+<!-- PÁGINA 16 — PARA GUARDAR -->
+<section class="pagina">
+    <h2>PARA GUARDAR NO CORAÇÃO</h2>
+
+    <p class="frase">
+        “O vosso corpo é o templo do Espírito Santo, que habita em vós.”
+    </p>
+
+    <p class="referencia">1 CORÍNTIOS 6:19</p>
+
+    <div class="caixa-reflexao">
+        <h3>UMA VERDADE PARA LEVAR AO DIA A DIA</h3>
+        <p>Meu corpo pertence a Deus. Minha vida pertence a Deus. Minhas escolhas devem glorificar a Deus.</p>
+    </div>
+
+    <p>Durante esta semana, relembre esse versículo e permita que essa verdade oriente suas decisões, atitudes e relacionamentos.</p>
+</section>
+
+<!-- PÁGINA 17 — PRÓXIMO ESTUDO -->
+<section class="pagina">
+    <h2>PRÓXIMO ESTUDO</h2>
+
+    <p>No próximo estudo do <strong>Discipulado Cristão — Ministério Atalaia</strong>, continuaremos aprendendo sobre:</p>
+
+    <p class="frase">ESTUDO 4<br>O BATISMO NO ESPÍRITO SANTO</p>
+
+    <p>Vamos estudar o ensino bíblico sobre a promessa do Espírito Santo e o poder recebido para testemunhar de Jesus Cristo.</p>
+
+    <blockquote>
+        “Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas...”
+    </blockquote>
+
+    <p class="referencia">ATOS 1:8</p>
+
+    <p>Continue firme no discipulado, estudando a Palavra de Deus e crescendo no conhecimento de Jesus Cristo.</p>
+</section>
+
+<!-- PÁGINA 18 — ENCERRAMENTO -->
+<section class="pagina capa">
+    <div class="simbolo">✝</div>
+    <div class="marca-capa">DISCIPULADO CRISTÃO</div>
+
+    <h2>O ESPÍRITO SANTO<br><span>HABITA NO CRENTE</span></h2>
+
+    <p class="versiculo">
+        Que sua vida glorifique a Deus em todos os lugares.
+    </p>
+
+    <div class="subtitulo">MINISTÉRIO ATALAIA</div>
+
+    <p class="versiculo">
+        PROCLAMANDO A VERDADE.<br>
+        FORMANDO DISCÍPULOS.
+    </p>
+</section>
+
+</div>
+
+<div class="controles">
+    <button class="btn" id="anterior2" onclick="mudarPagina(-1)">❮ Anterior</button>
+    <button class="btn" id="proximo2" onclick="mudarPagina(1)">Próxima ❯</button>
+</div>
+
+<div class="rodape">
+    Ministério Atalaia — Discipulado Cristão
+</div>
+
+</main>
+
+<script>
+const paginas = Array.from(document.querySelectorAll(".pagina"));
+const totalPaginas = paginas.length;
+
+let paginaAtual = 0;
+
+document.getElementById("total").textContent = totalPaginas;
+
+function mostrarPagina(indice) {
+    if (indice < 0 || indice >= totalPaginas) return;
+
+    paginas[paginaAtual].classList.remove("ativa");
+
+    paginaAtual = indice;
+
+    paginas[paginaAtual].classList.add("ativa");
+
+    document.getElementById("atual").textContent = paginaAtual + 1;
+
+    document.getElementById("barra").style.width =
+        ((paginaAtual + 1) / totalPaginas * 100) + "%";
+
+    document.getElementById("anterior").disabled =
+        paginaAtual === 0;
+
+    document.getElementById("anterior2").disabled =
+        paginaAtual === 0;
+
+    document.getElementById("proximo").disabled =
+        paginaAtual === totalPaginas - 1;
+
+    document.getElementById("proximo2").disabled =
+        paginaAtual === totalPaginas - 1;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function mudarPagina(direcao) {
+    mostrarPagina(paginaAtual + direcao);
+}
+
+function irPara(numero) {
+    mostrarPagina(numero - 1);
+}
+
+function alternarTelaCheia() {
+    const elemento = document.getElementById("flipbook");
+
+    if (!document.fullscreenElement) {
+        if (elemento.requestFullscreen) {
+            elemento.requestFullscreen();
+        }
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "ArrowRight") {
+        mudarPagina(1);
+    }
+
+    if (evento.key === "ArrowLeft") {
+        mudarPagina(-1);
+    }
+
+    if (evento.key === "Home") {
+        mostrarPagina(0);
+    }
+
+    if (evento.key === "End") {
+        mostrarPagina(totalPaginas - 1);
+    }
+});
+
+let inicioToque = 0;
+
+document.getElementById("flipbook").addEventListener("touchstart", function(e) {
+    inicioToque = e.changedTouches[0].screenX;
+}, {passive:true});
+
+document.getElementById("flipbook").addEventListener("touchend", function(e) {
+    const fimToque = e.changedTouches[0].screenX;
+    const diferenca = fimToque - inicioToque;
+
+    if (Math.abs(diferenca) > 60) {
+        mudarPagina(diferenca < 0 ? 1 : -1);
+    }
+}, {passive:true});
+
+mostrarPagina(0);
+</script>
+
+</body>
+</html>
