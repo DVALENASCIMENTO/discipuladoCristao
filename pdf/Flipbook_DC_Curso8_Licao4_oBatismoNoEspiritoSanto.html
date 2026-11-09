@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Estudo 4 — O Batismo no Espírito Santo | Ministério Atalaia</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:linear-gradient(135deg,#061d35,#0b4674);
+color:#fff;
+min-height:100vh;
+display:flex;
+flex-direction:column
+}
+
+header{
+padding:14px 18px;
+text-align:center;
+background:rgba(0,0,0,.22);
+backdrop-filter:blur(8px)
+}
+
+header h1{
+font-size:clamp(18px,3vw,30px);
+margin:0 0 6px
+}
+
+header p{
+margin:0;
+color:#f4bd22;
+font-weight:700
+}
+
+.viewer{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:18px;
+overflow:hidden
+}
+
+.book{
+position:relative;
+width:min(900px,94vw);
+height:min(78vh,1100px);
+display:flex;
+align-items:center;
+justify-content:center;
+perspective:1800px
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+background:#fff;
+color:#172b40;
+box-shadow:0 18px 50px rgba(0,0,0,.45);
+border-radius:3px;
+overflow-y:auto;
+padding:clamp(22px,5vw,55px);
+transform-origin:left center;
+transition:transform .75s cubic-bezier(.2,.7,.2,1),opacity .3s;
+backface-visibility:hidden;
+scrollbar-width:thin
+}
+
+.page.current{
+transform:rotateY(0);
+z-index:10;
+opacity:1
+}
+
+.page.next{
+transform:rotateY(0);
+z-index:9;
+opacity:0;
+pointer-events:none
+}
+
+.page.past{
+transform:rotateY(-180deg);
+z-index:1;
+opacity:0;
+pointer-events:none
+}
+
+.page h2{
+color:#0b4674;
+font-size:clamp(19px,3vw,27px);
+text-align:center;
+margin:0 0 20px;
+line-height:1.4
+}
+
+.page h3{
+color:#0b4674;
+font-size:18px;
+margin-top:24px;
+border-bottom:2px solid #e5b52c;
+padding-bottom:7px
+}
+
+.page p{
+font-size:16px;
+line-height:1.8;
+text-align:justify;
+margin:12px 0
+}
+
+.page li{
+font-size:16px;
+line-height:1.8;
+margin-bottom:7px
+}
+
+.page ul{
+padding-left:25px
+}
+
+.page blockquote{
+margin:20px 0;
+padding:16px 20px;
+background:#f1f5f9;
+border-left:5px solid #d5a419;
+color:#183b59;
+font-size:17px;
+line-height:1.8;
+font-style:italic
+}
+
+.page .reference{
+text-align:center;
+font-weight:bold;
+color:#0b4674
+}
+
+.page .cover{
+text-align:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+min-height:100%
+}
+
+.page .cover h1{
+font-size:clamp(23px,4vw,38px);
+color:#0b4674;
+line-height:1.5
+}
+
+.page .cover h2{
+color:#b48612;
+font-size:22px
+}
+
+.page .cover p{
+text-align:center
+}
+
+.page .gold{
+color:#b48612;
+font-weight:bold
+}
+
+.page .prayer p{
+text-align:left
+}
+
+.page .footer{
+margin-top:30px;
+padding-top:15px;
+border-top:1px solid #ddd;
+text-align:center;
+font-size:13px;
+color:#64748b
+}
+
+.controls{
+display:flex;
+flex-wrap:wrap;
+gap:9px;
+justify-content:center;
+padding:13px 14px;
+background:rgba(0,0,0,.3)
+}
+
+button{
+border:0;
+border-radius:9px;
+padding:10px 14px;
+font-weight:700;
+cursor:pointer;
+color:#08294a;
+background:#fff
+}
+
+button:hover{
+transform:translateY(-1px)
+}
+
+button.primary{
+background:#f4b91b
+}
+
+button.stop{
+background:#e8e8e8
+}
+
+.counter{
+align-self:center;
+font-weight:700;
+min-width:70px;
+text-align:center
+}
+
+.hint{
+text-align:center;
+font-size:12px;
+opacity:.8;
+padding:5px 10px 14px
+}
+
+@media(max-width:600px){
+.viewer{padding:8px}
+.book{height:70vh}
+.page{padding:20px}
+.page p,.page li{font-size:15px}
+.controls{gap:6px}
+.controls button{padding:9px 10px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>DISCIPULADO CRISTÃO — MINISTÉRIO ATALAIA</h1>
+<p>O ESPÍRITO SANTO NA VIDA DO DISCÍPULO • ESTUDO 4</p>
+</header>
+
+<main class="viewer">
+<div class="book" id="book"></div>
+</main>
+
+<div class="controls">
+<button onclick="prevPage()">‹ Anterior</button>
+<button onclick="nextPage()">Próxima ›</button>
+<button class="primary" onclick="speakPage()">🔊 Ler esta página</button>
+<button class="stop" onclick="stopSpeech()">⏹ Parar leitura</button>
+<button onclick="speakAll()">▶ Ler estudo</button>
+<button onclick="toggleFullscreen()">⛶ Tela cheia</button>
+<span class="counter" id="counter"></span>
+</div>
+
+<div class="hint">
+A leitura em voz utiliza a voz disponível no navegador. Use as setas do teclado para navegar.
+</div>
+
+<script>
+
+const pages = [
+
+`
+<div class="cover">
+
+<p class="gold">DISCIPULADO CRISTÃO — MINISTÉRIO ATALAIA</p>
+
+<h2>FUNDAMENTOS DA FÉ</h2>
+
+<h1>O ESPÍRITO SANTO<br>NA VIDA DO DISCÍPULO</h1>
+
+<h2>ESTUDO 4<br>O BATISMO NO ESPÍRITO SANTO</h2>
+
+<p class="reference">Referência Bíblica: Atos 1:8</p>
+
+<blockquote>
+“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas, tanto em Jerusalém como em toda a Judeia e Samaria, e até aos confins da terra.”
+</blockquote>
+
+<p class="gold">MINISTÉRIO ATALAIA</p>
+
+<p>Proclamando a Verdade. Formando Discípulos.</p>
+
+</div>
+`,
+
+`
+<h2>INTRODUÇÃO</h2>
+
+<p>Shalom! Seja bem-vindo a mais um estudo do Discipulado Cristão — Ministério Atalaia.</p>
+
+<p>Nos estudos anteriores, aprendemos quem é o Espírito Santo, conhecemos sua obra e estudamos a verdade de que o Espírito Santo habita no crente.</p>
+
+<p>Hoje vamos estudar um assunto muito importante:</p>
+
+<h3>O Batismo no Espírito Santo</h3>
+
+<p>A Bíblia apresenta o Espírito Santo como aquele que habita no crente, ensina, guia, transforma e também capacita o discípulo para cumprir sua missão.</p>
+
+<p>Antes de subir aos céus, Jesus fez uma promessa aos seus discípulos.</p>
+
+<p>Em Atos 1:8, ele disse:</p>
+
+<blockquote>
+“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas...”
+</blockquote>
+
+<p>Jesus estava falando de poder para testemunhar.</p>
+
+<p>Por isso, precisamos compreender biblicamente essa promessa.</p>
+
+<h3>1. JESUS PROMETEU O ESPÍRITO SANTO</h3>
+
+<p>O batismo no Espírito Santo não surgiu como uma ideia dos discípulos.</p>
+
+<p>Foi uma promessa feita pelo próprio Jesus.</p>
+
+<p>Em Atos 1:4-5, Jesus ordenou aos discípulos que não se afastassem de Jerusalém, mas esperassem a promessa do Pai.</p>
+
+<blockquote>
+“Porque, na verdade, João batizou com água, mas vós sereis batizados com o Espírito Santo, não muito depois destes dias.”
+</blockquote>
+
+<p>Observe a palavra: <strong>Promessa.</strong></p>
+
+<p>Deus havia prometido enviar o Espírito Santo.</p>
+`,
+
+`
+<h2>1. JESUS PROMETEU O ESPÍRITO SANTO</h2>
+
+<p>Os discípulos deveriam esperar.</p>
+
+<p>Eles não precisavam produzir essa experiência pela própria força.</p>
+
+<p>Precisavam permanecer em obediência e aguardar o cumprimento da promessa.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>João 14:16-17 — A promessa do Consolador.</li>
+<li>João 14:26 — O Espírito Santo como Mestre.</li>
+<li>João 15:26 — O Espírito Santo testifica de Cristo.</li>
+<li>Lucas 24:49 — A promessa do Pai.</li>
+</ul>
+
+<h3>2. O ESPÍRITO SANTO CAPACITA PARA TESTEMUNHAR</h3>
+
+<p>Atos 1:8 diz:</p>
+
+<blockquote>
+“Mas recebereis a virtude do Espírito Santo...”
+</blockquote>
+
+<p>A palavra “virtude”, nesse contexto, está relacionada a poder.</p>
+
+<p>E Jesus explica para que esse poder seria recebido:</p>
+
+<blockquote>
+“E ser-me-eis testemunhas.”
+</blockquote>
+
+<p>Esse é um ponto fundamental.</p>
+
+<p>O poder do Espírito Santo está relacionado à missão.</p>
+
+<p>Jesus não disse:</p>
+
+<p>“Recebereis poder para serem superiores aos outros.”</p>
+
+<p>Não.</p>
+
+<p>Ele disse:</p>
+
+<blockquote>“Ser-me-eis testemunhas.”</blockquote>
+
+<p>O Espírito Santo capacita o discípulo para testemunhar de Jesus Cristo.</p>
+`,
+
+`
+<h2>2. O ESPÍRITO SANTO CAPACITA PARA TESTEMUNHAR</h2>
+
+<p>Você recebeu uma missão:</p>
+
+<ul>
+<li>Anunciar Cristo.</li>
+<li>Falar do evangelho.</li>
+<li>Testemunhar aquilo que Jesus fez.</li>
+</ul>
+
+<p>Essa missão não deve ser realizada apenas pela força humana.</p>
+
+<p>Precisamos da capacitação do Espírito Santo.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Marcos 16:15 — A ordem de pregar o evangelho.</li>
+<li>Lucas 24:47-49 — A proclamação do evangelho.</li>
+<li>Atos 4:31 — Ousadia para anunciar a Palavra.</li>
+<li>1 Coríntios 2:4-5 — A manifestação do poder de Deus.</li>
+</ul>
+
+<h3>3. O ESPÍRITO SANTO VEIO SOBRE OS DISCÍPULOS</h3>
+
+<p>A promessa se cumpriu em Atos 2.</p>
+
+<p>No dia de Pentecostes, os discípulos estavam reunidos.</p>
+
+<p>Atos 2:4 declara:</p>
+
+<blockquote>
+“E todos foram cheios do Espírito Santo, e começaram a falar noutras línguas, conforme o Espírito Santo lhes concedia que falassem.”
+</blockquote>
+
+<p>Aquilo que Jesus havia prometido aconteceu.</p>
+
+<p>O Espírito Santo veio sobre os discípulos.</p>
+
+<p>Eles foram cheios do Espírito Santo.</p>
+
+<p>Aquele acontecimento marcou profundamente o início da proclamação do evangelho com poder.</p>
+`,
+
+`
+<h2>3. O ESPÍRITO SANTO VEIO SOBRE OS DISCÍPULOS</h2>
+
+<p>Pedro, que anteriormente havia negado Jesus, agora aparece proclamando a mensagem de Cristo diante de uma multidão.</p>
+
+<p>O Espírito Santo capacitou os discípulos para testemunhar.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Atos 2:1-13 — Pentecostes.</li>
+<li>Atos 2:14-36 — A mensagem de Pedro.</li>
+<li>Atos 2:37-41 — A resposta da multidão.</li>
+<li>Atos 4:8 — Pedro cheio do Espírito Santo.</li>
+</ul>
+
+<h3>4. O ESPÍRITO SANTO DÁ PODER PARA A MISSÃO</h3>
+
+<p>Voltemos para Atos 1:8.</p>
+
+<p>Jesus apresentou uma sequência:</p>
+
+<ul>
+<li>Jerusalém.</li>
+<li>Judeia.</li>
+<li>Samaria.</li>
+<li>Confins da terra.</li>
+</ul>
+
+<p>O evangelho deveria avançar.</p>
+
+<p>Começaria perto deles e alcançaria outros povos.</p>
+
+<p>Isso nos ensina que o Espírito Santo não nos capacita apenas para uma experiência pessoal.</p>
+
+<p>Existe uma missão.</p>
+
+<p>O discípulo recebeu uma responsabilidade:</p>
+
+<blockquote>Ser testemunha de Jesus.</blockquote>
+`,
+
+`
+<h2>4. O ESPÍRITO SANTO DÁ PODER PARA A MISSÃO</h2>
+
+<p>Talvez você pense:</p>
+
+<p>“Eu não sei falar.”</p>
+
+<p>“Eu não tenho conhecimento suficiente.”</p>
+
+<p>“Eu não sei pregar.”</p>
+
+<p>Mas o chamado de testemunhar não depende apenas da capacidade humana.</p>
+
+<p>Precisamos aprender, crescer e estudar a Palavra.</p>
+
+<p>Mas também precisamos depender da capacitação do Espírito Santo.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Mateus 28:19-20 — A Grande Comissão.</li>
+<li>Atos 8:4-8 — O evangelho em Samaria.</li>
+<li>Atos 10:34-48 — O evangelho alcançando os gentios.</li>
+<li>Atos 13:2-4 — O envio missionário.</li>
+<li>Romanos 10:14-15 — A importância da proclamação.</li>
+</ul>
+
+<h3>5. O ESPÍRITO SANTO NÃO É PARA EXALTAÇÃO PESSOAL</h3>
+
+<p>Precisamos ter equilíbrio.</p>
+
+<p>O batismo no Espírito Santo não deve ser buscado como uma forma de se sentir superior aos outros cristãos.</p>
+
+<p>O objetivo não é dizer:</p>
+
+<blockquote>“Eu sou mais espiritual que você.”</blockquote>
+
+<p>O objetivo é servir a Deus e testemunhar de Cristo.</p>
+
+<p>O Espírito Santo sempre deve nos conduzir para Jesus.</p>
+`,
+
+`
+<h2>5. O ESPÍRITO SANTO NÃO É PARA EXALTAÇÃO PESSOAL</h2>
+
+<p>A experiência espiritual não deve produzir orgulho.</p>
+
+<p>Deve produzir serviço.</p>
+
+<p>Deve produzir testemunho.</p>
+
+<p>Deve produzir compromisso com a missão.</p>
+
+<p>Quanto mais recebemos de Deus, maior deve ser nossa disposição para servir.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>João 16:13-14 — O Espírito Santo glorifica a Cristo.</li>
+<li>1 Coríntios 12:7 — A manifestação do Espírito para o que for útil.</li>
+<li>1 Coríntios 13:1-3 — A importância do amor.</li>
+<li>Filipenses 2:3-5 — Humildade e serviço.</li>
+<li>Gálatas 5:22-23 — O fruto do Espírito.</li>
+</ul>
+
+<h3>6. A PROMESSA DO ESPÍRITO SANTO É PARA OS QUE DEUS CHAMA</h3>
+
+<p>Depois da manifestação do Espírito Santo em Atos 2, Pedro explicou à multidão aquilo que estava acontecendo.</p>
+
+<p>Em Atos 2:38-39, ele declarou:</p>
+
+<blockquote>
+“Arrependei-vos, e cada um de vós seja batizado em nome de Jesus Cristo para perdão dos pecados; e recebereis o dom do Espírito Santo.”
+</blockquote>
+`,
+
+`
+<h2>6. A PROMESSA DO ESPÍRITO SANTO</h2>
+
+<p>E continua:</p>
+
+<blockquote>
+“Porque a promessa vos diz respeito a vós, a vossos filhos e a todos os que estão longe, a tantos quantos Deus nosso Senhor chamar.”
+</blockquote>
+
+<p>A promessa do Espírito Santo aparece como parte da obra de Deus na vida daqueles que ele chama.</p>
+
+<p>Por isso, devemos buscar a Deus com fé e sinceridade.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Joel 2:28-29 — A promessa do derramamento do Espírito.</li>
+<li>Atos 2:17-18 — A profecia de Joel.</li>
+<li>Atos 10:44-48 — O Espírito Santo sobre os gentios.</li>
+<li>Atos 19:1-6 — A manifestação do Espírito em Éfeso.</li>
+</ul>
+
+<h3>7. DEVEMOS BUSCAR A DEUS</h3>
+
+<p>Jesus ensinou sobre a busca pela presença de Deus.</p>
+
+<p>Em Lucas 11:13, ele disse:</p>
+
+<blockquote>
+“Quanto mais dará o Pai celestial o Espírito Santo àqueles que lho pedirem?”
+</blockquote>
+
+<p>Existe aqui um princípio importante:</p>
+
+<p><strong>Devemos buscar a Deus.</strong></p>
+
+<p>Não devemos tratar as coisas espirituais com indiferença.</p>
+
+<ul>
+<li>Ore.</li>
+<li>Busque.</li>
+<li>Peça.</li>
+<li>Leia a Palavra.</li>
+<li>Permaneça na presença de Deus.</li>
+<li>Tenha um coração disposto a obedecer.</li>
+</ul>
+`,
+
+`
+<h2>7. DEVEMOS BUSCAR A DEUS</h2>
+
+<p>O discípulo precisa desenvolver uma vida de comunhão com Deus.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Mateus 7:7-11 — Pedi, buscai e batei.</li>
+<li>Jeremias 29:13 — Buscar a Deus de todo o coração.</li>
+<li>Salmo 105:4 — Buscar continuamente a presença do Senhor.</li>
+<li>Efésios 6:18 — Orar em todo tempo no Espírito.</li>
+</ul>
+
+<h3>8. O BATISMO NO ESPÍRITO SANTO E A VIDA DO DISCÍPULO</h3>
+
+<p>É importante compreender que o batismo no Espírito Santo não encerra o crescimento espiritual.</p>
+
+<p>Pelo contrário.</p>
+
+<p>O discípulo continua precisando aprender.</p>
+
+<p>Continua precisando orar.</p>
+
+<p>Continua precisando estudar a Palavra.</p>
+
+<p>Continua precisando crescer em santidade.</p>
+
+<p>Continua precisando produzir o fruto do Espírito.</p>
+
+<p>Continua precisando servir.</p>
+
+<p>Uma experiência espiritual não substitui uma vida de obediência.</p>
+
+<p>O discípulo precisa continuar caminhando com Cristo.</p>
+
+<p>Em Gálatas 5:16, Paulo ensina:</p>
+
+<blockquote>
+“Andai em Espírito, e não cumprireis a concupiscência da carne.”
+</blockquote>
+`,
+
+`
+<h2>8. O BATISMO NO ESPÍRITO SANTO E A VIDA DO DISCÍPULO</h2>
+
+<p>A vida cristã deve ser conduzida diariamente pelo Espírito Santo.</p>
+
+<p>O discípulo precisa aprender a depender de Deus em suas decisões, atitudes e relacionamentos.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Romanos 8:14 — Os filhos de Deus são guiados pelo Espírito.</li>
+<li>Gálatas 5:16-25 — Andar no Espírito.</li>
+<li>Efésios 5:18 — Ser cheio do Espírito.</li>
+<li>Colossenses 3:16-17 — A Palavra de Cristo.</li>
+<li>2 Pedro 3:18 — Crescer na graça e no conhecimento.</li>
+</ul>
+
+<h3>9. PODER PARA SER TESTEMUNHA</h3>
+
+<p>Vamos voltar à palavra de Jesus:</p>
+
+<blockquote>
+“E ser-me-eis testemunhas.”
+</blockquote>
+
+<p>Essa deve ser uma das marcas da nossa vida.</p>
+
+<p>Você conhece Jesus?</p>
+
+<p>Então testemunhe.</p>
+
+<p>Você foi alcançado pelo evangelho?</p>
+
+<p>Então anuncie o evangelho.</p>
+
+<p>Você experimentou o perdão de Deus?</p>
+
+<p>Então fale sobre a graça de Deus.</p>
+
+<p>Você está aprendendo a Palavra?</p>
+
+<p>Compartilhe aquilo que aprendeu.</p>
+`,
+
+`
+<h2>9. PODER PARA SER TESTEMUNHA</h2>
+
+<p>Não precisamos esperar nos tornarmos especialistas para testemunhar de Cristo.</p>
+
+<p>Podemos começar contando aquilo que Deus está fazendo em nossa vida.</p>
+
+<p>O Espírito Santo nos capacita para essa missão.</p>
+
+<p><strong>Referências complementares:</strong></p>
+
+<ul>
+<li>Mateus 5:14-16 — A luz do mundo.</li>
+<li>Marcos 5:19 — Anunciar aquilo que o Senhor fez.</li>
+<li>Atos 4:20 — Testemunhar daquilo que vimos e ouvimos.</li>
+<li>1 Pedro 3:15 — Estar preparado para responder sobre nossa esperança.</li>
+</ul>
+
+<h2>CONCLUSÃO</h2>
+
+<p>Hoje aprendemos que o batismo no Espírito Santo está relacionado à promessa de Deus e à capacitação do discípulo para testemunhar de Jesus Cristo.</p>
+
+<p>Jesus prometeu o Espírito Santo.</p>
+
+<p>A promessa se cumpriu sobre os discípulos.</p>
+
+<p>O Espírito Santo trouxe poder.</p>
+
+<p>E esse poder estava relacionado à missão:</p>
+
+<blockquote>“Ser-me-eis testemunhas.”</blockquote>
+
+<p>Portanto, não devemos buscar apenas uma experiência.</p>
+
+<p>Devemos buscar uma vida de comunhão com Deus e disposição para cumprir a missão que Cristo nos confiou.</p>
+
+<p>Busque a Deus. Ore. Permaneça na Palavra. Busque a presença do Espírito Santo. E esteja disposto a testemunhar de Jesus.</p>
+
+<p>Que o Senhor nos capacite para sermos testemunhas fiéis do evangelho.</p>
+`,
+
+`
+<div class="prayer">
+
+<h2>ORAÇÃO FINAL</h2>
+
+<p>Vamos orar.</p>
+
+<p>Senhor nosso Deus e nosso Pai,</p>
+
+<p>nós te agradecemos por tua Palavra e por todas as tuas promessas.</p>
+
+<p>Obrigado pela promessa do Espírito Santo.</p>
+
+<p>Senhor, queremos conhecer mais profundamente a tua presença.</p>
+
+<p>Enche-nos da tua graça e capacita-nos para cumprir a missão que Jesus nos confiou.</p>
+
+<p>Dá-nos poder para testemunhar.</p>
+
+<p>Dá-nos coragem para anunciar o evangelho.</p>
+
+<p>Quando tivermos medo, fortalece-nos.</p>
+
+<p>Quando nos sentirmos incapazes, lembra-nos de que dependemos de ti.</p>
+
+<p>Livra-nos do orgulho e da busca por exaltação pessoal.</p>
+
+<p>Que tudo aquilo que recebermos de ti seja usado para glorificar o nome de Jesus.</p>
+
+<p>Ajuda-nos a permanecer firmes na Palavra.</p>
+
+<p>Ajuda-nos a viver em santidade.</p>
+
+<p>Ajuda-nos a produzir o fruto do Espírito.</p>
+
+`,
+
+`
+<div class="prayer">
+
+<p>E capacita-nos para sermos testemunhas fiéis de Cristo em nossa casa, em nossa família, em nosso trabalho, em nossa cidade e onde quer que o Senhor nos enviar.</p>
+
+<p>Que o Espírito Santo nos conduza e nos fortaleça todos os dias.</p>
+
+<p>Nós colocamos nossa vida e nosso ministério em tuas mãos.</p>
+
+<p>Em nome de Jesus.</p>
+
+<p><strong>Amém.</strong></p>
+
+</div>
+
+<h2>PARA GUARDAR NO CORAÇÃO</h2>
+
+<blockquote>
+“Mas recebereis a virtude do Espírito Santo, que há de vir sobre vós; e ser-me-eis testemunhas.”
+</blockquote>
+
+<p class="reference">Atos 1:8</p>
+
+<h2>PRÓXIMO ESTUDO</h2>
+
+<h3>ESTUDO 5 — ANDANDO NO ESPÍRITO</h3>
+
+<p>No próximo estudo do Discipulado Cristão — Ministério Atalaia, continuaremos aprendendo sobre:</p>
+
+<p>O que significa viver diariamente sob a direção do Espírito Santo e não segundo os desejos da carne.</p>
+
+<p class="reference">Referência Bíblica: Gálatas 5:16</p>
+
+<p>Continue firme no discipulado, estudando a Palavra de Deus e crescendo no conhecimento de Jesus Cristo.</p>
+
+<div class="footer">
+
+<strong>MINISTÉRIO ATALAIA</strong>
+
+<p>Proclamando a Verdade. Formando Discípulos.</p>
+
+</div>
+`
+
+];
+
+const book = document.getElementById('book');
+
+let current = 0;
+let voices = [];
+let speaking = false;
+
+pages.forEach((content, i) => {
+
+const p = document.createElement('div');
+
+p.className = 'page ' + (i === 0 ? 'current' : 'next');
+
+p.innerHTML = content;
+
+book.appendChild(p);
+
+});
+
+function render(){
+
+document.querySelectorAll('.page').forEach((p,i)=>{
+
+p.className = 'page ' +
+(i === current ? 'current' :
+i < current ? 'past' : 'next');
+
+});
+
+document.getElementById('counter').textContent =
+`${current+1} / ${pages.length}`;
+
+}
+
+function nextPage(){
+
+if(current < pages.length-1){
+
+stopSpeech();
+
+current++;
+
+render();
+
+}
+
+}
+
+function prevPage(){
+
+if(current > 0){
+
+stopSpeech();
+
+current--;
+
+render();
+
+}
+
+}
+
+function loadVoices(){
+
+voices = speechSynthesis.getVoices();
+
+}
+
+loadVoices();
+
+speechSynthesis.onvoiceschanged = loadVoices;
+
+function getVoice(){
+
+return voices.find(v=>/^pt-BR$/i.test(v.lang))
+|| voices.find(v=>/^pt/i.test(v.lang))
+|| voices[0];
+
+}
+
+function speakText(text){
+
+stopSpeech();
+
+const u = new SpeechSynthesisUtterance(text);
+
+const v = getVoice();
+
+if(v) u.voice = v;
+
+u.lang = 'pt-BR';
+u.rate = .92;
+u.pitch = 1;
+u.volume = 1;
+
+u.onend = ()=>{
+
+speaking = false;
+
+};
+
+speaking = true;
+
+speechSynthesis.speak(u);
+
+}
+
+function speakPage(){
+
+const text = document.querySelectorAll('.page')[current].innerText;
+
+speakText(text);
+
+}
+
+function speakAll(){
+
+stopSpeech();
+
+let i = current;
+
+function go(){
+
+if(i >= pages.length){
+
+speaking = false;
+
+return;
+
+}
+
+current = i;
+
+render();
+
+const text = document.querySelectorAll('.page')[i].innerText;
+
+const u = new SpeechSynthesisUtterance(text);
+
+const v = getVoice();
+
+if(v) u.voice = v;
+
+u.lang = 'pt-BR';
+u.rate = .92;
+
+u.onend = ()=>{
+
+i++;
+
+go();
+
+};
+
+speaking = true;
+
+speechSynthesis.speak(u);
+
+}
+
+go();
+
+}
+
+function stopSpeech(){
+
+speechSynthesis.cancel();
+
+speaking = false;
+
+}
+
+function toggleFullscreen(){
+
+if(!document.fullscreenElement){
+
+document.documentElement.requestFullscreen?.();
+
+}else{
+
+document.exitFullscreen?.();
+
+}
+
+}
+
+document.addEventListener('keydown',e=>{
+
+if(e.key==='ArrowRight') nextPage();
+
+if(e.key==='ArrowLeft') prevPage();
+
+if(e.key===' '){
+
+e.preventDefault();
+
+speakPage();
+
+}
+
+});
+
+render();
+
+</script>
+
+</body>
+</html>
