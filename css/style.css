@@ -1473,3 +1473,222 @@ BOTÃO DA LIÇÃO
     }
 
 }
+
+
+
+/* =====================================================
+   MATERIAIS DA LIÇÃO — DISCIPULADO CRISTÃO
+   Layout profissional em grade 2x2
+===================================================== */
+
+.recursos-licao {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    margin: 25px 0 10px;
+}
+
+/* BOTÃO BASE */
+
+.recursos-licao .recurso-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    min-width: 0;
+    min-height: 88px;
+    padding: 16px 18px;
+
+    background: linear-gradient(
+        135deg,
+        #14243b,
+        #0b1728
+    );
+
+    color: #fff;
+    text-decoration: none;
+
+    border: 1px solid rgba(212, 175, 55, .48);
+    border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .22),
+        inset 0 1px 0 rgba(255,255,255,.07);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+
+    overflow: hidden;
+}
+
+/* REFLEXO DISCRETO */
+
+.recursos-licao .recurso-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        110deg,
+        transparent 20%,
+        rgba(255,255,255,.09) 50%,
+        transparent 80%
+    );
+
+    transform: translateX(-120%);
+    transition: transform .6s ease;
+    pointer-events: none;
+}
+
+/* ÍCONE */
+
+.recursos-licao .recurso-icone {
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background: rgba(212, 175, 55, .13);
+    border: 1px solid rgba(212, 175, 55, .45);
+
+    color: #f0cf70;
+    font-size: 21px;
+}
+
+/* TEXTO */
+
+.recursos-licao .recurso-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 0;
+    flex: 1;
+}
+
+.recursos-licao .recurso-texto strong {
+    color: #f3d98c;
+    font-size: .94rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.recursos-licao .recurso-texto small {
+    color: #c2cad5;
+    font-size: .76rem;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* SETA */
+
+.recursos-licao .recurso-seta {
+    flex: 0 0 auto;
+    color: #d4af37;
+    font-size: 20px;
+    opacity: .8;
+    transition: transform .25s ease;
+}
+
+/* INTERAÇÃO */
+
+.recursos-licao .recurso-btn:hover {
+    transform: translateY(-4px);
+
+    border-color: #e4c45f;
+
+    background: linear-gradient(
+        135deg,
+        #203957,
+        #10243c
+    );
+
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, .32),
+        0 0 0 1px rgba(212, 175, 55, .12);
+}
+
+.recursos-licao .recurso-btn:hover::before {
+    transform: translateX(120%);
+}
+
+.recursos-licao .recurso-btn:hover .recurso-seta {
+    transform: translate(3px, -3px);
+}
+
+.recursos-licao .recurso-btn:active {
+    transform: translateY(-1px);
+}
+
+.recursos-licao .recurso-btn:focus-visible {
+    outline: 3px solid #e4c45f;
+    outline-offset: 3px;
+}
+
+/* DESTAQUE SUTIL PARA O YOUTUBE */
+
+.recursos-licao .recurso-video .recurso-icone {
+    background: rgba(180, 35, 35, .18);
+    border-color: rgba(220, 80, 80, .55);
+    color: #ff9999;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 520px) {
+
+    .recursos-licao {
+        gap: 10px;
+    }
+
+    .recursos-licao .recurso-btn {
+        min-height: 82px;
+        padding: 12px 10px;
+        gap: 9px;
+    }
+
+    .recursos-licao .recurso-icone {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+
+    .recursos-licao .recurso-texto strong {
+        font-size: .78rem;
+    }
+
+    .recursos-licao .recurso-texto small {
+        font-size: .66rem;
+    }
+
+    .recursos-licao .recurso-seta {
+        font-size: 15px;
+    }
+}
+
+
+
+/* =========================================
+   PAINEL DO CURSO 8
+========================================= */
+
+.curso8-conteudo {
+    display: none;
+    width: 100%;
+    overflow: hidden;
+}
+
+.curso8-container.ativo > .curso8-conteudo {
+    display: block;
+}

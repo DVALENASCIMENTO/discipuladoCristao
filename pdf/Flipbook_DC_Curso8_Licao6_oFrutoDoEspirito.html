@@ -1,0 +1,2003 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Ministério Atalaia">
+<meta name="description" content="Discipulado Cristão — O Fruto do Espírito">
+
+<title>Estudo 6 — O Fruto do Espírito | Ministério Atalaia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+:root {
+    --navy:#142a43;
+    --navy2:#203d5b;
+    --gold:#b18a4b;
+    --gold-light:#d7c39d;
+    --paper:#fffdf8;
+    --ink:#393831;
+    --muted:#817b70;
+    --bg:#e9e7e1;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+}
+
+button,select { font:inherit; }
+
+.topbar {
+    background:var(--navy);
+    color:white;
+    min-height:65px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 5%;
+    gap:15px;
+}
+
+.brand {
+    font-family:'Cinzel',serif;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+.brand small {
+    display:block;
+    font-family:Inter,sans-serif;
+    font-size:9px;
+    letter-spacing:2px;
+    color:var(--gold-light);
+    margin-top:4px;
+}
+
+.top-actions { display:flex; gap:8px; }
+
+.top-actions button {
+    border:1px solid #ffffff50;
+    color:white;
+    background:transparent;
+    padding:9px 13px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.top-actions button:hover {
+    background:#ffffff18;
+}
+
+.hero {
+    text-align:center;
+    padding:30px 15px 22px;
+}
+
+.hero .eyebrow {
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:3px;
+    font-weight:700;
+    margin-bottom:9px;
+}
+
+.hero h1 {
+    font-family:'Cinzel',serif;
+    font-size:clamp(22px,4vw,32px);
+    color:var(--navy);
+    font-weight:600;
+}
+
+.hero p {
+    color:#777064;
+    font-family:'Crimson Text',serif;
+    font-size:19px;
+    margin-top:6px;
+}
+
+.workspace {
+    width:min(1150px,96%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:24px;
+    align-items:start;
+    padding-bottom:35px;
+}
+
+.sidebar {
+    background:#f8f6f0;
+    border:1px solid #dcd6ca;
+    border-radius:7px;
+    padding:16px 12px;
+    position:sticky;
+    top:15px;
+    max-height:75vh;
+    overflow:auto;
+}
+
+.sidebar h3 {
+    font-family:'Cinzel',serif;
+    color:var(--navy);
+    font-size:12px;
+    margin:0 0 13px 5px;
+}
+
+.toc {
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.toc button {
+    text-align:left;
+    border:0;
+    background:transparent;
+    padding:9px 8px;
+    border-radius:4px;
+    color:#68645c;
+    font-size:11px;
+    cursor:pointer;
+    line-height:1.4;
+}
+
+.toc button:hover,
+.toc button.active {
+    background:#eae4d7;
+    color:var(--navy);
+    font-weight:700;
+}
+
+.book-area { min-width:0; }
+
+.book-shell {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:690px;
+    padding:5px 0;
+}
+
+#book {
+    margin:auto;
+}
+
+.page {
+    background:var(--paper);
+    color:var(--ink);
+    overflow:hidden;
+    border:1px solid #e3dccd;
+    padding:46px 43px 43px;
+    position:relative;
+    font-family:'Crimson Text',Georgia,serif;
+    box-shadow:inset 0 0 25px #8e76500b;
+}
+
+.page::before {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:5px;
+    background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy));
+}
+
+.page-inner {
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.page-kicker {
+    color:var(--gold);
+    font-family:Inter,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:9px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.page h2 {
+    font-family:'Cinzel',serif;
+    font-size:23px;
+    line-height:1.4;
+    color:var(--navy);
+    font-weight:600;
+    margin-bottom:16px;
+}
+
+.page h3 {
+    color:var(--navy);
+    font-family:'Cinzel',serif;
+    font-size:15px;
+    margin:20px 0 9px;
+}
+
+.page h4 {
+    color:#94723f;
+    font-family:'Cinzel',serif;
+    font-size:13px;
+    margin:15px 0 6px;
+}
+
+.page p {
+    font-size:16px;
+    line-height:1.65;
+    margin-bottom:11px;
+    text-align:justify;
+}
+
+.page ul,.page ol {
+    padding-left:23px;
+    margin:5px 0 15px;
+}
+
+.page li {
+    font-size:15px;
+    line-height:1.55;
+    margin-bottom:5px;
+}
+
+.page strong { color:var(--navy); }
+
+.page-subtitle {
+    font-style:italic;
+    color:#8d754f;
+    font-size:18px;
+    margin-top:-8px;
+    margin-bottom:18px;
+}
+
+.page-footer {
+    margin-top:auto;
+    padding-top:13px;
+    border-top:1px solid #e8e0d1;
+    display:flex;
+    justify-content:space-between;
+    color:#a18d6d;
+    font:9px Inter,sans-serif;
+    letter-spacing:1px;
+}
+
+.cover-page {
+    text-align:center;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(ellipse at center,#fffefa 0%,#f7f1e5 100%);
+    border:9px double #c3a777;
+    outline:1px solid #b18a4b;
+    outline-offset:-16px;
+    padding:48px 35px;
+}
+
+.cover-page::before { display:none; }
+
+.cover-emblem {
+    width:80px;
+    height:80px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font-size:32px;
+    margin:20px auto;
+}
+
+.cover-ministry {
+    color:var(--gold);
+    font-family:'Cinzel',serif;
+    letter-spacing:3px;
+    font-size:12px;
+}
+
+.cover-page h2 {
+    font-size:34px;
+    line-height:1.4;
+    margin:20px 0;
+}
+
+.cover-line {
+    width:100px;
+    height:1px;
+    background:var(--gold);
+    margin:15px auto;
+}
+
+.cover-page .cover-sub {
+    font-family:'Cinzel',serif;
+    color:#776345;
+    font-size:12px;
+    line-height:2;
+    letter-spacing:1px;
+}
+
+.cover-page .cover-reference {
+    font-family:'Crimson Text',serif;
+    font-size:21px;
+    font-style:italic;
+    color:#846d49;
+    margin-top:30px;
+}
+
+.verse-box {
+    background:#f5f0e6;
+    border-left:3px solid var(--gold);
+    padding:15px 18px;
+    margin:12px 0 17px;
+}
+
+.verse-box p { font-style:italic; }
+
+.callout {
+    background:#f5f1e8;
+    border:1px solid #e7decd;
+    border-radius:4px;
+    padding:14px 16px;
+    margin:12px 0 17px;
+}
+
+.callout p:last-child { margin-bottom:0; }
+
+.fruit-number {
+    font-family:'Cinzel',serif;
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+.fruit-title {
+    font-family:'Cinzel',serif;
+    font-size:26px;
+    color:var(--navy);
+    margin-bottom:15px;
+}
+
+.bible-ref {
+    display:inline-block;
+    color:#86652f;
+    background:#f6f0e4;
+    border:1px solid #e6d9c0;
+    border-radius:3px;
+    padding:2px 7px;
+    margin:2px 2px;
+    font-family:Inter,sans-serif;
+    font-size:10px;
+    font-weight:700;
+    text-decoration:none;
+    cursor:pointer;
+    transition:.2s;
+    white-space:nowrap;
+}
+
+.bible-ref:hover {
+    background:var(--navy);
+    border-color:var(--navy);
+    color:white;
+}
+
+.ref-list {
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+    margin:10px 0 17px;
+}
+
+.page table {
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0;
+    font-size:13px;
+}
+
+.page th {
+    background:var(--navy);
+    color:white;
+    padding:9px;
+    text-align:left;
+    font-family:Inter,sans-serif;
+    font-size:10px;
+}
+
+.page td {
+    border:1px solid #e3dac9;
+    padding:8px;
+    line-height:1.4;
+}
+
+.page tr:nth-child(even) td { background:#f8f5ee; }
+
+.page-content {
+    flex:1;
+    overflow:hidden;
+}
+
+.book-controls {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:12px auto;
+    flex-wrap:wrap;
+}
+
+.book-controls button {
+    border:1px solid #d0c5b3;
+    background:#f9f7f1;
+    color:var(--navy);
+    padding:10px 17px;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:600;
+}
+
+.book-controls button:hover {
+    background:var(--navy);
+    color:white;
+}
+
+.book-controls button:disabled {
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.book-controls .primary {
+    background:var(--navy);
+    color:white;
+    border-color:var(--navy);
+}
+
+.book-status {
+    text-align:center;
+    color:#817966;
+    font-size:11px;
+    margin:13px 0;
+}
+
+.progress-track {
+    width:min(550px,90%);
+    height:3px;
+    background:#d6d0c4;
+    margin:0 auto 15px;
+}
+
+.progress-track span {
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--gold);
+    transition:width .3s;
+}
+
+.bottom-note {
+    text-align:center;
+    color:#999080;
+    font-size:10px;
+    margin-top:10px;
+}
+
+/* POPUP BÍBLICO */
+
+.modal {
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    background:#101d2cbd;
+    backdrop-filter:blur(5px);
+}
+
+.modal.open { display:flex; }
+
+.modal-card {
+    width:min(620px,100%);
+    max-height:88vh;
+    overflow:auto;
+    background:#fffdf8;
+    border-radius:8px;
+    box-shadow:0 25px 80px #0005;
+    animation:modalIn .25s ease;
+}
+
+@keyframes modalIn {
+    from { transform:translateY(15px);opacity:0; }
+    to { transform:translateY(0);opacity:1; }
+}
+
+.modal-header {
+    padding:20px 23px;
+    background:var(--navy);
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.modal-header small {
+    color:var(--gold-light);
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.modal-header h2 {
+    font-family:'Cinzel',serif;
+    font-size:19px;
+    margin-top:5px;
+}
+
+.close-modal {
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:27px;
+    cursor:pointer;
+    padding:3px 8px;
+}
+
+.modal-body { padding:23px; }
+
+.version-control {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+}
+
+.version-control label {
+    color:#756b5b;
+    font-size:11px;
+    font-weight:700;
+}
+
+.version-control select {
+    padding:9px 12px;
+    border:1px solid #d9cebb;
+    border-radius:4px;
+    background:white;
+    color:var(--navy);
+    flex:1;
+    min-width:150px;
+}
+
+.scripture-text {
+    font-family:'Crimson Text',serif;
+    font-size:21px;
+    line-height:1.8;
+    color:#39372f;
+    white-space:pre-line;
+}
+
+.scripture-text p {
+    margin-bottom:10px;
+}
+
+.scripture-reference {
+    font-family:'Cinzel',serif;
+    font-size:17px;
+    color:var(--navy);
+    margin-bottom:17px;
+}
+
+.scripture-credit {
+    border-top:1px solid #e7dfd0;
+    padding-top:12px;
+    margin-top:20px;
+    color:#817968;
+    font-size:10px;
+    line-height:1.6;
+    white-space:pre-line;
+}
+
+.loading {
+    text-align:center;
+    padding:35px 10px;
+    color:#81745e;
+    font-size:13px;
+}
+
+.loading::before {
+    content:"";
+    display:block;
+    width:27px;
+    height:27px;
+    border:3px solid #e4ddcf;
+    border-top-color:var(--gold);
+    border-radius:50%;
+    margin:0 auto 13px;
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin { to { transform:rotate(360deg); } }
+
+.error-message {
+    background:#f8eee9;
+    padding:15px;
+    border-radius:5px;
+    color:#854b3d;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.modal-footer {
+    display:flex;
+    justify-content:flex-end;
+    padding:0 23px 20px;
+}
+
+.modal-footer button {
+    background:var(--navy);
+    color:white;
+    border:0;
+    padding:10px 16px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+@media(max-width:850px) {
+    .workspace {
+        grid-template-columns:1fr;
+    }
+
+    .sidebar {
+        position:relative;
+        top:auto;
+        max-height:none;
+    }
+
+    .toc {
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .book-shell { min-height:auto; }
+}
+
+@media(max-width:600px) {
+    .topbar { padding:12px 4%; }
+    .brand { font-size:11px; }
+    .top-actions button { padding:8px; font-size:10px; }
+    .hero { padding:24px 10px 15px; }
+
+    .workspace { width:98%;gap:12px; }
+
+    .page {
+        padding:34px 25px 35px;
+    }
+
+    .page h2 { font-size:19px; }
+    .page p { font-size:15px;line-height:1.58; }
+    .page li { font-size:14px; }
+    .fruit-title { font-size:23px; }
+
+    .book-controls { gap:6px; }
+    .book-controls button {
+        padding:9px 11px;
+        font-size:10px;
+    }
+
+    .modal-body { padding:18px; }
+    .scripture-text { font-size:19px; }
+}
+
+@media print {
+    .topbar,.hero,.sidebar,.book-controls,.book-status,
+    .progress-track,.bottom-note,.modal { display:none!important; }
+
+    body { background:white; }
+    .workspace { display:block;width:100%; }
+    .page { box-shadow:none;break-after:page; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        MINISTÉRIO ATALAIA
+        <small>PROCLAMANDO A VERDADE. FORMANDO DISCÍPULOS.</small>
+    </div>
+
+    <div class="top-actions">
+        <button onclick="window.print()">Imprimir</button>
+        <button onclick="toggleFullscreen()">⛶ Tela cheia</button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">ESCOLA BÍBLICA ATALAIA • DISCIPULADO CRISTÃO</div>
+    <h1>O Fruto do Espírito</h1>
+    <p>O caráter de Cristo sendo formado na vida do discípulo</p>
+</section>
+
+<main class="workspace">
+
+    <aside class="sidebar">
+        <h3>SUMÁRIO DO ESTUDO</h3>
+        <nav class="toc" id="toc"></nav>
+    </aside>
+
+    <section class="book-area">
+
+        <div class="book-shell">
+            <div id="book"></div>
+        </div>
+
+        <div class="progress-track">
+            <span id="progress"></span>
+        </div>
+
+        <div class="book-status" id="status">Página 1</div>
+
+        <div class="book-controls">
+            <button id="first">⏮ Início</button>
+            <button id="previous">← Anterior</button>
+            <button class="primary" id="next">Próxima →</button>
+            <button id="last">Final ⏭</button>
+            <button id="read">🔊 Ouvir</button>
+            <button id="stop">■ Parar</button>
+        </div>
+
+        <p class="bottom-note">
+            Clique nas referências bíblicas para consultar os textos das Escrituras.
+        </p>
+
+    </section>
+</main>
+
+<!-- JANELA DE CONSULTA BÍBLICA -->
+
+<div class="modal" id="bibleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+
+        <div class="modal-header">
+            <div>
+                <small>CONSULTA DAS ESCRITURAS</small>
+                <h2 id="modalTitle">Referência bíblica</h2>
+            </div>
+            <button class="close-modal" id="closeModal" aria-label="Fechar">&times;</button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="version-control">
+                <label for="versionSelect">VERSÃO BÍBLICA</label>
+                <select id="versionSelect">
+                    <option value="bpm">Bíblia Portuguesa Mundial</option>
+                    <option value="almeida-livre">Almeida Livre (1819)</option>
+                    <option value="alm1911">Almeida 1911</option>
+                    <option value="nva">Nova Versão de Acesso Livre</option>
+                    <option value="onbv">Open Nova Bíblia Viva</option>
+                </select>
+            </div>
+
+            <div id="scriptureContent">
+                <div class="loading">Carregando texto bíblico...</div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button id="closeModalBottom">Fechar consulta</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* =========================================================
+   CONTEÚDO DO ESTUDO
+   ========================================================= */
+
+const pages = [
+
+{
+title:"Capa",
+menu:"Capa",
+cover:true,
+content:`
+<div class="cover-ministry">MINISTÉRIO ATALAIA</div>
+<div class="cover-emblem">✦</div>
+<div class="cover-sub">DISCIPULADO CRISTÃO<br>CURSO 8 — O ESPÍRITO SANTO NA VIDA DO DISCÍPULO</div>
+<div class="cover-line"></div>
+<h2>O FRUTO<br>DO ESPÍRITO</h2>
+<div class="cover-line"></div>
+<div class="cover-sub">ESTUDO 6</div>
+<div class="cover-reference">Gálatas 5:22-23</div>
+`
+},
+
+{
+title:"Apresentação",
+menu:"Apresentação",
+content:`
+<h2>Apresentação do Estudo</h2>
+
+<p><strong>Curso:</strong> O Espírito Santo na Vida do Discípulo.</p>
+<p><strong>Estudo 6:</strong> O Fruto do Espírito.</p>
+<p><strong>Tema:</strong> O caráter de Cristo sendo formado na vida do discípulo.</p>
+
+<div class="callout">
+<p><strong>Objetivo geral</strong></p>
+<p>Compreender o fruto produzido pelo Espírito Santo na vida do discípulo, reconhecendo suas nove características e como elas se manifestam no desenvolvimento de um caráter semelhante ao de Jesus Cristo.</p>
+</div>
+
+<h3>Verdade central</h3>
+<p>O Espírito Santo trabalha na formação do caráter cristão, desenvolvendo em nós características semelhantes ao caráter de Jesus Cristo.</p>
+
+<h3>Texto principal</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Gálatas 5:22-23">Gálatas 5:22-23</a>
+</div>
+`
+},
+
+{
+title:"Leitura bíblica",
+menu:"Leitura bíblica",
+content:`
+<h2>O Fruto do Espírito</h2>
+<div class="page-subtitle">Gálatas 5:22-23</div>
+
+<div class="verse-box">
+<p>O apóstolo Paulo apresenta nove características que identificam a obra do Espírito Santo na vida daqueles que pertencem a Cristo.</p>
+</div>
+
+<p>O texto bíblico apresenta:</p>
+
+<ul>
+<li>Amor;</li>
+<li>Alegria;</li>
+<li>Paz;</li>
+<li>Longanimidade;</li>
+<li>Benignidade;</li>
+<li>Bondade;</li>
+<li>Fidelidade;</li>
+<li>Mansidão;</li>
+<li>Temperança.</li>
+</ul>
+
+<p>Essas características apontam para uma transformação que não se limita à aparência exterior, mas alcança o interior do ser humano.</p>
+
+<div class="ref-list">
+<a class="bible-ref" data-ref="Gálatas 5:16-25">Gálatas 5:16-25</a>
+</div>
+`
+},
+
+{
+title:"Introdução",
+menu:"1. Introdução",
+content:`
+<h2>O que Deus deseja produzir em nós?</h2>
+
+<p>Quando uma pessoa recebe Jesus Cristo como Senhor e Salvador, começa uma nova vida. Entretanto, a conversão não representa o fim de um processo, mas o início de uma transformação.</p>
+
+<p>Deus não deseja apenas modificar nossas atitudes exteriores. Ele deseja transformar nosso interior, nossas motivações, pensamentos, palavras e comportamentos.</p>
+
+<p>O propósito do Espírito Santo é produzir em nós um caráter que se assemelhe ao caráter de Jesus Cristo.</p>
+
+<div class="callout">
+<p><strong>Uma verdade fundamental</strong></p>
+<p>Não basta conhecer a Palavra de Deus; precisamos permitir que ela transforme nossa maneira de viver.</p>
+</div>
+
+<h3>Referências para aprofundamento</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Romanos 12:2">Romanos 12:2</a>
+<a class="bible-ref" data-ref="2 Coríntios 5:17">2 Coríntios 5:17</a>
+<a class="bible-ref" data-ref="Efésios 4:22-24">Efésios 4:22-24</a>
+<a class="bible-ref" data-ref="Colossenses 3:9-10">Colossenses 3:9-10</a>
+</div>
+`
+},
+
+{
+title:"Fundamentos",
+menu:"2. Fundamentos",
+content:`
+<h2>O que é o Fruto do Espírito?</h2>
+
+<p>O apóstolo Paulo apresenta nove características que são produzidas pelo Espírito Santo na vida daqueles que pertencem a Cristo.</p>
+
+<p>Observe que a Bíblia utiliza a expressão no singular: <strong>fruto do Espírito.</strong></p>
+
+<p>Isso nos ensina que não estamos falando simplesmente de virtudes independentes que escolhemos desenvolver conforme nossa preferência. Estamos falando de uma obra do Espírito Santo que alcança todas as áreas do nosso caráter.</p>
+
+<p>Uma pessoa não pode afirmar que está amadurecendo espiritualmente enquanto alimenta deliberadamente o ódio, a inveja, a arrogância ou a falta de domínio próprio.</p>
+
+<div class="callout">
+<p>O fruto do Espírito revela uma transformação que acontece de dentro para fora.</p>
+</div>
+`
+},
+
+{
+title:"Dons e fruto",
+menu:"Dons e fruto",
+content:`
+<h2>Dons espirituais e fruto do Espírito</h2>
+
+<h3>Dons espirituais</h3>
+<p>Estão relacionados à capacitação concedida pelo Espírito Santo para o serviço cristão.</p>
+
+<h3>Fruto do Espírito</h3>
+<p>Está relacionado à formação do caráter cristão.</p>
+
+<p>Precisamos dos dois, mas nunca devemos confundir manifestação espiritual com maturidade espiritual.</p>
+
+<p>Uma pessoa pode exercer um dom e ainda precisar amadurecer em seu caráter.</p>
+
+<p>O discípulo deve buscar não apenas os dons de Deus, mas também uma vida que manifeste o caráter de Cristo.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="1 Coríntios 12:4-11">1 Coríntios 12:4-11</a>
+<a class="bible-ref" data-ref="1 Coríntios 13:1-3">1 Coríntios 13:1-3</a>
+<a class="bible-ref" data-ref="1 Coríntios 14:1">1 Coríntios 14:1</a>
+<a class="bible-ref" data-ref="Gálatas 5:16-25">Gálatas 5:16-25</a>
+</div>
+`
+},
+
+{
+title:"Amor",
+menu:"3.1 Amor",
+content:`
+<div class="fruit-number">PRIMEIRA CARACTERÍSTICA • 01</div>
+<div class="fruit-title">AMOR</div>
+
+<p>O amor é a essência do relacionamento cristão.</p>
+
+<p>Não se trata apenas de sentimento ou emoção, mas de uma disposição de buscar o bem do próximo.</p>
+
+<p>Jesus ensinou que devemos amar até mesmo nossos inimigos.</p>
+
+<p>O discípulo demonstra o amor de Cristo quando perdoa, serve, acolhe e age com misericórdia.</p>
+
+<p>O amor nos ensina a olhar para as pessoas com a compaixão que recebemos de Deus.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 13:34-35">João 13:34-35</a>
+<a class="bible-ref" data-ref="Mateus 5:44">Mateus 5:44</a>
+<a class="bible-ref" data-ref="1 Coríntios 13:4-7">1 Coríntios 13:4-7</a>
+<a class="bible-ref" data-ref="1 João 4:7-8">1 João 4:7-8</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Tenho demonstrado amor somente às pessoas que me tratam bem ou também àquelas com quem tenho dificuldades?</p>
+</div>
+`
+},
+
+{
+title:"Alegria",
+menu:"3.2 Alegria",
+content:`
+<div class="fruit-number">SEGUNDA CARACTERÍSTICA • 02</div>
+<div class="fruit-title">ALEGRIA</div>
+
+<p>A alegria produzida pelo Espírito Santo não depende exclusivamente das circunstâncias.</p>
+
+<p>O cristão pode enfrentar dificuldades e, ainda assim, conservar sua esperança em Deus.</p>
+
+<p>Essa alegria não significa ausência de sofrimento, mas confiança na presença e nas promessas do Senhor.</p>
+
+<p>É uma alegria que permanece mesmo quando os dias são difíceis, porque sua fonte não está nas coisas passageiras, mas em Deus.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 15:11">João 15:11</a>
+<a class="bible-ref" data-ref="Filipenses 4:4">Filipenses 4:4</a>
+<a class="bible-ref" data-ref="Neemias 8:10">Neemias 8:10</a>
+<a class="bible-ref" data-ref="Romanos 14:17">Romanos 14:17</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Minha alegria está fundamentada em Deus ou depende exclusivamente de acontecimentos favoráveis?</p>
+</div>
+`
+},
+
+{
+title:"Paz",
+menu:"3.3 Paz",
+content:`
+<div class="fruit-number">TERCEIRA CARACTERÍSTICA • 03</div>
+<div class="fruit-title">PAZ</div>
+
+<p>A paz representa tranquilidade interior e confiança em Deus.</p>
+
+<p>O discípulo aprende a não ser governado pelo desespero ou pelas circunstâncias.</p>
+
+<p>Além disso, procura ser um instrumento de reconciliação, evitando contendas e promovendo a unidade.</p>
+
+<p>A paz que vem de Deus também transforma nossa maneira de enfrentar conflitos e dificuldades.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 14:27">João 14:27</a>
+<a class="bible-ref" data-ref="Filipenses 4:6-7">Filipenses 4:6-7</a>
+<a class="bible-ref" data-ref="Romanos 12:18">Romanos 12:18</a>
+<a class="bible-ref" data-ref="Colossenses 3:15">Colossenses 3:15</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Tenho contribuído para a paz nos ambientes que frequento ou minhas atitudes têm provocado conflitos?</p>
+</div>
+`
+},
+
+{
+title:"Longanimidade",
+menu:"3.4 Longanimidade",
+content:`
+<div class="fruit-number">QUARTA CARACTERÍSTICA • 04</div>
+<div class="fruit-title">LONGANIMIDADE</div>
+
+<p>Longanimidade significa paciência, perseverança e capacidade de suportar situações difíceis sem agir impulsivamente.</p>
+
+<p>É aprender a esperar o tempo de Deus e tratar as pessoas com paciência.</p>
+
+<p>Nem sempre as coisas acontecerão no momento que desejamos. Mas o discípulo aprende a confiar no Senhor e a não permitir que a impaciência controle suas atitudes.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Efésios 4:2">Efésios 4:2</a>
+<a class="bible-ref" data-ref="Colossenses 3:12-13">Colossenses 3:12-13</a>
+<a class="bible-ref" data-ref="Tiago 5:7-8">Tiago 5:7-8</a>
+<a class="bible-ref" data-ref="Romanos 2:4">Romanos 2:4</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Como tenho reagido quando as pessoas não correspondem às minhas expectativas ou quando preciso esperar?</p>
+</div>
+`
+},
+
+{
+title:"Benignidade",
+menu:"3.5 Benignidade",
+content:`
+<div class="fruit-number">QUINTA CARACTERÍSTICA • 05</div>
+<div class="fruit-title">BENIGNIDADE</div>
+
+<p>A benignidade está relacionada à maneira bondosa e cuidadosa com que tratamos as pessoas.</p>
+
+<p>É desenvolver uma disposição para fazer o bem, demonstrando consideração, respeito e misericórdia.</p>
+
+<p>O discípulo precisa compreender que suas palavras e atitudes podem edificar ou ferir alguém.</p>
+
+<p>Por isso, deve procurar agir com bondade e sensibilidade.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Efésios 4:32">Efésios 4:32</a>
+<a class="bible-ref" data-ref="Colossenses 3:12">Colossenses 3:12</a>
+<a class="bible-ref" data-ref="Tito 3:4-5">Tito 3:4-5</a>
+<a class="bible-ref" data-ref="Lucas 6:35">Lucas 6:35</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Minhas palavras têm transmitido cuidado e respeito ou tenho ferido as pessoas sem considerar suas necessidades?</p>
+</div>
+`
+},
+
+{
+title:"Bondade",
+menu:"3.6 Bondade",
+content:`
+<div class="fruit-number">SEXTA CARACTERÍSTICA • 06</div>
+<div class="fruit-title">BONDADE</div>
+
+<p>A bondade vai além de desejar o bem. Ela se manifesta em atitudes concretas.</p>
+
+<p>O discípulo demonstra bondade quando ajuda alguém, age com honestidade, pratica a justiça e procura fazer aquilo que agrada a Deus.</p>
+
+<p>Não basta dizer que temos um coração transformado. Essa transformação precisa aparecer em nossas atitudes.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Miqueias 6:8">Miqueias 6:8</a>
+<a class="bible-ref" data-ref="Romanos 12:21">Romanos 12:21</a>
+<a class="bible-ref" data-ref="Efésios 5:9">Efésios 5:9</a>
+<a class="bible-ref" data-ref="Gálatas 6:9-10">Gálatas 6:9-10</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Tenho praticado o bem de maneira concreta ou apenas reconheço que fazer o bem é importante?</p>
+</div>
+`
+},
+
+{
+title:"Fidelidade",
+menu:"3.7 Fidelidade",
+content:`
+<div class="fruit-number">SÉTIMA CARACTERÍSTICA • 07</div>
+<div class="fruit-title">FÉ OU FIDELIDADE</div>
+
+<p>Nesse contexto, a palavra também pode ser compreendida como fidelidade.</p>
+
+<p>É ser uma pessoa confiável, permanecer firme em Deus e cumprir aquilo que assume diante do Senhor e das pessoas.</p>
+
+<p>A fidelidade se manifesta quando permanecemos firmes mesmo diante das dificuldades.</p>
+
+<p>O discípulo não deve ser alguém que serve a Deus somente quando tudo está bem. Ele precisa desenvolver uma vida de compromisso e perseverança.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="1 Coríntios 4:2">1 Coríntios 4:2</a>
+<a class="bible-ref" data-ref="Provérbios 20:6">Provérbios 20:6</a>
+<a class="bible-ref" data-ref="Apocalipse 2:10">Apocalipse 2:10</a>
+<a class="bible-ref" data-ref="Hebreus 10:23">Hebreus 10:23</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Sou fiel a Deus somente nos momentos favoráveis ou permaneço comprometido mesmo diante das dificuldades?</p>
+</div>
+`
+},
+
+{
+title:"Mansidão",
+menu:"3.8 Mansidão",
+content:`
+<div class="fruit-number">OITAVA CARACTERÍSTICA • 08</div>
+<div class="fruit-title">MANSIDÃO</div>
+
+<p>Mansidão não significa fraqueza. Significa ter força sob controle.</p>
+
+<p>É saber responder sem agressividade, corrigir sem humilhar e enfrentar situações difíceis sem permitir que o orgulho domine o coração.</p>
+
+<p>Jesus é nosso maior exemplo de mansidão.</p>
+
+<p>O discípulo precisa aprender a controlar suas reações e tratar as pessoas com respeito, mesmo quando enfrenta situações desagradáveis.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Mateus 11:28-29">Mateus 11:28-29</a>
+<a class="bible-ref" data-ref="Mateus 5:5">Mateus 5:5</a>
+<a class="bible-ref" data-ref="2 Timóteo 2:24-25">2 Timóteo 2:24-25</a>
+<a class="bible-ref" data-ref="1 Pedro 3:15-16">1 Pedro 3:15-16</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Como tenho reagido quando sou contrariado, criticado ou tratado injustamente?</p>
+</div>
+`
+},
+
+{
+title:"Temperança",
+menu:"3.9 Temperança",
+content:`
+<div class="fruit-number">NONA CARACTERÍSTICA • 09</div>
+<div class="fruit-title">TEMPERANÇA</div>
+
+<p>Temperança significa domínio próprio.</p>
+
+<p>É a capacidade de controlar desejos, palavras, impulsos e comportamentos.</p>
+
+<p>O discípulo não deve ser escravo de suas vontades. Ele aprende a submeter suas escolhas à direção do Espírito Santo.</p>
+
+<p>Isso envolve controlar a língua, os pensamentos, as emoções e os desejos.</p>
+
+<p>O domínio próprio nos ajuda a dizer não àquilo que nos afasta da vontade de Deus.</p>
+
+<h3>Referências bíblicas</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Provérbios 16:32">Provérbios 16:32</a>
+<a class="bible-ref" data-ref="Provérbios 25:28">Provérbios 25:28</a>
+<a class="bible-ref" data-ref="1 Coríntios 9:25-27">1 Coríntios 9:25-27</a>
+<a class="bible-ref" data-ref="2 Pedro 1:5-7">2 Pedro 1:5-7</a>
+</div>
+
+<div class="callout">
+<p><strong>Aplicação pessoal</strong></p>
+<p>Tenho permitido que minhas emoções e impulsos controlem minhas decisões ou tenho aprendido a submetê-los à direção de Deus?</p>
+</div>
+`
+},
+
+{
+title:"Síntese",
+menu:"4. Síntese",
+content:`
+<h2>As nove características em conjunto</h2>
+
+<p>As nove características revelam o tipo de caráter que Deus deseja desenvolver em seus filhos.</p>
+
+<table>
+<tr><th>Nº</th><th>Característica</th></tr>
+<tr><td>01</td><td>Amor</td></tr>
+<tr><td>02</td><td>Alegria</td></tr>
+<tr><td>03</td><td>Paz</td></tr>
+<tr><td>04</td><td>Longanimidade</td></tr>
+<tr><td>05</td><td>Benignidade</td></tr>
+<tr><td>06</td><td>Bondade</td></tr>
+<tr><td>07</td><td>Fidelidade</td></tr>
+<tr><td>08</td><td>Mansidão</td></tr>
+<tr><td>09</td><td>Temperança</td></tr>
+</table>
+
+<div class="callout">
+<p>O fruto do Espírito revela uma transformação que acontece de dentro para fora e alcança todas as áreas do caráter do discípulo.</p>
+</div>
+
+<div class="ref-list">
+<a class="bible-ref" data-ref="Gálatas 5:22-23">Gálatas 5:22-23</a>
+</div>
+`
+},
+
+{
+title:"Permanecer em Cristo",
+menu:"5.1 Permanecer em Cristo",
+content:`
+<h2>Como o fruto se desenvolve?</h2>
+
+<h3>1. Permanecer em Cristo</h3>
+
+<p>O fruto não aparece de maneira instantânea. Assim como uma árvore precisa de tempo para crescer e produzir, o caráter cristão também é desenvolvido ao longo da caminhada.</p>
+
+<p>Em João 15:1-8, Jesus utiliza a figura da videira e dos ramos para ensinar que precisamos permanecer nele para produzir frutos.</p>
+
+<p>Um ramo separado da videira não consegue produzir frutos por si mesmo.</p>
+
+<p>Da mesma maneira, o discípulo não consegue desenvolver uma vida verdadeiramente espiritual vivendo distante de Cristo.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 15:1-8">João 15:1-8</a>
+<a class="bible-ref" data-ref="Colossenses 2:6-7">Colossenses 2:6-7</a>
+</div>
+`
+},
+
+{
+title:"Palavra e oração",
+menu:"5.2 Palavra e oração",
+content:`
+<h2>Alimentar-se da Palavra e cultivar oração</h2>
+
+<h3>2. Alimentar-se da Palavra de Deus</h3>
+
+<p>A Bíblia corrige nossos pensamentos, orienta nossas decisões e transforma nossa maneira de enxergar o mundo.</p>
+
+<p>Não podemos esperar uma transformação profunda enquanto negligenciamos a Palavra de Deus.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Salmos 119:9-11">Salmos 119:9-11</a>
+<a class="bible-ref" data-ref="João 17:17">João 17:17</a>
+<a class="bible-ref" data-ref="2 Timóteo 3:16-17">2 Timóteo 3:16-17</a>
+</div>
+
+<h3>3. Cultivar uma vida de oração</h3>
+
+<p>A oração fortalece nossa comunhão com Deus e nos ajuda a buscar sua direção.</p>
+
+<p>O discípulo precisa cultivar uma vida de dependência do Espírito Santo.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Efésios 6:18">Efésios 6:18</a>
+<a class="bible-ref" data-ref="Romanos 8:26-27">Romanos 8:26-27</a>
+<a class="bible-ref" data-ref="Judas 1:20">Judas 1:20</a>
+</div>
+`
+},
+
+{
+title:"Obediência e perseverança",
+menu:"5.3 Obediência e perseverança",
+content:`
+<h2>Obedecer e perseverar</h2>
+
+<h3>4. Obedecer à direção do Espírito Santo</h3>
+
+<p>O Espírito Santo trabalha em nós, mas precisamos responder com fé, obediência e disposição para abandonar aquilo que não agrada a Deus.</p>
+
+<p>Não podemos continuar alimentando os mesmos comportamentos que precisam ser abandonados.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Gálatas 5:16">Gálatas 5:16</a>
+<a class="bible-ref" data-ref="Romanos 8:13-14">Romanos 8:13-14</a>
+<a class="bible-ref" data-ref="Filipenses 2:12-13">Filipenses 2:12-13</a>
+</div>
+
+<h3>5. Perseverar no crescimento espiritual</h3>
+
+<p>O crescimento espiritual exige perseverança. Precisamos permitir que Deus trabalhe em todas as áreas da nossa vida.</p>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="2 Pedro 3:18">2 Pedro 3:18</a>
+<a class="bible-ref" data-ref="Filipenses 1:6">Filipenses 1:6</a>
+<a class="bible-ref" data-ref="Hebreus 12:1-2">Hebreus 12:1-2</a>
+</div>
+`
+},
+
+{
+title:"Caráter de Cristo",
+menu:"6. O caráter de Cristo",
+content:`
+<h2>O fruto do Espírito e o caráter de Cristo</h2>
+
+<p>O maior exemplo de uma vida que manifesta perfeitamente o caráter de Deus é Jesus Cristo.</p>
+
+<p>Quando observamos os Evangelhos, encontramos em Jesus o amor, a compaixão, a mansidão, a fidelidade e a obediência ao Pai.</p>
+
+<p>Jesus demonstrou amor aos rejeitados, teve compaixão dos necessitados, permaneceu fiel em meio às tentações, ensinou com autoridade e mansidão e, mesmo diante do sofrimento, permaneceu obediente à vontade do Pai.</p>
+
+<div class="callout">
+<p><strong>O objetivo do discipulado</strong></p>
+<p>Não é simplesmente formar pessoas que conhecem informações bíblicas. É formar discípulos que se tornam cada vez mais semelhantes a Cristo.</p>
+</div>
+
+<h3>Referências</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Romanos 8:29">Romanos 8:29</a>
+<a class="bible-ref" data-ref="Efésios 5:1-2">Efésios 5:1-2</a>
+<a class="bible-ref" data-ref="Filipenses 2:5-11">Filipenses 2:5-11</a>
+<a class="bible-ref" data-ref="1 João 2:6">1 João 2:6</a>
+</div>
+`
+},
+
+{
+title:"Aplicação",
+menu:"7. Aplicação pessoal",
+content:`
+<h2>A transformação precisa alcançar todas as áreas</h2>
+
+<p>Precisamos avaliar nossa caminhada cristã.</p>
+
+<ul>
+<li>Estamos mais pacientes?</li>
+<li>Estamos aprendendo a perdoar?</li>
+<li>Estamos controlando nossas palavras?</li>
+<li>Estamos tratando melhor nossa família?</li>
+<li>Estamos sendo mais fiéis a Deus?</li>
+<li>Estamos demonstrando amor mesmo quando não recebemos amor em troca?</li>
+</ul>
+
+<p>Essas perguntas nos ajudam a perceber se estamos permitindo que o Espírito Santo transforme nosso caráter.</p>
+
+<p>A maturidade espiritual não é medida apenas pelo tempo de igreja, pela quantidade de conhecimentos bíblicos ou pelas atividades que realizamos.</p>
+
+<p>Ela também é percebida pela maneira como vivemos e tratamos as pessoas.</p>
+`
+},
+
+{
+title:"Conclusão",
+menu:"8. Conclusão",
+content:`
+<h2>Uma vida que produz frutos</h2>
+
+<p>O fruto do Espírito é a manifestação do caráter que o Espírito Santo deseja produzir na vida do discípulo.</p>
+
+<p>Aprendemos que esse fruto possui nove características:</p>
+
+<div class="callout">
+<p><strong>Amor, alegria, paz, longanimidade, benignidade, bondade, fidelidade, mansidão e domínio próprio.</strong></p>
+</div>
+
+<p>Não devemos buscar apenas uma aparência de espiritualidade. Precisamos permitir que Deus transforme nosso coração.</p>
+
+<p>Uma vida cheia do Espírito Santo não é reconhecida apenas pelo que manifesta diante das pessoas, mas também pelo caráter que demonstra quando ninguém está olhando.</p>
+
+<p>Que nossa família, nossa igreja, nosso trabalho e todos os ambientes que frequentamos sejam alcançados pela transformação que Deus está realizando em nós.</p>
+
+<p>Que o caráter de Cristo seja cada vez mais evidente em nossa maneira de viver.</p>
+
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 15:8">João 15:8</a>
+</div>
+`
+},
+
+{
+title:"Reflexão",
+menu:"9. Reflexão",
+content:`
+<h2>Reflexão e aplicação pessoal</h2>
+
+<p>Responda sinceramente diante de Deus:</p>
+
+<ol>
+<li>Qual das nove características do fruto do Espírito você considera mais desenvolvida em sua vida?</li>
+<li>Qual delas você reconhece que ainda precisa desenvolver?</li>
+<li>Como suas atitudes demonstram o caráter de Cristo dentro de sua família?</li>
+<li>Você consegue manter a paz e a mansidão quando enfrenta situações difíceis?</li>
+<li>O que precisa mudar em sua maneira de pensar, falar e agir para que o fruto do Espírito seja mais evidente?</li>
+</ol>
+
+<div class="callout">
+<p><strong>Orientação</strong></p>
+<p>Responda com sinceridade. O propósito desta reflexão é reconhecer as áreas que precisam de transformação e crescimento espiritual.</p>
+</div>
+`
+},
+
+{
+title:"Desafio",
+menu:"10. Desafio da semana",
+content:`
+<h2>Vivendo o fruto do Espírito</h2>
+
+<p>Durante os próximos sete dias, procure colocar em prática as características estudadas.</p>
+
+<table>
+<tr><th>Dia</th><th>Prática</th></tr>
+<tr><td>1</td><td>Demonstre amor por alguém que precisa de atenção.</td></tr>
+<tr><td>2</td><td>Cultive a gratidão mesmo diante das dificuldades.</td></tr>
+<tr><td>3</td><td>Evite discussões desnecessárias e promova a reconciliação.</td></tr>
+<tr><td>4</td><td>Exercite a paciência em uma situação difícil.</td></tr>
+<tr><td>5</td><td>Pratique uma atitude concreta de bondade.</td></tr>
+<tr><td>6</td><td>Cumpra seus compromissos diante de Deus e das pessoas.</td></tr>
+<tr><td>7</td><td>Controle suas palavras e reações.</td></tr>
+</table>
+
+<p>Ao final da semana, avalie como essas práticas contribuíram para sua caminhada cristã.</p>
+`
+},
+
+{
+title:"Oração",
+menu:"11. Oração final",
+content:`
+<h2>Oração final</h2>
+
+<p>Senhor nosso Deus e Pai, agradecemos pela tua Palavra e pela presença do Espírito Santo em nossas vidas.</p>
+
+<p>Pedimos que o teu Espírito trabalhe em nosso interior, transformando nossos pensamentos, nossas palavras, nossas atitudes e nossas motivações.</p>
+
+<p>Ajuda-nos a desenvolver o amor, a alegria, a paz, a longanimidade, a benignidade, a bondade, a fidelidade, a mansidão e o domínio próprio.</p>
+
+<p>Ensina-nos a permanecer em Cristo, a obedecer à tua Palavra e a viver de maneira que o caráter de Jesus seja percebido em nós.</p>
+
+<p>Que nossa vida produza frutos que glorifiquem o teu nome.</p>
+
+<p>Em nome de Jesus Cristo.</p>
+
+<div class="verse-box">
+<p><strong>Amém!</strong></p>
+</div>
+`
+},
+
+{
+title:"Referências",
+menu:"12. Referências bíblicas",
+content:`
+<h2>Referências bíblicas complementares</h2>
+
+<p>Clique em qualquer referência para abrir a passagem bíblica.</p>
+
+<h3>Fruto do Espírito</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="Gálatas 5:22-23">Gálatas 5:22-23</a>
+<a class="bible-ref" data-ref="Gálatas 5:16-25">Gálatas 5:16-25</a>
+</div>
+
+<h3>Amor e caráter cristão</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="1 Coríntios 13:1-13">1 Coríntios 13:1-13</a>
+<a class="bible-ref" data-ref="Colossenses 3:9-14">Colossenses 3:9-14</a>
+</div>
+
+<h3>Permanecer em Cristo</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="João 15:1-8">João 15:1-8</a>
+</div>
+
+<h3>Crescimento espiritual</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="2 Pedro 1:5-8">2 Pedro 1:5-8</a>
+<a class="bible-ref" data-ref="Romanos 8:29">Romanos 8:29</a>
+<a class="bible-ref" data-ref="2 Pedro 3:18">2 Pedro 3:18</a>
+</div>
+
+<h3>Nova vida em Cristo</h3>
+<div class="ref-list">
+<a class="bible-ref" data-ref="2 Coríntios 5:17">2 Coríntios 5:17</a>
+<a class="bible-ref" data-ref="Romanos 12:1-2">Romanos 12:1-2</a>
+<a class="bible-ref" data-ref="Efésios 4:22-24">Efésios 4:22-24</a>
+</div>
+`
+},
+
+{
+title:"Contracapa",
+menu:"Encerramento",
+cover:true,
+content:`
+<div class="cover-ministry">ESCOLA BÍBLICA ATALAIA</div>
+<div class="cover-emblem">✦</div>
+<h2>UMA VIDA<br>QUE PRODUZ<br>FRUTOS</h2>
+<div class="cover-line"></div>
+<div class="cover-reference">Gálatas 5:22-23</div>
+<div class="cover-sub" style="margin-top:35px">
+DISCIPULADO CRISTÃO<br>
+O ESPÍRITO SANTO NA VIDA DO DISCÍPULO
+</div>
+<div class="cover-line"></div>
+<div class="cover-ministry">MINISTÉRIO ATALAIA</div>
+`
+}
+
+];
+
+/* =========================================================
+   CONSTRUÇÃO DO LIVRO
+   ========================================================= */
+
+const bookElement = document.getElementById("book");
+const toc = document.getElementById("toc");
+
+pages.forEach((page,index) => {
+
+    const pageElement = document.createElement("div");
+    pageElement.className = "page";
+
+    if(page.cover) pageElement.classList.add("cover-page");
+
+    pageElement.innerHTML = `
+        <div class="page-inner">
+            ${page.cover ? "" : `
+                <div class="page-kicker">MINISTÉRIO ATALAIA • DISCIPULADO CRISTÃO</div>
+                <h2>${page.title}</h2>
+            `}
+            <div class="page-content">${page.content}</div>
+            ${page.cover ? "" : `
+                <div class="page-footer">
+                    <span>ESCOLA BÍBLICA ATALAIA</span>
+                    <span>${String(index+1).padStart(2,"0")}</span>
+                </div>
+            `}
+        </div>
+    `;
+
+    bookElement.appendChild(pageElement);
+
+    const item = document.createElement("button");
+    item.textContent = page.menu;
+    item.addEventListener("click",()=>goToPage(index));
+
+    toc.appendChild(item);
+});
+
+/* =========================================================
+   MOTOR DO FLIPBOOK
+   ========================================================= */
+
+const flipBook = new St.PageFlip(bookElement, {
+    width:540,
+    height:720,
+    size:"stretch",
+    minWidth:290,
+    maxWidth:540,
+    minHeight:400,
+    maxHeight:720,
+    drawShadow:true,
+    flippingTime:750,
+    usePortrait:true,
+    startPage:0,
+    autoSize:true,
+    maxShadowOpacity:0.3,
+    showCover:true,
+    mobileScrollSupport:false,
+    clickEventForward:true,
+    useMouseEvents:true,
+    swipeDistance:30
+});
+
+flipBook.loadFromHTML(document.querySelectorAll(".page"));
+
+function updateBook() {
+
+    const current = flipBook.getCurrentPageIndex();
+    const total = pages.length;
+
+    document.getElementById("status").textContent =
+        `Página ${current+1} de ${total}`;
+
+    document.getElementById("progress").style.width =
+        `${((current+1)/total)*100}%`;
+
+    document.getElementById("previous").disabled = current===0;
+    document.getElementById("first").disabled = current===0;
+
+    document.getElementById("next").disabled = current===total-1;
+    document.getElementById("last").disabled = current===total-1;
+
+    [...toc.children].forEach((item,index)=>{
+        item.classList.toggle("active",index===current);
+    });
+
+    window.speechSynthesis.cancel();
+}
+
+flipBook.on("flip",updateBook);
+
+function goToPage(index) {
+    flipBook.flip(index);
+}
+
+document.getElementById("next").onclick = ()=>flipBook.flipNext();
+document.getElementById("previous").onclick = ()=>flipBook.flipPrev();
+document.getElementById("first").onclick = ()=>flipBook.flip(0);
+document.getElementById("last").onclick = ()=>flipBook.flip(pages.length-1);
+
+/* =========================================================
+   CONSULTA BÍBLICA ONLINE
+   API MIDVASH
+   Documentação: https://api.midvash.com/pt-br
+   ========================================================= */
+
+const bibleModal = document.getElementById("bibleModal");
+const scriptureContent = document.getElementById("scriptureContent");
+const modalTitle = document.getElementById("modalTitle");
+const versionSelect = document.getElementById("versionSelect");
+
+let currentReference = "";
+let requestController = null;
+
+const bookSlugs = {
+    "genesis":"genesis",
+    "exodo":"exodo",
+    "levitico":"levitico",
+    "numeros":"numeros",
+    "deuteronomio":"deuteronomio",
+    "josue":"josue",
+    "juizes":"juizes",
+    "rute":"rute",
+    "1 samuel":"1-samuel",
+    "2 samuel":"2-samuel",
+    "1 reis":"1-reis",
+    "2 reis":"2-reis",
+    "1 cronicas":"1-cronicas",
+    "2 cronicas":"2-cronicas",
+    "esdras":"esdras",
+    "neemias":"neemias",
+    "ester":"ester",
+    "jo":"jo",
+    "salmos":"salmos",
+    "proverbios":"proverbios",
+    "eclesiastes":"eclesiastes",
+    "canticos":"canticos",
+    "isaias":"isaias",
+    "jeremias":"jeremias",
+    "lamentacoes":"lamentacoes",
+    "ezequiel":"ezequiel",
+    "daniel":"daniel",
+    "oseias":"oseias",
+    "joel":"joel",
+    "amos":"amos",
+    "obadias":"obadias",
+    "jonas":"jonas",
+    "miqueias":"miqueias",
+    "naum":"naum",
+    "habacuque":"habacuque",
+    "sofonias":"sofonias",
+    "ageu":"ageu",
+    "zacarias":"zacarias",
+    "malaquias":"malaquias",
+    "mateus":"mateus",
+    "marcos":"marcos",
+    "lucas":"lucas",
+    "joao":"joao",
+    "atos":"atos",
+    "romanos":"romanos",
+    "1 corintios":"1-corintios",
+    "2 corintios":"2-corintios",
+    "galatas":"galatas",
+    "efesios":"efesios",
+    "filipenses":"filipenses",
+    "colossenses":"colossenses",
+    "1 tessalonicenses":"1-tessalonicenses",
+    "2 tessalonicenses":"2-tessalonicenses",
+    "1 timoteo":"1-timoteo",
+    "2 timoteo":"2-timoteo",
+    "tito":"tito",
+    "filemom":"filemom",
+    "hebreus":"hebreus",
+    "tiago":"tiago",
+    "1 pedro":"1-pedro",
+    "2 pedro":"2-pedro",
+    "1 joao":"1-joao",
+    "2 joao":"2-joao",
+    "3 joao":"3-joao",
+    "judas":"judas",
+    "apocalipse":"apocalipse"
+};
+
+function normalizeText(value) {
+    return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .toLowerCase()
+        .replace(/\s+/g," ")
+        .trim();
+}
+
+function parseBibleReference(reference) {
+
+    const normalized = normalizeText(reference);
+
+    const match = normalized.match(
+        /^(.+?)\s+(\d+)(?::(\d+)(?:-(\d+))?)?$/
+    );
+
+    if(!match) {
+        throw new Error("Não foi possível interpretar a referência bíblica.");
+    }
+
+    const bookName = match[1].trim();
+    const chapter = match[2];
+    const verseStart = match[3];
+    const verseEnd = match[4];
+
+    const slug = bookSlugs[bookName];
+
+    if(!slug) {
+        throw new Error("Livro bíblico não reconhecido: "+bookName);
+    }
+
+    return {
+        slug,
+        chapter,
+        verseStart,
+        verseEnd
+    };
+}
+
+async function loadBibleText(reference) {
+
+    currentReference = reference;
+
+    bibleModal.classList.add("open");
+    modalTitle.textContent = reference;
+
+    scriptureContent.innerHTML =
+        '<div class="loading">Buscando o texto nas Escrituras...</div>';
+
+    if(requestController) {
+        requestController.abort();
+    }
+
+    requestController = new AbortController();
+
+    try {
+
+        const parsed = parseBibleReference(reference);
+        const version = versionSelect.value;
+
+        let endpoint =
+            `https://api.midvash.com/v1/${version}/${parsed.slug}/${parsed.chapter}`;
+
+        if(parsed.verseStart) {
+
+            let verse = parsed.verseStart;
+
+            if(parsed.verseEnd) {
+                verse += "-"+parsed.verseEnd;
+            }
+
+            endpoint += "/"+verse;
+        }
+
+        const response = await fetch(endpoint,{
+            signal:requestController.signal
+        });
+
+        if(!response.ok) {
+            throw new Error("Não foi possível localizar essa passagem na versão escolhida.");
+        }
+
+        const result = await response.json();
+
+        if(result.error) {
+            throw new Error(result.error.message || "Erro na consulta bíblica.");
+        }
+
+        const data = result.data || {};
+        const meta = result.meta || {};
+
+        const text = data.text ||
+            (Array.isArray(data.verses) ? data.verses.join("\n\n") : "");
+
+        if(!text) {
+            throw new Error("A consulta foi realizada, mas não retornou o texto bíblico.");
+        }
+
+        const content = document.createElement("div");
+
+        const heading = document.createElement("div");
+        heading.className = "scripture-reference";
+        heading.textContent = meta.reference || reference;
+
+        const textElement = document.createElement("div");
+        textElement.className = "scripture-text";
+        textElement.textContent = text;
+
+        const credit = document.createElement("div");
+        credit.className = "scripture-credit";
+        credit.textContent =
+            meta.copyright ||
+            "Texto disponibilizado pela API Midvash. Consulte os dados da versão utilizada.";
+
+        content.append(heading,textElement,credit);
+
+        scriptureContent.replaceChildren(content);
+
+    } catch(error) {
+
+        if(error.name === "AbortError") return;
+
+        scriptureContent.innerHTML = "";
+
+        const message = document.createElement("div");
+        message.className = "error-message";
+        message.textContent =
+            error.message + " Verifique sua conexão ou tente outra tradução.";
+
+        scriptureContent.appendChild(message);
+    }
+}
+
+/* Referências clicáveis em todas as páginas */
+
+bookElement.addEventListener("click",event=>{
+
+    const referenceLink = event.target.closest(".bible-ref");
+
+    if(!referenceLink) return;
+
+    event.preventDefault();
+
+    const reference = referenceLink.dataset.ref;
+
+    if(reference) {
+        loadBibleText(reference);
+    }
+
+});
+
+/* Alterar tradução sem fechar o popup */
+
+versionSelect.addEventListener("change",()=>{
+
+    if(currentReference) {
+        loadBibleText(currentReference);
+    }
+
+});
+
+/* Fechar popup */
+
+function closeBibleModal() {
+
+    bibleModal.classList.remove("open");
+
+    if(requestController) {
+        requestController.abort();
+    }
+}
+
+document.getElementById("closeModal").onclick = closeBibleModal;
+document.getElementById("closeModalBottom").onclick = closeBibleModal;
+
+bibleModal.addEventListener("click",event=>{
+    if(event.target === bibleModal) {
+        closeBibleModal();
+    }
+});
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key === "Escape") {
+        closeBibleModal();
+    }
+
+});
+
+/* =========================================================
+   LEITURA EM VOZ ALTA
+   ========================================================= */
+
+document.getElementById("read").onclick = ()=>{
+
+    window.speechSynthesis.cancel();
+
+    const index = flipBook.getCurrentPageIndex();
+    const page = pages[index];
+
+    const temporary = document.createElement("div");
+    temporary.innerHTML = page.content;
+
+    const text = temporary.innerText;
+
+    const speech = new SpeechSynthesisUtterance(
+        page.title+". "+text
+    );
+
+    speech.lang = "pt-BR";
+    speech.rate = 0.92;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+};
+
+document.getElementById("stop").onclick = ()=>{
+    window.speechSynthesis.cancel();
+};
+
+/* =========================================================
+   TELA CHEIA
+   ========================================================= */
+
+async function toggleFullscreen() {
+
+    try {
+
+        const target = document.querySelector(".book-area");
+
+        if(!document.fullscreenElement) {
+            await target.requestFullscreen();
+        } else {
+            await document.exitFullscreen();
+        }
+
+    } catch(error) {
+        console.error("Tela cheia indisponível:",error);
+    }
+}
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+
+updateBook();
+
+</script>
+
+</body>
+</html>

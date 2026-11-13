@@ -1,0 +1,1830 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#14243a">
+<title>Lição 5 — Andando no Espírito | Escola Bíblica Atalaia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<style>
+:root {
+    --navy: #14243a;
+    --navy-light: #203751;
+    --gold: #b89a61;
+    --gold-light: #d6c49b;
+    --paper: #faf8f2;
+    --paper-dark: #f0ece2;
+    --ink: #292b2d;
+    --muted: #77746d;
+    --white: #fff;
+    --shadow: 0 18px 55px rgba(0,0,0,.22);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at top, #31445a 0%, #17283d 55%, #101d2e 100%);
+    color: var(--ink);
+    font-family: "Crimson Text", Georgia, serif;
+    overflow-x: hidden;
+}
+
+button, select { font: inherit; }
+
+.topbar {
+    width: 100%;
+    min-height: 68px;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: rgba(12,25,41,.88);
+    border-bottom: 1px solid rgba(214,196,155,.25);
+    color: white;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    display: grid;
+    place-items: center;
+    font-family: Cinzel, serif;
+    font-size: 19px;
+}
+
+.brand-name {
+    font-family: Cinzel, serif;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+}
+
+.brand-sub {
+    color: #c9c4b9;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tool-button {
+    border: 1px solid rgba(214,196,155,.38);
+    background: transparent;
+    color: #f5f0e6;
+    padding: 9px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    transition: .2s;
+}
+
+.tool-button:hover,
+.tool-button.active {
+    background: var(--gold);
+    color: #182538;
+}
+
+.book-heading {
+    text-align: center;
+    color: white;
+    padding: 22px 15px 8px;
+}
+
+.book-heading small {
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font: 11px Arial, sans-serif;
+}
+
+.book-heading h1 {
+    font-family: Cinzel, serif;
+    font-size: clamp(19px, 3vw, 27px);
+    font-weight: 600;
+    margin: 9px 0 5px;
+}
+
+.book-heading p {
+    color: #d4d9df;
+    font-size: 16px;
+    margin: 0;
+}
+
+.reader {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 12px 12px;
+}
+
+.book-shell {
+    width: min(100%, 1120px);
+    height: min(72vh, 760px);
+    min-height: 430px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#flipbook {
+    margin: auto;
+}
+
+.page {
+    background: var(--paper);
+    color: var(--ink);
+    overflow: hidden;
+    border: 1px solid #e5dfd2;
+}
+
+.page-content {
+    height: 100%;
+    width: 100%;
+    padding: 48px 48px 42px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(120,100,65,.025), transparent 13%, transparent 87%, rgba(120,100,65,.025)),
+        var(--paper);
+}
+
+.page-content::before {
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 48px;
+    right: 48px;
+    height: 1px;
+    background: var(--gold-light);
+}
+
+.page-content::after {
+    content: "";
+    position: absolute;
+    bottom: 25px;
+    left: 48px;
+    right: 48px;
+    height: 1px;
+    background: var(--gold-light);
+}
+
+.page-header {
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8b7957;
+    margin-bottom: 22px;
+}
+
+.page-body {
+    flex: 1;
+    overflow: hidden;
+}
+
+.page-body h2 {
+    font-family: Cinzel, serif;
+    color: var(--navy);
+    font-size: 21px;
+    line-height: 1.35;
+    margin: 0 0 19px;
+    font-weight: 600;
+}
+
+.page-body h3 {
+    color: #725b35;
+    font-family: Cinzel, serif;
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 18px 0 9px;
+}
+
+.page-body p {
+    font-size: 17px;
+    line-height: 1.48;
+    margin: 0 0 12px;
+    text-align: justify;
+}
+
+.page-body ul {
+    margin: 8px 0 15px;
+    padding-left: 22px;
+}
+
+.page-body li {
+    font-size: 16px;
+    line-height: 1.42;
+    margin-bottom: 7px;
+}
+
+.page-body strong {
+    color: #243a52;
+}
+
+.page-number {
+    text-align: center;
+    color: #8c806b;
+    font: 10px Arial, sans-serif;
+    margin-top: 12px;
+}
+
+.scripture {
+    background: #f0ece2;
+    border-left: 3px solid var(--gold);
+    padding: 15px 18px;
+    margin: 15px 0;
+    color: #303744;
+}
+
+.scripture p {
+    font-style: italic;
+    margin: 0 0 7px;
+}
+
+.scripture cite {
+    color: #806b45;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.bible-ref {
+    color: #72562a;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #b89a61;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    display: inline;
+}
+
+.bible-ref:hover {
+    color: #a16d22;
+}
+
+.cover-page {
+    background:
+        linear-gradient(145deg, rgba(12,29,49,.97), rgba(29,51,72,.98)),
+        var(--navy);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 36px;
+}
+
+.cover-page::before,
+.cover-page::after {
+    background: rgba(184,154,97,.75);
+    left: 35px;
+    right: 35px;
+}
+
+.cover-symbol {
+    width: 78px;
+    height: 78px;
+    border: 1px solid var(--gold);
+    display: grid;
+    place-items: center;
+    color: var(--gold-light);
+    font: 36px Cinzel, serif;
+    margin-bottom: 34px;
+}
+
+.cover-institution {
+    color: var(--gold-light);
+    font: 11px Arial, sans-serif;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.cover-page h1 {
+    font: 600 30px/1.35 Cinzel, serif;
+    color: #fff;
+    margin: 0 0 14px;
+}
+
+.cover-page h2 {
+    font: 500 15px Cinzel, serif;
+    color: var(--gold-light);
+    letter-spacing: 1.2px;
+    margin: 0 0 28px;
+}
+
+.cover-line {
+    width: 70px;
+    height: 1px;
+    background: var(--gold);
+    margin: 5px auto 25px;
+}
+
+.cover-page p {
+    color: #e0e1e0;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.cover-footer {
+    color: var(--gold-light);
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1.5px;
+    margin-top: 38px;
+}
+
+.presentation {
+    text-align: center;
+    justify-content: center;
+}
+
+.presentation .institution {
+    color: #927747;
+    font: 11px Arial, sans-serif;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.presentation h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+.presentation p {
+    text-align: center;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0 !important;
+}
+
+.toc-list li {
+    border-bottom: 1px solid #e6dfd2;
+    padding: 9px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #34465a;
+}
+
+.toc-list button {
+    border: 0;
+    background: transparent;
+    color: #34465a;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+}
+
+.toc-list button:hover {
+    color: #98733c;
+}
+
+.toc-list span {
+    color: #9b896b;
+    font: 11px Arial, sans-serif;
+}
+
+.reflection {
+    background: #f1ede3;
+    padding: 15px 18px;
+    border: 1px solid #e0d7c5;
+    margin: 12px 0;
+}
+
+.reflection p {
+    font-weight: 600;
+    color: var(--navy);
+    text-align: left;
+}
+
+.controls {
+    width: min(100%, 1000px);
+    color: white;
+    padding: 13px 5px 5px;
+}
+
+.progress-track {
+    height: 4px;
+    width: 100%;
+    background: rgba(255,255,255,.17);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--gold);
+    transition: width .25s;
+}
+
+.control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.nav-button {
+    width: 40px;
+    height: 38px;
+    border: 1px solid rgba(214,196,155,.4);
+    background: rgba(255,255,255,.06);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.nav-button:hover {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.nav-button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.page-counter {
+    min-width: 95px;
+    text-align: center;
+    font: 12px Arial, sans-serif;
+    color: #e5e0d5;
+}
+
+.control-hint {
+    font: 11px Arial, sans-serif;
+    color: #bfc7cf;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.mobile-toc {
+    display: none;
+    width: min(100%, 1000px);
+    margin-bottom: 10px;
+}
+
+.mobile-toc select {
+    width: 100%;
+    padding: 10px;
+    background: #203751;
+    border: 1px solid rgba(214,196,155,.4);
+    color: white;
+    border-radius: 4px;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(5,13,23,.78);
+}
+
+.modal.open { display: flex; }
+
+.modal-box {
+    width: min(100%, 560px);
+    max-height: min(85vh, 760px);
+    overflow-y: auto;
+    background: var(--paper);
+    border-radius: 7px;
+    box-shadow: var(--shadow);
+    padding: 25px;
+    position: relative;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #ded5c4;
+    padding-bottom: 13px;
+    margin-bottom: 18px;
+}
+
+.modal-top h2 {
+    font: 600 18px Cinzel, serif;
+    color: var(--navy);
+    margin: 0;
+}
+
+.close-modal {
+    border: 0;
+    background: var(--navy);
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.modal-box p {
+    font-size: 18px;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.modal-box .copyright {
+    color: #716b60;
+    font: 11px/1.5 Arial, sans-serif;
+    border-top: 1px solid #e4ddcf;
+    padding-top: 12px;
+    margin-top: 18px;
+}
+
+.modal-status {
+    color: #6c6559;
+    font-size: 15px;
+}
+
+.version-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.version-row label {
+    color: #5b554b;
+    font: 12px Arial, sans-serif;
+}
+
+.version-row select {
+    flex: 1;
+    min-width: 150px;
+    padding: 8px;
+    border: 1px solid #d6cbb7;
+    background: white;
+    color: #27374b;
+    border-radius: 4px;
+}
+
+.modal-action {
+    border: 0;
+    background: var(--navy);
+    color: white;
+    padding: 9px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-action:hover { background: #304b69; }
+
+.footer {
+    color: #bdc4cc;
+    text-align: center;
+    padding: 14px 12px 22px;
+    font: 10px Arial, sans-serif;
+    letter-spacing: 1px;
+}
+
+.fallback-message {
+    display: none;
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+.fullscreen .topbar,
+.fullscreen .book-heading,
+.fullscreen .footer {
+    display: none;
+}
+
+.fullscreen .reader {
+    padding-top: 10px;
+}
+
+.fullscreen .book-shell {
+    height: 83vh;
+}
+
+@media (max-width: 700px) {
+    .topbar {
+        padding: 10px 12px;
+        align-items: flex-start;
+    }
+
+    .brand-name { font-size: 10px; }
+    .brand-sub { font-size: 10px; }
+
+    .top-actions {
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .tool-button {
+        padding: 8px 9px;
+        font-size: 11px;
+    }
+
+    .book-heading {
+        padding: 17px 12px 4px;
+    }
+
+    .book-heading h1 { font-size: 19px; }
+
+    .reader {
+        padding: 12px 5px 8px;
+    }
+
+    .book-shell {
+        height: min(70vh, 760px);
+        min-height: 440px;
+        width: 100%;
+    }
+
+    .page-content {
+        padding: 34px 23px 35px;
+    }
+
+    .page-content::before {
+        top: 18px;
+        left: 23px;
+        right: 23px;
+    }
+
+    .page-content::after {
+        bottom: 18px;
+        left: 23px;
+        right: 23px;
+    }
+
+    .page-header {
+        font-size: 8px;
+        margin-bottom: 16px;
+    }
+
+    .page-body h2 {
+        font-size: 18px;
+        margin-bottom: 13px;
+    }
+
+    .page-body h3 {
+        font-size: 13px;
+        margin-top: 13px;
+    }
+
+    .page-body p {
+        font-size: 15px;
+        line-height: 1.42;
+        margin-bottom: 9px;
+    }
+
+    .page-body li {
+        font-size: 14px;
+        line-height: 1.35;
+        margin-bottom: 5px;
+    }
+
+    .scripture {
+        padding: 11px 12px;
+        margin: 10px 0;
+    }
+
+    .scripture p { font-size: 15px; }
+
+    .cover-page h1 { font-size: 24px; }
+    .cover-page h2 { font-size: 12px; }
+
+    .cover-page {
+        padding: 35px 22px;
+    }
+
+    .cover-symbol {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .controls {
+        padding: 10px 8px 4px;
+    }
+
+    .control-row {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navigation { gap: 5px; }
+    .nav-button {
+        width: 42px;
+        height: 42px;
+    }
+
+    .page-counter { min-width: 85px; }
+
+    .mobile-toc { display: block; }
+
+    .control-hint { display: none; }
+
+    .modal-box {
+        padding: 19px;
+    }
+}
+
+@media (max-width: 380px) {
+    .brand-mark { display: none; }
+    .tool-button { font-size: 10px; padding: 7px; }
+    .page-body p { font-size: 14px; }
+}
+
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .topbar,
+    .book-heading,
+    .controls,
+    .footer,
+    .modal {
+        display: none !important;
+    }
+
+    .reader {
+        display: block;
+        padding: 0;
+    }
+
+    .book-shell {
+        display: block;
+        height: auto;
+        width: 100%;
+    }
+
+    #flipbook {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .page {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        page-break-after: always;
+        box-shadow: none !important;
+        border: 0;
+        overflow: visible !important;
+    }
+
+    .page-content {
+        height: auto !important;
+        min-height: 250mm;
+        overflow: visible !important;
+        padding: 20mm !important;
+        background: white !important;
+    }
+
+    .page-body {
+        overflow: visible !important;
+    }
+
+    .page-body p,
+    .page-body li {
+        font-size: 12pt;
+    }
+
+    .bible-ref {
+        color: black !important;
+        text-decoration: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="brand-mark">A</div>
+        <div>
+            <div class="brand-name">ESCOLA BÍBLICA ATALAIA</div>
+            <div class="brand-sub">Ministério Atalaia</div>
+        </div>
+    </div>
+
+    <div class="top-actions">
+        <button class="tool-button" id="speechButton" type="button">▶ Ouvir</button>
+        <button class="tool-button" id="printButton" type="button">Imprimir</button>
+        <button class="tool-button" id="fullscreenButton" type="button">Tela cheia</button>
+    </div>
+</header>
+
+<section class="book-heading">
+    <small>Discipulado Cristão · Fundamentos da Fé</small>
+    <h1>Lição 5 — Andando no Espírito</h1>
+    <p>Uma caminhada diária de obediência e transformação</p>
+</section>
+
+<main class="reader">
+    <div class="mobile-toc">
+        <select id="mobileToc" aria-label="Navegar pelo sumário">
+            <option value="">Ir para uma seção...</option>
+        </select>
+    </div>
+
+    <div class="book-shell">
+        <div id="flipbook">
+
+            <!-- CAPA -->
+            <div class="page">
+                <div class="page-content cover-page">
+                    <div class="cover-symbol">A</div>
+                    <div class="cover-institution">Escola Bíblica Atalaia</div>
+                    <h1>ANDANDO<br>NO ESPÍRITO</h1>
+                    <h2>LIÇÃO 5</h2>
+                    <div class="cover-line"></div>
+                    <p>Discipulado Cristão<br>Fundamentos da Fé</p>
+                    <div class="cover-footer">MINISTÉRIO ATALAIA</div>
+                </div>
+            </div>
+
+            <!-- APRESENTAÇÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">Escola Bíblica Atalaia · Discipulado Cristão</div>
+                    <div class="page-body presentation">
+                        <div class="institution">MINISTÉRIO ATALAIA</div>
+                        <h2>Andando no Espírito</h2>
+                        <p><strong>Lição 5 — Fundamentos da Fé</strong></p>
+                        <div class="cover-line"></div>
+                        <p><strong>Referência bíblica principal</strong></p>
+                        <p><button class="bible-ref" data-ref="Gálatas 5:16">Gálatas 5:16</button></p>
+                        <p><strong>Duração aproximada</strong></p>
+                        <p>10 minutos</p>
+                        <p style="margin-top:25px">Escola Bíblica Atalaia<br>Ministério Atalaia</p>
+                    </div>
+                    <div class="page-number">02</div>
+                </div>
+            </div>
+
+            <!-- SUMÁRIO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">Organização do estudo</div>
+                    <div class="page-body">
+                        <h2>Sumário</h2>
+                        <ul class="toc-list">
+                            <li><button data-goto="3">1. Introdução — O que significa andar no Espírito?</button><span>03</span></li>
+                            <li><button data-goto="4">2. O que significa andar no Espírito?</button><span>04</span></li>
+                            <li><button data-goto="5">3. A luta entre a carne e o Espírito</button><span>05</span></li>
+                            <li><button data-goto="6">4. As obras da carne</button><span>06</span></li>
+                            <li><button data-goto="7">5. O fruto do Espírito</button><span>07</span></li>
+                            <li><button data-goto="9">6. Como andar no Espírito diariamente?</button><span>09</span></li>
+                            <li><button data-goto="11">7. Uma caminhada de transformação</button><span>11</span></li>
+                            <li><button data-goto="12">8. Conclusão</button><span>12</span></li>
+                            <li><button data-goto="13">9. Para refletir e praticar</button><span>13</span></li>
+                            <li><button data-goto="14">10. Próxima lição</button><span>14</span></li>
+                        </ul>
+                    </div>
+                    <div class="page-number">03</div>
+                </div>
+            </div>
+
+            <!-- 1. INTRODUÇÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">01 · Introdução</div>
+                    <div class="page-body">
+                        <h2>1. INTRODUÇÃO — O QUE SIGNIFICA ANDAR NO ESPÍRITO?</h2>
+                        <p>Na lição anterior, estudamos o batismo no Espírito Santo e compreendemos sua relação com a capacitação do discípulo para testemunhar de Jesus Cristo.</p>
+                        <p>Nesta lição, vamos aprofundar nosso conhecimento sobre um assunto fundamental para a vida cristã: andar no Espírito.</p>
+                        <p>Conhecer a Palavra de Deus é essencial, mas o conhecimento precisa produzir transformação. O verdadeiro discípulo de Jesus não deve apenas conhecer os ensinamentos de Cristo, mas permitir que eles orientem seu comportamento, suas escolhas, seus pensamentos e suas atitudes.</p>
+                        <p>Andar no Espírito não é apenas uma experiência durante um culto ou uma manifestação momentânea de emoção. É uma caminhada contínua de obediência, comunhão e transformação.</p>
+                    </div>
+                    <div class="page-number">04</div>
+                </div>
+            </div>
+
+            <!-- GÁLATAS 5:16 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">01 · Introdução</div>
+                    <div class="page-body">
+                        <h2>A orientação das Escrituras</h2>
+                        <p>O apóstolo Paulo apresenta uma orientação clara em <button class="bible-ref" data-ref="Gálatas 5:16">Gálatas 5:16</button>:</p>
+                        <div class="scripture">
+                            <p>"Por isso digo: vivam pelo Espírito, e de modo nenhum satisfarão os desejos da carne."</p>
+                            <cite>Gálatas 5:16</cite>
+                        </div>
+                        <p>Esse versículo nos ensina que a vida cristã deve ser conduzida pela direção do Espírito Santo, em submissão à vontade de Deus.</p>
+                        <p>Andar no Espírito não é apenas uma experiência durante um culto ou uma manifestação momentânea de emoção. É uma caminhada contínua de obediência, comunhão e transformação.</p>
+                    </div>
+                    <div class="page-number">05</div>
+                </div>
+            </div>
+
+            <!-- 2. ANDAR NO ESPÍRITO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">02 · O significado de andar no Espírito</div>
+                    <div class="page-body">
+                        <h2>2. O QUE SIGNIFICA ANDAR NO ESPÍRITO?</h2>
+                        <p>Andar no Espírito significa viver diariamente em submissão à vontade de Deus, permitindo que o Espírito Santo nos conduza a uma vida de obediência à Palavra.</p>
+                        <p>Essa maneira de viver vai além de frequentar uma igreja, participar de reuniões, cantar louvores ou demonstrar emoções durante um culto. Essas práticas podem fazer parte da vida cristã, mas não substituem uma vida de obediência ao Senhor.</p>
+                        <p>Andar no Espírito é buscar a vontade de Deus antes de tomar decisões, controlar as palavras quando sentimos vontade de ofender alguém, escolher a verdade quando seria mais fácil mentir e rejeitar o pecado mesmo quando ninguém está olhando.</p>
+                    </div>
+                    <div class="page-number">06</div>
+                </div>
+            </div>
+
+            <!-- ROMANOS 8:14 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">02 · O significado de andar no Espírito</div>
+                    <div class="page-body">
+                        <h2>Uma caminhada contínua</h2>
+                        <p>A expressão <em>andar</em> transmite a ideia de continuidade. Não se trata de uma experiência isolada, mas de uma caminhada diária.</p>
+                        <p>Em <button class="bible-ref" data-ref="Romanos 8:14">Romanos 8:14</button>, encontramos:</p>
+                        <div class="scripture">
+                            <p>"Porque todos os que são guiados pelo Espírito de Deus são filhos de Deus."</p>
+                            <cite>Romanos 8:14</cite>
+                        </div>
+                        <p>Portanto, o discípulo de Cristo não deve ser conduzido exclusivamente pelos desejos pessoais, pelas emoções ou pelas influências deste mundo. Sua vida precisa estar orientada pela direção de Deus.</p>
+                    </div>
+                    <div class="page-number">07</div>
+                </div>
+            </div>
+
+            <!-- 3. LUTA CARNE E ESPÍRITO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">03 · A luta entre a carne e o Espírito</div>
+                    <div class="page-body">
+                        <h2>3. A LUTA ENTRE A CARNE E O ESPÍRITO</h2>
+                        <p>Em <button class="bible-ref" data-ref="Gálatas 5:17">Gálatas 5:17</button>, Paulo explica que a carne deseja o que é contrário ao Espírito, e o Espírito deseja o que é contrário à carne.</p>
+                        <p>Esse ensinamento apresenta uma realidade da caminhada cristã: existe um conflito entre os desejos pecaminosos da natureza humana e a vontade de Deus.</p>
+                        <p>A carne representa as inclinações humanas contrárias à vontade divina. Entre elas estão o orgulho, a inveja, a ira, a imoralidade, a mentira e a ganância.</p>
+                        <h3>Exemplos do cotidiano</h3>
+                        <ul>
+                            <li>Quando alguém é ofendido e decide alimentar o ódio e a vingança, está cedendo a um desejo da carne.</li>
+                            <li>Quando uma pessoa sente inveja do sucesso de outra e deseja seu fracasso, permite que o pecado influencie seu coração.</li>
+                        </ul>
+                    </div>
+                    <div class="page-number">08</div>
+                </div>
+            </div>
+
+            <!-- CONTINUAÇÃO 3 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">03 · A luta entre a carne e o Espírito</div>
+                    <div class="page-body">
+                        <h2>Escolhendo aquilo que agrada a Deus</h2>
+                        <ul>
+                            <li>Quando alguém escolhe a mentira, a desonestidade ou a imoralidade, segue um caminho contrário à vontade de Deus.</li>
+                        </ul>
+                        <p>Por outro lado, andar no Espírito significa escolher aquilo que agrada ao Senhor.</p>
+                        <p>É perdoar em vez de alimentar o ressentimento, agir com honestidade quando existe oportunidade de enganar, buscar a pureza diante das tentações e praticar o amor quando somos provocados a odiar.</p>
+                        <p>Isso não significa que o cristão nunca enfrentará tentações. Significa que não deve permitir que o pecado governe sua vida.</p>
+                        <p>O discípulo precisa aprender a reconhecer os desejos contrários à Palavra e escolher obedecer a Deus.</p>
+                    </div>
+                    <div class="page-number">09</div>
+                </div>
+            </div>
+
+            <!-- 4. OBRAS DA CARNE -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">04 · As obras da carne</div>
+                    <div class="page-body">
+                        <h2>4. AS OBRAS DA CARNE</h2>
+                        <p>Em <button class="bible-ref" data-ref="Gálatas 5:19-21">Gálatas 5:19–21</button>, Paulo apresenta uma relação das obras da carne, revelando comportamentos que são contrários à vontade de Deus.</p>
+                        <p>Entre elas estão:</p>
+                        <ul>
+                            <li><strong>Prostituição e impureza:</strong> práticas contrárias à santidade ensinada nas Escrituras.</li>
+                            <li><strong>Idolatria e feitiçarias:</strong> práticas que desviam a devoção e a confiança que pertencem a Deus.</li>
+                            <li><strong>Inimizades e contendas:</strong> atitudes que alimentam conflitos e prejudicam os relacionamentos.</li>
+                            <li><strong>Ciúmes e iras:</strong> sentimentos que podem conduzir a comportamentos destrutivos.</li>
+                        </ul>
+                    </div>
+                    <div class="page-number">10</div>
+                </div>
+            </div>
+
+            <!-- CONTINUAÇÃO 4 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">04 · As obras da carne</div>
+                    <div class="page-body">
+                        <h2>O cuidado com o coração</h2>
+                        <ul>
+                            <li><strong>Discórdias e divisões:</strong> atitudes que promovem desunião.</li>
+                            <li><strong>Invejas:</strong> ressentimento diante daquilo que outra pessoa possui ou conquista.</li>
+                            <li><strong>Bebedices e orgias:</strong> comportamentos que expressam falta de domínio e desordem moral.</li>
+                        </ul>
+                        <p>Essas práticas revelam uma vida que está cedendo aos desejos contrários à vontade divina.</p>
+                        <p>É importante compreender que o problema não está somente nas atitudes visíveis, mas também naquilo que alimentamos dentro do coração.</p>
+                        <p>Jesus ensinou que as atitudes exteriores revelam aquilo que existe no interior do ser humano. Por isso, o discípulo precisa vigiar seus pensamentos, suas intenções, suas palavras e suas atitudes.</p>
+                        <p>Não devemos justificar o pecado dizendo que somos imperfeitos ou que todos fazem a mesma coisa. A Palavra de Deus nos chama ao arrependimento e à transformação.</p>
+                    </div>
+                    <div class="page-number">11</div>
+                </div>
+            </div>
+
+            <!-- 5. FRUTO DO ESPÍRITO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">05 · O fruto do Espírito</div>
+                    <div class="page-body">
+                        <h2>5. O FRUTO DO ESPÍRITO</h2>
+                        <p>Em <button class="bible-ref" data-ref="Gálatas 5:22-23">Gálatas 5:22–23</button>, encontramos uma das passagens mais importantes sobre o caráter cristão:</p>
+                        <div class="scripture">
+                            <p>"Mas o fruto do Espírito é: amor, alegria, paz, longanimidade, benignidade, bondade, fidelidade, mansidão e domínio próprio. Contra estas coisas não há lei."</p>
+                            <cite>Gálatas 5:22–23</cite>
+                        </div>
+                        <p>Observe que a Bíblia utiliza a expressão <em>fruto</em>, no singular. As nove virtudes apresentadas revelam características do caráter que deve ser desenvolvido na vida daquele que anda no Espírito.</p>
+                    </div>
+                    <div class="page-number">12</div>
+                </div>
+            </div>
+
+            <!-- FRUTO 1 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">05 · O fruto do Espírito</div>
+                    <div class="page-body">
+                        <h2>As características do fruto do Espírito</h2>
+                        <p><strong>1. Amor:</strong> demonstrar o amor que busca o bem do próximo, conforme os ensinamentos de Cristo.</p>
+                        <p><strong>2. Alegria:</strong> encontrar em Deus uma fonte de contentamento que não depende exclusivamente das circunstâncias.</p>
+                        <p><strong>3. Paz:</strong> viver em confiança no Senhor e buscar a reconciliação, em vez de alimentar conflitos.</p>
+                        <p><strong>4. Longanimidade:</strong> demonstrar paciência e perseverança diante das dificuldades e das pessoas.</p>
+                        <p><strong>5. Benignidade:</strong> tratar o próximo com bondade, consideração e disposição para fazer o bem.</p>
+                    </div>
+                    <div class="page-number">13</div>
+                </div>
+            </div>
+
+            <!-- FRUTO 2 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">05 · O fruto do Espírito</div>
+                    <div class="page-body">
+                        <h2>As características do fruto do Espírito</h2>
+                        <p><strong>6. Bondade:</strong> praticar aquilo que é correto e agradável diante de Deus.</p>
+                        <p><strong>7. Fidelidade:</strong> permanecer firme, confiável e comprometido com a verdade.</p>
+                        <p><strong>8. Mansidão:</strong> agir com humildade e domínio das próprias reações, sem confundir mansidão com fraqueza.</p>
+                        <p><strong>9. Domínio próprio:</strong> controlar os desejos, as palavras e as atitudes, em vez de ser governado pelos impulsos.</p>
+                        <p>Essas virtudes não devem aparecer somente dentro da igreja. Precisam ser demonstradas em casa, no trabalho, na família e nos relacionamentos.</p>
+                    </div>
+                    <div class="page-number">14</div>
+                </div>
+            </div>
+
+            <!-- FRUTO 3 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">05 · O fruto do Espírito</div>
+                    <div class="page-body">
+                        <h2>O fruto na vida diária</h2>
+                        <p>Uma pessoa não demonstra maturidade espiritual apenas pelo que fala, mas também pela maneira como vive.</p>
+                        <p>O fruto do Espírito deve ser percebido na conduta diária do discípulo.</p>
+                        <div class="scripture">
+                            <p>O caráter cristão não se limita às palavras. Ele se revela nas escolhas, nos relacionamentos e nas atitudes de cada dia.</p>
+                            <cite>Reflexão da lição</cite>
+                        </div>
+                    </div>
+                    <div class="page-number">15</div>
+                </div>
+            </div>
+
+            <!-- 6. COMO ANDAR -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">06 · Como andar no Espírito diariamente?</div>
+                    <div class="page-body">
+                        <h2>6. COMO ANDAR NO ESPÍRITO DIARIAMENTE?</h2>
+                        <p>Depois de compreender o significado de andar no Espírito, precisamos aprender como colocar esse ensinamento em prática.</p>
+                        <p>Podemos destacar cinco atitudes fundamentais:</p>
+                        <h3>1. Alimentar-se da Palavra de Deus</h3>
+                        <p>A Bíblia precisa ocupar um lugar central em nossa caminhada.</p>
+                        <p>Em <button class="bible-ref" data-ref="Salmos 119:11">Salmos 119:11</button>, encontramos o ensinamento de guardar a Palavra no coração para não pecar contra Deus.</p>
+                    </div>
+                    <div class="page-number">16</div>
+                </div>
+            </div>
+
+            <!-- COMO ANDAR 2 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">06 · Como andar no Espírito diariamente?</div>
+                    <div class="page-body">
+                        <h2>Palavra e oração</h2>
+                        <p>Quanto mais conhecemos as Escrituras, mais condições temos de reconhecer aquilo que agrada ou desagrada ao Senhor.</p>
+                        <h3>2. Cultivar uma vida de oração</h3>
+                        <p>A oração fortalece nossa comunhão com Deus. Devemos apresentar ao Senhor nossas necessidades, decisões, dificuldades e tentações.</p>
+                        <p>Em <button class="bible-ref" data-ref="1 Tessalonicenses 5:17">1 Tessalonicenses 5:17</button>, encontramos a orientação:</p>
+                        <div class="scripture">
+                            <p>"Orai sem cessar."</p>
+                            <cite>1 Tessalonicenses 5:17</cite>
+                        </div>
+                        <p>Isso significa cultivar uma vida de dependência e comunhão com Deus, mantendo nosso coração voltado para Ele.</p>
+                    </div>
+                    <div class="page-number">17</div>
+                </div>
+            </div>
+
+            <!-- COMO ANDAR 3 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">06 · Como andar no Espírito diariamente?</div>
+                    <div class="page-body">
+                        <h2>Obediência e permanência em Cristo</h2>
+                        <h3>3. Rejeitar as práticas pecaminosas</h3>
+                        <p>Não podemos desejar viver no Espírito enquanto alimentamos deliberadamente aquilo que desagrada a Deus. Precisamos abandonar práticas, hábitos e comportamentos que nos afastam da vontade do Senhor.</p>
+                        <h3>4. Obedecer à Palavra de Deus</h3>
+                        <p>Não basta conhecer a verdade. Precisamos praticá-la.</p>
+                        <p><button class="bible-ref" data-ref="Tiago 1:22">Tiago 1:22</button> nos ensina a sermos praticantes da Palavra, e não apenas ouvintes.</p>
+                    </div>
+                    <div class="page-number">18</div>
+                </div>
+            </div>
+
+            <!-- COMO ANDAR 4 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">06 · Como andar no Espírito diariamente?</div>
+                    <div class="page-body">
+                        <h2>Permanecer em Cristo</h2>
+                        <h3>5. Permanecer em Cristo</h3>
+                        <p>Em <button class="bible-ref" data-ref="João 15:5">João 15:5</button>, Jesus declarou:</p>
+                        <div class="scripture">
+                            <p>"Porque sem mim nada podeis fazer."</p>
+                            <cite>João 15:5</cite>
+                        </div>
+                        <p>A vida cristã não é construída apenas pela força de vontade humana. Dependemos de Cristo e precisamos permanecer nele.</p>
+                        <p>A comunhão com Jesus é indispensável para uma caminhada espiritual saudável.</p>
+                    </div>
+                    <div class="page-number">19</div>
+                </div>
+            </div>
+
+            <!-- 7. TRANSFORMAÇÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">07 · Uma caminhada de transformação</div>
+                    <div class="page-body">
+                        <h2>7. ANDAR NO ESPÍRITO É UMA CAMINHADA DE TRANSFORMAÇÃO</h2>
+                        <p>O crescimento espiritual é um processo. Quando uma pessoa entrega sua vida a Jesus Cristo, começa uma nova caminhada de aprendizado, amadurecimento e transformação.</p>
+                        <p>Ao longo dessa caminhada, precisa abandonar comportamentos que não correspondem à vontade de Deus e desenvolver uma vida cada vez mais alinhada com os ensinamentos das Escrituras.</p>
+                        <p>Isso não significa aceitar o pecado como algo normal, mas reconhecer que precisamos continuamente da graça de Deus, do arrependimento e da transformação.</p>
+                    </div>
+                    <div class="page-number">20</div>
+                </div>
+            </div>
+
+            <!-- ROMANOS 12:2 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">07 · Uma caminhada de transformação</div>
+                    <div class="page-body">
+                        <h2>A renovação da mente</h2>
+                        <p>Em <button class="bible-ref" data-ref="Romanos 12:2">Romanos 12:2</button>, Paulo nos ensina a não nos conformarmos com este mundo, mas a sermos transformados pela renovação da nossa mente.</p>
+                        <p>O discípulo não deve utilizar o comportamento da sociedade como referência para suas escolhas. Sua referência precisa ser a Palavra de Deus.</p>
+                        <p>O mundo pode considerar normal aquilo que Deus condena. Entretanto, nossa responsabilidade é permanecer fiéis ao Senhor.</p>
+                        <p>Andar no Espírito significa escolher diariamente o caminho da obediência, permitindo que os ensinamentos de Cristo orientem todas as áreas da nossa vida.</p>
+                    </div>
+                    <div class="page-number">21</div>
+                </div>
+            </div>
+
+            <!-- 8. CONCLUSÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">08 · Conclusão</div>
+                    <div class="page-body">
+                        <h2>8. CONCLUSÃO — UMA VIDA CONDUZIDA PELO ESPÍRITO</h2>
+                        <p>Nesta lição, aprendemos que andar no Espírito significa viver diariamente sob a direção de Deus, em obediência à sua Palavra.</p>
+                        <p>Compreendemos que existe um conflito entre os desejos da carne e a vontade do Espírito. Estudamos as obras da carne e conhecemos as nove características do fruto do Espírito: amor, alegria, paz, longanimidade, benignidade, bondade, fidelidade, mansidão e domínio próprio.</p>
+                        <p>Também aprendemos que precisamos alimentar nossa vida espiritual por meio da Palavra, da oração, da obediência e da comunhão com Cristo.</p>
+                    </div>
+                    <div class="page-number">22</div>
+                </div>
+            </div>
+
+            <!-- CONCLUSÃO 2 -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">08 · Conclusão</div>
+                    <div class="page-body">
+                        <h2>Uma reflexão para a caminhada</h2>
+                        <p>Agora, precisamos refletir:</p>
+                        <div class="reflection">
+                            <p>Se alguém observar sua maneira de viver, suas palavras, suas escolhas e seu comportamento, conseguirá perceber que você está seguindo a direção de Deus?</p>
+                        </div>
+                        <p>Não basta dizer que somos discípulos de Jesus. Nossa vida precisa demonstrar isso.</p>
+                        <p>Que o Espírito Santo nos conduza a uma vida de fidelidade, santidade e obediência ao Senhor.</p>
+                        <div class="scripture">
+                            <p>"Vivam pelo Espírito, e de modo nenhum satisfarão os desejos da carne."</p>
+                            <cite>Gálatas 5:16</cite>
+                        </div>
+                    </div>
+                    <div class="page-number">23</div>
+                </div>
+            </div>
+
+            <!-- 9. APLICAÇÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">09 · Para refletir e praticar</div>
+                    <div class="page-body">
+                        <h2>9. PARA REFLETIR E PRATICAR</h2>
+                        <p>Durante esta semana, procure avaliar suas atitudes à luz de <button class="bible-ref" data-ref="Gálatas 5:16-23">Gálatas 5:16–23</button>.</p>
+                        <ul>
+                            <li>Tenho permitido que meus desejos pessoais estejam acima da vontade de Deus?</li>
+                            <li>Quais comportamentos preciso abandonar?</li>
+                            <li>Qual característica do fruto do Espírito preciso desenvolver com mais atenção?</li>
+                            <li>Minha maneira de viver demonstra obediência à Palavra?</li>
+                        </ul>
+                    </div>
+                    <div class="page-number">24</div>
+                </div>
+            </div>
+
+            <!-- DESAFIO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">09 · Para refletir e praticar</div>
+                    <div class="page-body">
+                        <h2>Desafio da semana</h2>
+                        <div class="reflection">
+                            <p>Escolha uma das nove características do fruto do Espírito e pratique-a intencionalmente em suas atitudes diárias. Ao final da semana, reflita sobre o que aprendeu nessa experiência.</p>
+                        </div>
+                        <p>Que o conhecimento da Palavra se transforme em atitudes e que a caminhada cristã seja marcada pela obediência ao Senhor.</p>
+                    </div>
+                    <div class="page-number">25</div>
+                </div>
+            </div>
+
+            <!-- 10. PRÓXIMA LIÇÃO -->
+            <div class="page">
+                <div class="page-content">
+                    <div class="page-header">10 · Próxima lição</div>
+                    <div class="page-body presentation">
+                        <h2>10. PRÓXIMA LIÇÃO</h2>
+                        <p>Na próxima aula, estudaremos:</p>
+                        <div class="cover-line"></div>
+                        <h2 style="font-size:22px">LIÇÃO 6</h2>
+                        <h3 style="font-size:17px">O BATISMO NAS ÁGUAS</h3>
+                        <p>Continuaremos nossa caminhada de aprendizado sobre os fundamentos da fé cristã, buscando crescer no conhecimento da Palavra e na prática dos ensinamentos de Jesus Cristo.</p>
+                    </div>
+                    <div class="page-number">26</div>
+                </div>
+            </div>
+
+            <!-- PÁGINA FINAL -->
+            <div class="page">
+                <div class="page-content cover-page">
+                    <div class="cover-symbol">A</div>
+                    <div class="cover-institution">Escola Bíblica Atalaia</div>
+                    <h1>ANDANDO<br>NO ESPÍRITO</h1>
+                    <div class="cover-line"></div>
+                    <p>Discipulado Cristão<br>Fundamentos da Fé</p>
+                    <p style="margin-top:25px">Deus abençoe sua vida!</p>
+                    <div class="cover-footer">MINISTÉRIO ATALAIA</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="control-row">
+            <div class="navigation">
+                <button class="nav-button" id="firstPage" title="Primeira página" aria-label="Primeira página">|‹</button>
+                <button class="nav-button" id="prevPage" title="Página anterior" aria-label="Página anterior">‹</button>
+                <div class="page-counter" id="pageCounter">1 / 1</div>
+                <button class="nav-button" id="nextPage" title="Próxima página" aria-label="Próxima página">›</button>
+                <button class="nav-button" id="lastPage" title="Última página" aria-label="Última página">›|</button>
+            </div>
+        </div>
+        <div class="control-hint">Utilize as setas do teclado, o mouse ou deslize as páginas para navegar.</div>
+    </div>
+</main>
+
+<div class="fallback-message" id="fallbackMessage">
+    <h2>Modo de leitura alternativo</h2>
+    <p>A biblioteca de virada de páginas não pôde ser carregada. O conteúdo permanece disponível nesta página. Verifique sua conexão com a internet ou tente atualizar o navegador.</p>
+</div>
+
+<footer class="footer">
+    ESCOLA BÍBLICA ATALAIA · MINISTÉRIO ATALAIA
+</footer>
+
+<!-- MODAL DE REFERÊNCIAS BÍBLICAS -->
+<div class="modal" id="bibleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+        <div class="modal-top">
+            <h2 id="modalTitle">Consulta bíblica</h2>
+            <button class="close-modal" id="closeBibleModal" aria-label="Fechar">×</button>
+        </div>
+
+        <div class="version-row">
+            <label for="bibleVersion">Versão:</label>
+            <select id="bibleVersion">
+                <option value="almeida-livre">Bíblia Livre</option>
+            </select>
+        </div>
+
+        <div id="bibleResult" aria-live="polite">
+            <p class="modal-status">Selecione uma referência bíblica para consultar.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(() => {
+    "use strict";
+
+    const flipbookElement = document.getElementById("flipbook");
+    const pageElements = Array.from(flipbookElement.querySelectorAll(".page"));
+    const totalPages = pageElements.length;
+
+    const counter = document.getElementById("pageCounter");
+    const progressFill = document.getElementById("progressFill");
+    const prevButton = document.getElementById("prevPage");
+    const nextButton = document.getElementById("nextPage");
+    const firstButton = document.getElementById("firstPage");
+    const lastButton = document.getElementById("lastPage");
+
+    const modal = document.getElementById("bibleModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const bibleResult = document.getElementById("bibleResult");
+    const bibleVersion = document.getElementById("bibleVersion");
+
+    let pageFlip = null;
+    let currentPage = 0;
+    let speechActive = false;
+    let currentUtterance = null;
+    let availableVersions = [];
+
+    const API_BASE = "https://api.midvash.com/v1";
+    const DEFAULT_VERSION = "almeida-livre";
+
+    function updateControls(pageIndex) {
+        currentPage = Math.max(0, Math.min(pageIndex, totalPages - 1));
+
+        counter.textContent = `${currentPage + 1} / ${totalPages}`;
+
+        const progress = ((currentPage + 1) / totalPages) * 100;
+        progressFill.style.width = `${progress}%`;
+
+        prevButton.disabled = currentPage === 0;
+        firstButton.disabled = currentPage === 0;
+        nextButton.disabled = currentPage === totalPages - 1;
+        lastButton.disabled = currentPage === totalPages - 1;
+
+        const mobileToc = document.getElementById("mobileToc");
+        if (mobileToc) mobileToc.value = "";
+    }
+
+    function goToPage(pageIndex) {
+        const target = Math.max(0, Math.min(pageIndex, totalPages - 1));
+
+        if (pageFlip) {
+            pageFlip.flip(target);
+        } else {
+            currentPage = target;
+            updateControls(target);
+            pageElements[target]?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }
+
+    function nextPage() {
+        if (pageFlip) pageFlip.flipNext();
+        else goToPage(currentPage + 1);
+    }
+
+    function previousPage() {
+        if (pageFlip) pageFlip.flipPrev();
+        else goToPage(currentPage - 1);
+    }
+
+    prevButton.addEventListener("click", previousPage);
+    nextButton.addEventListener("click", nextPage);
+    firstButton.addEventListener("click", () => goToPage(0));
+    lastButton.addEventListener("click", () => goToPage(totalPages - 1));
+
+    document.querySelectorAll("[data-goto]").forEach(button => {
+        button.addEventListener("click", () => {
+            goToPage(Number(button.dataset.goto) - 1);
+        });
+    });
+
+    const mobileToc = document.getElementById("mobileToc");
+
+    document.querySelectorAll(".toc-list button[data-goto]").forEach(button => {
+        const option = document.createElement("option");
+        option.value = button.dataset.goto;
+        option.textContent = button.textContent.trim();
+        mobileToc.appendChild(option);
+    });
+
+    mobileToc.addEventListener("change", () => {
+        if (mobileToc.value) goToPage(Number(mobileToc.value) - 1);
+    });
+
+    function initializeFlipbook() {
+        if (typeof St === "undefined" || !St.PageFlip) {
+            document.getElementById("fallbackMessage").style.display = "block";
+            flipbookElement.style.width = "min(100%, 650px)";
+            flipbookElement.style.height = "auto";
+            pageElements.forEach(page => {
+                page.style.display = "block";
+                page.style.width = "100%";
+                page.style.height = "auto";
+                page.style.minHeight = "550px";
+                page.style.marginBottom = "15px";
+            });
+            updateControls(0);
+            return;
+        }
+
+        try {
+            const mobile = window.matchMedia("(max-width: 700px)").matches;
+            const width = mobile ? 390 : 520;
+            const height = mobile ? 590 : 680;
+
+            pageFlip = new St.PageFlip(flipbookElement, {
+                width,
+                height,
+                size: "stretch",
+                minWidth: 280,
+                maxWidth: 1100,
+                minHeight: 420,
+                maxHeight: 850,
+                maxShadowOpacity: 0.28,
+                showCover: true,
+                mobileScrollSupport: true,
+                usePortrait: true,
+                startPage: 0,
+                drawShadow: true,
+                flippingTime: 850,
+                autoSize: true,
+                useMouseEvents: true,
+                swipeDistance: 30,
+                clickEventForward: true
+            });
+
+            pageFlip.loadFromHTML(pageElements);
+
+            pageFlip.on("flip", event => {
+                updateControls(event.data);
+                stopSpeech();
+            });
+
+            pageFlip.on("changeOrientation", () => {
+                stopSpeech();
+            });
+
+            updateControls(0);
+
+        } catch (error) {
+            console.error("Erro ao iniciar o flipbook:", error);
+            document.getElementById("fallbackMessage").style.display = "block";
+        }
+    }
+
+    initializeFlipbook();
+
+    document.addEventListener("keydown", event => {
+        if (modal.classList.contains("open")) {
+            if (event.key === "Escape") closeBibleModal();
+            return;
+        }
+
+        if (event.key === "ArrowRight") nextPage();
+        if (event.key === "ArrowLeft") previousPage();
+    });
+
+    // Tela cheia
+    document.getElementById("fullscreenButton").addEventListener("click", async () => {
+        try {
+            if (!document.fullscreenElement) {
+                await document.documentElement.requestFullscreen();
+            } else {
+                await document.exitFullscreen();
+            }
+        } catch (error) {
+            console.warn("Tela cheia indisponível:", error);
+        }
+    });
+
+    document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("fullscreen", !!document.fullscreenElement);
+    });
+
+    // Impressão
+    document.getElementById("printButton").addEventListener("click", () => {
+        stopSpeech();
+        window.print();
+    });
+
+    // Leitura em voz alta
+    function getCurrentPageText() {
+        if (pageFlip) {
+            const page = pageElements[currentPage];
+            return page?.querySelector(".page-body")?.innerText || "";
+        }
+
+        return pageElements[currentPage]?.innerText || "";
+    }
+
+    function stopSpeech() {
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.cancel();
+        }
+
+        speechActive = false;
+        currentUtterance = null;
+
+        const button = document.getElementById("speechButton");
+        button.textContent = "▶ Ouvir";
+        button.classList.remove("active");
+    }
+
+    document.getElementById("speechButton").addEventListener("click", () => {
+        if (!("speechSynthesis" in window)) {
+            alert("A leitura em voz alta não está disponível neste navegador.");
+            return;
+        }
+
+        if (speechActive) {
+            stopSpeech();
+            return;
+        }
+
+        const text = getCurrentPageText().trim();
+
+        if (!text) return;
+
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = "pt-BR";
+        currentUtterance.rate = 0.92;
+        currentUtterance.pitch = 1;
+
+        currentUtterance.onend = stopSpeech;
+        currentUtterance.onerror = stopSpeech;
+
+        speechActive = true;
+        document.getElementById("speechButton").textContent = "■ Parar";
+        document.getElementById("speechButton").classList.add("active");
+
+        window.speechSynthesis.speak(currentUtterance);
+    });
+
+    // Catálogo de versões bíblicas em português
+    async function loadBibleVersions() {
+        try {
+            const response = await fetch(`${API_BASE}/versions?language=pt-br`);
+
+            if (!response.ok) throw new Error("Não foi possível carregar as versões.");
+
+            const result = await response.json();
+            const versions = Array.isArray(result.data) ? result.data : [];
+
+            availableVersions = versions;
+
+            bibleVersion.innerHTML = "";
+
+            if (!versions.length) {
+                addVersionOption(DEFAULT_VERSION, "Bíblia Livre");
+                return;
+            }
+
+            versions.forEach(version => {
+                const slug = version.slug;
+                const name = version.shortName || version.name || slug;
+
+                if (slug) addVersionOption(slug, name);
+            });
+
+            if (versions.some(version => version.slug === DEFAULT_VERSION)) {
+                bibleVersion.value = DEFAULT_VERSION;
+            }
+
+        } catch (error) {
+            console.warn("Catálogo de versões indisponível:", error);
+            bibleVersion.innerHTML = "";
+            addVersionOption(DEFAULT_VERSION, "Bíblia Livre");
+        }
+    }
+
+    function addVersionOption(value, label) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = label;
+        bibleVersion.appendChild(option);
+    }
+
+    loadBibleVersions();
+
+    // Consulta de referências bíblicas pela API Midvash.
+    // Documentação: https://api.midvash.com/pt-br
+    // Endpoint utilizado: GET /v1/passages?refs=...&version=...
+    async function fetchBibleReference(reference, version) {
+        const url = new URL(`${API_BASE}/passages`);
+        url.searchParams.set("refs", reference);
+        url.searchParams.set("version", version);
+
+        const response = await fetch(url.toString(), {
+            method: "GET",
+            headers: { "Accept": "application/json" }
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || result.error) {
+            throw new Error(result.error?.message || "Não foi possível consultar essa referência.");
+        }
+
+        const passages = Array.isArray(result.data) ? result.data : [];
+
+        if (!passages.length) {
+            throw new Error("A API não retornou o texto desta referência.");
+        }
+
+        const passage = passages[0];
+
+        if (passage.error) {
+            throw new Error(passage.error.message || "Referência não encontrada na versão selecionada.");
+        }
+
+        if (!passage.text) {
+            throw new Error("O texto bíblico não está disponível para esta referência.");
+        }
+
+        return {
+            reference: passage.reference || passage.ref || reference,
+            text: passage.text,
+            version: passage.version || version,
+            copyright: result.meta?.copyright || ""
+        };
+    }
+
+    async function openBibleReference(reference) {
+        stopSpeech();
+
+        modal.classList.add("open");
+        modalTitle.textContent = reference;
+        bibleResult.innerHTML = '<p class="modal-status">Consultando as Escrituras...</p>';
+
+        const version = bibleVersion.value || DEFAULT_VERSION;
+
+        try {
+            const passage = await fetchBibleReference(reference, version);
+
+            modalTitle.textContent = passage.reference;
+
+            const textElement = document.createElement("p");
+            textElement.textContent = passage.text;
+
+            const versionElement = document.createElement("p");
+            versionElement.className = "modal-status";
+            versionElement.textContent = `Versão recebida: ${passage.version}`;
+
+            bibleResult.replaceChildren(textElement, versionElement);
+
+            if (passage.copyright) {
+                const copyright = document.createElement("div");
+                copyright.className = "copyright";
+                copyright.textContent = passage.copyright;
+                bibleResult.appendChild(copyright);
+            }
+
+        } catch (error) {
+            console.error("Erro na consulta bíblica:", error);
+
+            bibleResult.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.className = "modal-status";
+            message.textContent = "Não foi possível carregar o texto bíblico neste momento. Verifique sua conexão e tente novamente. A referência continua disponível para consulta.";
+
+            const retryButton = document.createElement("button");
+            retryButton.className = "modal-action";
+            retryButton.type = "button";
+            retryButton.textContent = "Tentar novamente";
+            retryButton.addEventListener("click", () => {
+                openBibleReference(reference);
+            });
+
+            bibleResult.append(message, retryButton);
+        }
+    }
+
+    // Todas as referências identificadas no estudo são clicáveis.
+    document.querySelectorAll(".bible-ref").forEach(referenceButton => {
+        referenceButton.addEventListener("click", () => {
+            const reference = referenceButton.dataset.ref || referenceButton.textContent.trim();
+            openBibleReference(reference);
+        });
+    });
+
+    function closeBibleModal() {
+        modal.classList.remove("open");
+    }
+
+    document.getElementById("closeBibleModal").addEventListener("click", closeBibleModal);
+
+    modal.addEventListener("click", event => {
+        if (event.target === modal) closeBibleModal();
+    });
+
+    bibleVersion.addEventListener("change", () => {
+        if (modal.classList.contains("open")) {
+            const reference = modalTitle.textContent;
+            if (reference && reference !== "Consulta bíblica") {
+                openBibleReference(reference);
+            }
+        }
+    });
+
+    // Navegação por gestos no modo de leitura alternativo.
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    flipbookElement.addEventListener("touchstart", event => {
+        touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    flipbookElement.addEventListener("touchend", event => {
+        touchEndX = event.changedTouches[0].screenX;
+
+        if (Math.abs(touchEndX - touchStartX) < 55) return;
+
+        if (touchEndX < touchStartX) nextPage();
+        else previousPage();
+    }, { passive: true });
+
+    window.addEventListener("beforeunload", stopSpeech);
+
+})();
+</script>
+
+</body>
+</html>

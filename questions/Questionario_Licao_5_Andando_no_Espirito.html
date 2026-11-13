@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Questionário — Lição 5 | Escola Bíblica Atalaia</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #142b46;
+    --navy-dark: #0c1d32;
+    --gold: #b49455;
+    --gold-light: #d8c398;
+    --paper: #f7f5f0;
+    --white: #ffffff;
+    --text: #283444;
+    --muted: #718096;
+    --border: #e3e0d8;
+    --green: #28734b;
+    --red: #a83b3b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: 'Crimson Text', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.55;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.header {
+    background: var(--navy);
+    color: white;
+    padding: 28px 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
+}
+
+.header .institution {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+}
+
+.header h1 {
+    margin: 10px 0 4px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(21px, 4vw, 30px);
+    font-weight: 600;
+}
+
+.header p {
+    margin: 4px 0;
+    font-size: 17px;
+    color: #e1e7ee;
+}
+
+.container {
+    width: min(950px, calc(100% - 30px));
+    margin: 35px auto;
+}
+
+.panel {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: clamp(20px, 4vw, 38px);
+    box-shadow: 0 8px 28px rgba(20, 43, 70, 0.06);
+}
+
+.section-title {
+    color: var(--navy);
+    font-family: 'Cinzel', serif;
+    font-size: 21px;
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-top: 0;
+    font-size: 17px;
+}
+
+.gold-line {
+    height: 2px;
+    width: 65px;
+    background: var(--gold);
+    margin: 17px 0 24px;
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+.form-group label {
+    display: block;
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cfd5dc;
+    border-radius: 5px;
+    background: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(180, 148, 85, .12);
+}
+
+.note {
+    background: #f5f3ee;
+    border-left: 3px solid var(--gold);
+    padding: 15px 18px;
+    margin: 22px 0;
+    font-size: 17px;
+}
+
+.btn {
+    border: 0;
+    border-radius: 5px;
+    padding: 12px 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.btn-primary {
+    background: var(--navy);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--navy-dark);
+}
+
+.btn-secondary {
+    background: #e9edf1;
+    color: var(--navy);
+}
+
+.btn-gold {
+    background: var(--gold);
+    color: white;
+}
+
+.btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.progress-area {
+    margin-bottom: 25px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 9px;
+}
+
+.progress-track {
+    height: 8px;
+    background: #e8e8e5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--gold);
+    transition: width .3s;
+}
+
+.question-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.question-number {
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.question-count {
+    color: var(--muted);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+}
+
+.question-text {
+    color: var(--navy);
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin: 0 0 25px;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    width: 100%;
+    padding: 15px 17px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    color: var(--text);
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.4;
+    transition: .18s;
+}
+
+.option:hover {
+    border-color: var(--gold);
+    background: #fbfaf7;
+}
+
+.option.selected {
+    border: 2px solid var(--navy);
+    background: #f0f3f6;
+    padding: 14px 16px;
+}
+
+.option-letter {
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #edf0f3;
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.option.selected .option-letter {
+    background: var(--navy);
+    color: white;
+}
+
+.question-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.question-map {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 7px;
+    margin-top: 27px;
+}
+
+.map-item {
+    aspect-ratio: 1;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: white;
+    color: var(--muted);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.map-item.answered {
+    background: #e8edf2;
+    border-color: #9eacba;
+    color: var(--navy);
+}
+
+.map-item.current {
+    border: 2px solid var(--gold);
+    color: var(--navy);
+}
+
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    margin-right: 5px;
+    background: #e8edf2;
+}
+
+.legend-dot.current {
+    background: var(--gold);
+}
+
+.result-heading {
+    text-align: center;
+    padding: 10px 0 25px;
+}
+
+.result-heading h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--navy);
+}
+
+.status {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.status.approved {
+    background: #e5f1e9;
+    color: var(--green);
+}
+
+.status.failed {
+    background: #f7e9e9;
+    color: var(--red);
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.result-card {
+    background: #f7f6f2;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    text-align: center;
+    padding: 18px 10px;
+}
+
+.result-card strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    color: var(--navy);
+}
+
+.result-card span {
+    display: block;
+    color: var(--muted);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.review-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    margin: 15px 0;
+    background: white;
+}
+
+.review-item.correct {
+    border-left: 4px solid var(--green);
+}
+
+.review-item.incorrect {
+    border-left: 4px solid var(--red);
+}
+
+.review-item h4 {
+    margin: 0 0 12px;
+    color: var(--navy);
+    font-size: 18px;
+}
+
+.review-item p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+.review-status {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.review-status.correct {
+    color: var(--green);
+}
+
+.review-status.incorrect {
+    color: var(--red);
+}
+
+.certificate {
+    display: none;
+    width: 100%;
+    min-height: 570px;
+    background: #fffefa;
+    border: 8px double var(--gold);
+    outline: 1px solid var(--navy);
+    outline-offset: -17px;
+    padding: 48px 35px;
+    text-align: center;
+    color: var(--navy);
+    position: relative;
+}
+
+.certificate-inner {
+    border: 1px solid #e4dccb;
+    min-height: 470px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.certificate-institution {
+    font-family: 'Cinzel', serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    color: var(--navy);
+}
+
+.certificate-ministry {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: 5px;
+}
+
+.certificate h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px, 4vw, 35px);
+    letter-spacing: 2px;
+    margin: 35px 0 20px;
+}
+
+.certificate-label {
+    font-size: 17px;
+    color: #657184;
+}
+
+.certificate-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(21px, 4vw, 30px);
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 10px auto 18px;
+    overflow-wrap: anywhere;
+}
+
+.certificate-description {
+    max-width: 650px;
+    margin: 12px auto;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.certificate-details {
+    margin: 12px auto;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.certificate-score {
+    font-family: 'Cinzel', serif;
+    font-size: 23px;
+    color: var(--gold);
+    margin: 10px 0;
+}
+
+.certificate-signature {
+    margin: 35px auto 0;
+    width: 260px;
+    border-top: 1px solid var(--navy);
+    padding-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+}
+
+.certificate-signature strong {
+    display: block;
+    font-size: 15px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--muted);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    padding: 20px;
+}
+
+.action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        width: min(100% - 20px, 950px);
+        margin: 18px auto;
+    }
+
+    .panel {
+        padding: 19px 15px;
+    }
+
+    .question-text {
+        font-size: 21px;
+    }
+
+    .option {
+        padding: 14px 12px;
+        font-size: 17px;
+    }
+
+    .option.selected {
+        padding: 13px 11px;
+    }
+
+    .question-map {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 6px;
+    }
+
+    .map-item {
+        font-size: 10px;
+    }
+
+    .question-navigation {
+        flex-wrap: wrap;
+    }
+
+    .question-navigation .btn {
+        flex: 1;
+        min-width: 115px;
+    }
+
+    .result-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .certificate {
+        min-height: 0;
+        padding: 25px 16px;
+        border-width: 5px;
+    }
+
+    .certificate-inner {
+        min-height: 0;
+        padding: 25px 12px;
+    }
+
+    .certificate-institution {
+        font-size: 15px;
+    }
+
+    .certificate-description {
+        font-size: 16px;
+    }
+
+    .certificate-signature {
+        margin-top: 28px;
+    }
+
+    .action-row .btn {
+        width: 100%;
+    }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    body {
+        background: white;
+    }
+
+    body * {
+        visibility: hidden !important;
+    }
+
+    #certificate,
+    #certificate * {
+        visibility: visible !important;
+    }
+
+    #certificate {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        min-height: 175mm;
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .certificate-inner {
+        min-height: 145mm;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="institution">Escola Bíblica Atalaia</div>
+    <h1>Discipulado Cristão</h1>
+    <p>Fundamentos da Fé</p>
+    <p>Ministério Atalaia</p>
+</header>
+
+<main class="container">
+
+    <!-- IDENTIFICAÇÃO DO ALUNO -->
+    <section class="panel" id="registration">
+        <h2 class="section-title">Questionário de Avaliação</h2>
+        <p class="subtitle">Lição 5 — Andando no Espírito</p>
+        <div class="gold-line"></div>
+
+        <p>
+            Esta avaliação foi elaborada com base no conteúdo da
+            Lição 5 do curso Discipulado Cristão — Fundamentos da Fé.
+        </p>
+
+        <div class="form-group">
+            <label for="studentName">NOME COMPLETO DO ALUNO *</label>
+            <input type="text" id="studentName" placeholder="Digite seu nome completo" required>
+        </div>
+
+        <div class="form-group">
+            <label for="studentCPF">CPF</label>
+            <input type="text" id="studentCPF" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+        </div>
+
+        <div class="note">
+            <strong>Orientações:</strong>
+            <ul>
+                <li>A avaliação contém exatamente 40 questões.</li>
+                <li>Cada questão possui quatro alternativas e apenas uma resposta correta.</li>
+                <li>Você poderá alterar suas respostas antes de finalizar.</li>
+                <li>É necessário responder todas as questões para entregar a avaliação.</li>
+                <li>O aproveitamento mínimo para aprovação é de 70% (28 acertos).</li>
+            </ul>
+        </div>
+
+        <button class="btn btn-primary" onclick="startQuiz()">
+            Iniciar avaliação
+        </button>
+    </section>
+
+    <!-- QUESTIONÁRIO -->
+    <section class="panel hidden" id="quiz">
+
+        <div class="progress-area">
+            <div class="progress-info">
+                <span id="progressText">Questão 1 de 40</span>
+                <span id="answeredText">0 de 40 respondidas</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="question-top">
+            <span class="question-number" id="questionNumber">QUESTÃO 01</span>
+            <span class="question-count">Lição 5 — Andando no Espírito</span>
+        </div>
+
+        <h2 class="question-text" id="questionText"></h2>
+
+        <div class="options" id="optionsContainer"></div>
+
+        <div class="question-navigation">
+            <button class="btn btn-secondary" id="previousBtn" onclick="previousQuestion()">
+                Anterior
+            </button>
+
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                Próxima
+            </button>
+
+            <button class="btn btn-gold hidden" id="finishBtn" onclick="confirmFinish()">
+                Entregar avaliação
+            </button>
+        </div>
+
+        <div class="question-map" id="questionMap"></div>
+
+        <div class="map-legend">
+            <span><i class="legend-dot"></i> Não respondida</span>
+            <span><i class="legend-dot" style="background:#e8edf2"></i> Respondida</span>
+            <span><i class="legend-dot current"></i> Questão atual</span>
+        </div>
+
+    </section>
+
+    <!-- RESULTADO -->
+    <section class="panel hidden" id="result">
+
+        <div class="result-heading">
+            <h2>Resultado da Avaliação</h2>
+            <p id="resultStudent"></p>
+            <span id="resultStatus" class="status"></span>
+        </div>
+
+        <div class="result-grid">
+            <div class="result-card">
+                <strong id="resultCorrect">0</strong>
+                <span>ACERTOS</span>
+            </div>
+
+            <div class="result-card">
+                <strong id="resultWrong">0</strong>
+                <span>ERROS</span>
+            </div>
+
+            <div class="result-card">
+                <strong id="resultPercentage">0%</strong>
+                <span>APROVEITAMENTO</span>
+            </div>
+
+            <div class="result-card">
+                <strong>40</strong>
+                <span>TOTAL DE QUESTÕES</span>
+            </div>
+
+            <div class="result-card">
+                <strong id="resultCPF">—</strong>
+                <span>CPF</span>
+            </div>
+
+            <div class="result-card">
+                <strong id="resultDate">—</strong>
+                <span>DATA DA AVALIAÇÃO</span>
+            </div>
+        </div>
+
+        <div id="approvalMessage" class="note hidden">
+            Parabéns! Você alcançou o aproveitamento mínimo exigido
+            e foi aprovado nesta avaliação.
+        </div>
+
+        <div id="failureMessage" class="note hidden">
+            Você não atingiu o aproveitamento mínimo de 70%.
+            Revise o conteúdo da lição e tente novamente.
+        </div>
+
+        <div id="certificateActions" class="action-row hidden">
+            <button class="btn btn-gold" onclick="showCertificate()">
+                Visualizar certificado
+            </button>
+            <button class="btn btn-secondary" onclick="printCertificate()">
+                Imprimir / Salvar PDF
+            </button>
+        </div>
+
+        <div class="action-row">
+            <button class="btn btn-secondary" onclick="toggleReview()">
+                Revisar questões
+            </button>
+            <button class="btn btn-primary" onclick="retakeQuiz()">
+                Tentar novamente
+            </button>
+        </div>
+
+        <div id="reviewSection" class="hidden" style="margin-top:30px;">
+            <h3 class="section-title">Revisão das questões</h3>
+            <div class="gold-line"></div>
+            <div id="reviewContainer"></div>
+        </div>
+
+    </section>
+
+    <!-- CERTIFICADO -->
+    <section class="certificate" id="certificate">
+        <div class="certificate-inner">
+
+            <div class="certificate-institution">
+                ESCOLA BÍBLICA ATALAIA
+            </div>
+
+            <div class="certificate-ministry">
+                MINISTÉRIO ATALAIA
+            </div>
+
+            <h2>CERTIFICADO DE APROVAÇÃO</h2>
+
+            <p class="certificate-label">
+                Certificamos que
+            </p>
+
+            <div class="certificate-name" id="certName"></div>
+
+            <p class="certificate-description">
+                concluiu com aproveitamento a avaliação da lição
+                do curso <strong>Discipulado Cristão — Fundamentos da Fé</strong>,
+                demonstrando compreensão do conteúdo estudado.
+            </p>
+
+            <div class="certificate-details">
+                <strong>Lição 5 — Andando no Espírito</strong><br>
+                CPF: <span id="certCPF"></span><br>
+                Data de realização: <span id="certDate"></span>
+            </div>
+
+            <div class="certificate-score">
+                Aproveitamento: <span id="certScore"></span>
+            </div>
+
+            <div class="certificate-signature">
+                <strong>Diego Nascimento</strong>
+                Pastor Evangelista
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    Escola Bíblica Atalaia — Ministério Atalaia
+    <br>
+    Discipulado Cristão — Fundamentos da Fé
+</footer>
+
+<script>
+/* =========================================================
+   BANCO DE QUESTÕES
+   Exatamente 40 questões, elaboradas com base na Lição 5.
+   A propriedade correct indica a alternativa correta:
+   0 = A | 1 = B | 2 = C | 3 = D
+========================================================= */
+
+const questions = [
+
+{
+    question: "Qual é a referência bíblica principal da Lição 5 — Andando no Espírito?",
+    options: ["Romanos 12:2", "Gálatas 5:16", "João 15:5", "Salmos 119:11"],
+    correct: 1
+},
+{
+    question: "Segundo Gálatas 5:16, qual é a orientação apresentada por Paulo?",
+    options: [
+        "Viver de acordo com os desejos pessoais.",
+        "Buscar reconhecimento dentro da igreja.",
+        "Viver pelo Espírito e não satisfazer os desejos da carne.",
+        "Evitar qualquer relacionamento com outras pessoas."
+    ],
+    correct: 2
+},
+{
+    question: "O que significa andar no Espírito, conforme o estudo?",
+    options: [
+        "Viver diariamente em submissão à vontade de Deus.",
+        "Frequentar exclusivamente reuniões religiosas.",
+        "Manifestar emoções durante os cultos.",
+        "Conhecer a Bíblia sem precisar praticá-la."
+    ],
+    correct: 0
+},
+{
+    question: "Por que o estudo afirma que andar no Espírito vai além de frequentar uma igreja?",
+    options: [
+        "Porque a participação na igreja não tem importância.",
+        "Porque somente a oração é necessária.",
+        "Porque o comportamento cristão não precisa ser demonstrado.",
+        "Porque andar no Espírito envolve toda a maneira de viver."
+    ],
+    correct: 3
+},
+{
+    question: "A expressão andar, utilizada por Paulo, transmite qual ideia?",
+    options: [
+        "Uma experiência que acontece apenas uma vez.",
+        "Uma caminhada contínua e diária.",
+        "Uma atividade restrita aos cultos.",
+        "Uma obrigação que termina após o batismo."
+    ],
+    correct: 1
+},
+{
+    question: "De acordo com Romanos 8:14, quem são filhos de Deus?",
+    options: [
+        "Todos os que possuem conhecimento religioso.",
+        "Todos os que participam de reuniões cristãs.",
+        "Todos os que são guiados pelo Espírito de Deus.",
+        "Todos os que nunca enfrentam tentações."
+    ],
+    correct: 2
+},
+{
+    question: "Segundo Gálatas 5:17, qual conflito é apresentado na vida cristã?",
+    options: [
+        "O conflito entre os desejos da carne e a vontade do Espírito.",
+        "O conflito entre diferentes profissões.",
+        "O conflito entre conhecimento e trabalho.",
+        "O conflito entre pessoas de diferentes famílias."
+    ],
+    correct: 0
+},
+{
+    question: "No contexto do estudo, o que representa a carne?",
+    options: [
+        "O corpo humano em qualquer circunstância.",
+        "A capacidade intelectual do ser humano.",
+        "As necessidades naturais de alimentação.",
+        "Os desejos e inclinações contrários à vontade de Deus."
+    ],
+    correct: 3
+},
+{
+    question: "Qual atitude representa ceder aos desejos da carne?",
+    options: [
+        "Perdoar alguém que nos ofendeu.",
+        "Alimentar o ódio e a vingança após uma ofensa.",
+        "Agir com honestidade diante de uma oportunidade.",
+        "Buscar a pureza diante de uma tentação."
+    ],
+    correct: 1
+},
+{
+    question: "Quando uma pessoa sente inveja do sucesso de outra e deseja seu fracasso, ela está:",
+    options: [
+        "Praticando a longanimidade.",
+        "Demonstrando domínio próprio.",
+        "Permitindo que o pecado governe seu coração.",
+        "Exercitando a benignidade."
+    ],
+    correct: 2
+},
+{
+    question: "Qual atitude demonstra alguém que está escolhendo andar no Espírito?",
+    options: [
+        "Perdoar em vez de alimentar o ressentimento.",
+        "Buscar vingança contra quem o ofendeu.",
+        "Mentir quando isso traz alguma vantagem.",
+        "Alimentar sentimentos de inveja."
+    ],
+    correct: 0
+},
+{
+    question: "O que o estudo esclarece sobre as tentações na vida do cristão?",
+    options: [
+        "O cristão verdadeiro nunca será tentado.",
+        "A tentação significa que a pessoa já abandonou a fé.",
+        "As tentações deixam de existir após a conversão.",
+        "O cristão pode enfrentar tentações, mas não deve fazer do pecado seu estilo de vida."
+    ],
+    correct: 3
+},
+{
+    question: "Em qual passagem Paulo apresenta uma relação das obras da carne estudadas nesta lição?",
+    options: ["João 15:5", "Gálatas 5:19-21", "Romanos 8:14", "Tiago 1:22"],
+    correct: 1
+},
+{
+    question: "Qual das alternativas apresenta comportamentos citados como obras da carne?",
+    options: [
+        "Amor, alegria e paz.",
+        "Fidelidade, mansidão e bondade.",
+        "Inimizades, contendas e ciúmes.",
+        "Paciência, benignidade e domínio próprio."
+    ],
+    correct: 2
+},
+{
+    question: "Qual comportamento aparece na relação das obras da carne apresentada no estudo?",
+    options: ["Idolatria.", "Mansidão.", "Longanimidade.", "Fidelidade."],
+    correct: 0
+},
+{
+    question: "Além das atitudes visíveis, o que o discípulo precisa vigiar?",
+    options: [
+        "Somente suas atividades profissionais.",
+        "Apenas suas manifestações durante os cultos.",
+        "Somente as atitudes das outras pessoas.",
+        "Seus pensamentos, intenções, palavras e atitudes."
+    ],
+    correct: 3
+},
+{
+    question: "Por que não devemos justificar o pecado dizendo que todos fazem a mesma coisa?",
+    options: [
+        "Porque a sociedade sempre apresenta bons exemplos.",
+        "Porque a Palavra de Deus nos chama ao arrependimento e à transformação.",
+        "Porque o comportamento das pessoas não pode ser observado.",
+        "Porque o pecado não tem relação com as escolhas."
+    ],
+    correct: 1
+},
+{
+    question: "Em qual passagem encontramos a relação do fruto do Espírito estudada nesta lição?",
+    options: ["Salmos 119:11", "1 Tessalonicenses 5:17", "Gálatas 5:22-23", "João 15:5"],
+    correct: 2
+},
+{
+    question: "Por que o estudo destaca que a Bíblia utiliza a expressão fruto do Espírito no singular?",
+    options: [
+        "Porque as virtudes apresentadas revelam o caráter desenvolvido na vida de quem anda no Espírito.",
+        "Porque somente uma das virtudes deve ser praticada.",
+        "Porque o fruto se limita ao comportamento durante os cultos.",
+        "Porque as demais virtudes não fazem parte da vida cristã."
+    ],
+    correct: 0
+},
+{
+    question: "Quantas características do fruto do Espírito são apresentadas em Gálatas 5:22-23?",
+    options: ["Cinco.", "Sete.", "Doze.", "Nove."],
+    correct: 3
+},
+{
+    question: "No estudo, como é definido o amor como característica do fruto do Espírito?",
+    options: [
+        "Sentir afeto apenas por pessoas próximas.",
+        "Demonstrar o amor que busca o bem do próximo, conforme o ensinamento de Cristo.",
+        "Concordar com todas as atitudes das pessoas.",
+        "Evitar relacionamentos para não enfrentar conflitos."
+    ],
+    correct: 1
+},
+{
+    question: "Como o estudo apresenta a alegria como fruto do Espírito?",
+    options: [
+        "Como uma emoção que depende exclusivamente de acontecimentos favoráveis.",
+        "Como a ausência de qualquer dificuldade.",
+        "Como contentamento em Deus, que não depende exclusivamente das circunstâncias.",
+        "Como uma manifestação que ocorre somente durante os cultos."
+    ],
+    correct: 2
+},
+{
+    question: "Qual atitude está relacionada à paz como fruto do Espírito?",
+    options: [
+        "Viver em confiança no Senhor e buscar a reconciliação.",
+        "Evitar qualquer conversa com quem pensa diferente.",
+        "Alimentar conflitos para defender opiniões.",
+        "Ignorar todas as dificuldades."
+    ],
+    correct: 0
+},
+{
+    question: "O que significa longanimidade, conforme a explicação apresentada?",
+    options: [
+        "Ter facilidade para desistir diante das dificuldades.",
+        "Evitar qualquer responsabilidade.",
+        "Impor a própria vontade às outras pessoas.",
+        "Ter paciência e perseverança diante das dificuldades e das pessoas."
+    ],
+    correct: 3
+},
+{
+    question: "Qual característica do fruto do Espírito está relacionada a tratar o próximo com bondade e consideração?",
+    options: ["Fidelidade.", "Benignidade.", "Domínio próprio.", "Alegria."],
+    correct: 1
+},
+{
+    question: "Como o estudo descreve a bondade?",
+    options: [
+        "Fazer somente aquilo que proporciona benefícios pessoais.",
+        "Evitar envolver-se em qualquer situação.",
+        "Praticar aquilo que é correto e agradável diante de Deus.",
+        "Concordar com todas as decisões das pessoas."
+    ],
+    correct: 2
+},
+{
+    question: "O que caracteriza a fidelidade como fruto do Espírito?",
+    options: [
+        "Permanecer firme, confiável e comprometido com a verdade.",
+        "Mudar de posição conforme a conveniência.",
+        "Cumprir compromissos somente quando há vantagens.",
+        "Evitar assumir responsabilidades."
+    ],
+    correct: 0
+},
+{
+    question: "Como o estudo explica a mansidão?",
+    options: [
+        "Como aceitar todas as injustiças sem discernimento.",
+        "Como nunca expressar opiniões.",
+        "Como demonstrar medo diante das pessoas.",
+        "Como agir com humildade e domínio das próprias reações, sem confundir mansidão com fraqueza."
+    ],
+    correct: 3
+},
+{
+    question: "O que significa domínio próprio?",
+    options: [
+        "Controlar as atitudes das outras pessoas.",
+        "Controlar desejos, palavras e atitudes, em vez de ser governado pelos impulsos.",
+        "Evitar qualquer sentimento.",
+        "Impor a própria vontade em todas as situações."
+    ],
+    correct: 1
+},
+{
+    question: "Onde o fruto do Espírito deve aparecer na vida do discípulo?",
+    options: [
+        "Somente dentro da igreja.",
+        "Apenas durante momentos de oração.",
+        "Em casa, no trabalho, na família, nos relacionamentos e em todos os lugares.",
+        "Somente quando outras pessoas estão observando."
+    ],
+    correct: 2
+},
+{
+    question: "Segundo o estudo, qual é a primeira atitude destacada para andar no Espírito diariamente?",
+    options: [
+        "Alimentar-se da Palavra de Deus.",
+        "Buscar reconhecimento público.",
+        "Evitar todos os relacionamentos.",
+        "Depender exclusivamente das próprias capacidades."
+    ],
+    correct: 0
+},
+{
+    question: "Qual passagem é citada para ensinar a guardar a Palavra no coração e não pecar contra Deus?",
+    options: ["Romanos 12:2", "João 15:5", "Tiago 1:22", "Salmos 119:11"],
+    correct: 3
+},
+{
+    question: "Qual é a segunda atitude destacada para andar no Espírito diariamente?",
+    options: [
+        "Afastar-se da leitura bíblica.",
+        "Cultivar uma vida de oração.",
+        "Buscar aprovação das pessoas.",
+        "Concentrar-se somente nas necessidades materiais."
+    ],
+    correct: 1
+},
+{
+    question: "Qual ensinamento é apresentado em 1 Tessalonicenses 5:17?",
+    options: [
+        "Amar somente aqueles que nos amam.",
+        "Não enfrentar dificuldades.",
+        "Orar sem cessar.",
+        "Buscar reconhecimento humano."
+    ],
+    correct: 2
+},
+{
+    question: "Qual é a terceira atitude destacada no estudo para andar no Espírito?",
+    options: [
+        "Rejeitar as práticas pecaminosas.",
+        "Ignorar os próprios comportamentos.",
+        "Acompanhar os desejos da sociedade.",
+        "Evitar a prática da Palavra."
+    ],
+    correct: 0
+},
+{
+    question: "Segundo Tiago 1:22, o que devemos fazer em relação à Palavra de Deus?",
+    options: [
+        "Apenas ouvi-la durante as reuniões.",
+        "Conhecê-la sem praticá-la.",
+        "Utilizá-la somente para aconselhar outras pessoas.",
+        "Ser praticantes da Palavra, e não apenas ouvintes."
+    ],
+    correct: 3
+},
+{
+    question: "Qual declaração de Jesus, em João 15:5, é citada para destacar nossa dependência de Cristo?",
+    options: [
+        "Orai sem cessar.",
+        "Porque sem mim nada podeis fazer.",
+        "Não vos conformeis com este mundo.",
+        "Vivam pelo Espírito."
+    ],
+    correct: 1
+},
+{
+    question: "Como o estudo caracteriza o crescimento espiritual?",
+    options: [
+        "Como uma transformação que acontece sem necessidade de perseverança.",
+        "Como uma experiência que elimina imediatamente todas as dificuldades.",
+        "Como um processo de aprendizado, crescimento, amadurecimento e transformação.",
+        "Como uma mudança limitada à participação em reuniões."
+    ],
+    correct: 2
+},
+{
+    question: "Qual passagem ensina a não nos conformarmos com este mundo, mas sermos transformados pela renovação da mente?",
+    options: ["Romanos 12:2", "Gálatas 5:16", "João 15:5", "Romanos 8:14"],
+    correct: 0
+},
+{
+    question: "De acordo com a conclusão da lição, qual deve ser a referência do discípulo para seu comportamento?",
+    options: [
+        "Os costumes mais populares da sociedade.",
+        "As opiniões de seus conhecidos.",
+        "Suas próprias emoções e desejos.",
+        "Os ensinamentos da Palavra de Deus."
+    ],
+    correct: 3
+},
+{
+    question: "Qual reflexão é proposta ao final da lição?",
+    options: [
+        "Se outras pessoas conhecem nossa rotina religiosa.",
+        "Se alguém consegue perceber a direção de Deus ao observar nossa maneira de viver, palavras, escolhas e comportamento.",
+        "Se temos reconhecimento por nossas atividades.",
+        "Se conseguimos evitar todas as dificuldades da vida."
+    ],
+    correct: 1
+}
+
+];
+
+/* =========================================================
+   ESTADO DA AVALIAÇÃO
+========================================================= */
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let student = {};
+let evaluationFinished = false;
+
+const letters = ["A", "B", "C", "D"];
+
+function startQuiz() {
+    const name = document.getElementById("studentName").value.trim();
+    const cpf = document.getElementById("studentCPF").value.trim();
+
+    if (!name) {
+        alert("Por favor, informe seu nome completo para iniciar a avaliação.");
+        document.getElementById("studentName").focus();
+        return;
+    }
+
+    student = {
+        name: name,
+        cpf: cpf || "Não informado"
+    };
+
+    currentQuestion = 0;
+    answers = new Array(questions.length).fill(null);
+    evaluationFinished = false;
+
+    document.getElementById("registration").classList.add("hidden");
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("certificate").style.display = "none";
+    document.getElementById("quiz").classList.remove("hidden");
+
+    renderQuestion();
+}
+
+/* =========================================================
+   EXIBIÇÃO DA QUESTÃO
+========================================================= */
+
+function renderQuestion() {
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTÃO " + String(currentQuestion + 1).padStart(2, "0");
+
+    document.getElementById("questionText").textContent = q.question;
+
+    document.getElementById("progressText").textContent =
+        `Questão ${currentQuestion + 1} de ${questions.length}`;
+
+    const answered = answers.filter(a => a !== null).length;
+
+    document.getElementById("answeredText").textContent =
+        `${answered} de ${questions.length} respondidas`;
+
+    document.getElementById("progressFill").style.width =
+        `${(answered / questions.length) * 100}%`;
+
+    const optionsContainer = document.getElementById("optionsContainer");
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "option";
+
+        if (answers[currentQuestion] === index) {
+            button.classList.add("selected");
+        }
+
+        const letter = document.createElement("span");
+        letter.className = "option-letter";
+        letter.textContent = letters[index];
+
+        const text = document.createElement("span");
+        text.textContent = option;
+
+        button.appendChild(letter);
+        button.appendChild(text);
+
+        button.addEventListener("click", () => selectAnswer(index));
+
+        optionsContainer.appendChild(button);
+    });
+
+    document.getElementById("previousBtn").disabled = currentQuestion === 0;
+
+    document.getElementById("nextBtn").classList.toggle(
+        "hidden",
+        currentQuestion === questions.length - 1
+    );
+
+    document.getElementById("finishBtn").classList.toggle(
+        "hidden",
+        currentQuestion !== questions.length - 1
+    );
+
+    renderQuestionMap();
+}
+
+function selectAnswer(index) {
+    if (evaluationFinished) return;
+
+    answers[currentQuestion] = index;
+    renderQuestion();
+}
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+function previousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    }
+}
+
+function goToQuestion(index) {
+    if (evaluationFinished) return;
+
+    currentQuestion = index;
+    renderQuestion();
+
+    window.scrollTo({
+        top: document.getElementById("quiz").offsetTop - 15,
+        behavior: "smooth"
+    });
+}
+
+/* =========================================================
+   MAPA DE QUESTÕES
+========================================================= */
+
+function renderQuestionMap() {
+    const map = document.getElementById("questionMap");
+    map.innerHTML = "";
+
+    questions.forEach((question, index) => {
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "map-item";
+        button.textContent = index + 1;
+
+        if (answers[index] !== null) {
+            button.classList.add("answered");
+        }
+
+        if (index === currentQuestion) {
+            button.classList.add("current");
+        }
+
+        button.addEventListener("click", () => goToQuestion(index));
+
+        map.appendChild(button);
+    });
+}
+
+/* =========================================================
+   FINALIZAÇÃO E CORREÇÃO
+========================================================= */
+
+function confirmFinish() {
+    const unanswered = answers
+        .map((answer, index) => answer === null ? index + 1 : null)
+        .filter(value => value !== null);
+
+    if (unanswered.length > 0) {
+        alert(
+            `Você ainda possui ${unanswered.length} questão(ões) sem resposta.\n\n` +
+            `Responda todas as questões antes de entregar a avaliação.`
+        );
+
+        const firstUnanswered = unanswered[0] - 1;
+        goToQuestion(firstUnanswered);
+        return;
+    }
+
+    const confirmation = confirm(
+        "Deseja realmente entregar sua avaliação?\n\n" +
+        "Após a confirmação, suas respostas serão corrigidas e não poderão ser alteradas."
+    );
+
+    if (confirmation) {
+        finishQuiz();
+    }
+}
+
+function finishQuiz() {
+    evaluationFinished = true;
+
+    let correct = 0;
+
+    questions.forEach((question, index) => {
+        if (answers[index] === question.correct) {
+            correct++;
+        }
+    });
+
+    const wrong = questions.length - correct;
+    const percentage = Math.round((correct / questions.length) * 100);
+    const approved = correct >= 28;
+
+    const date = new Date().toLocaleDateString("pt-BR");
+
+    document.getElementById("quiz").classList.add("hidden");
+    document.getElementById("result").classList.remove("hidden");
+
+    document.getElementById("resultStudent").textContent =
+        student.name;
+
+    document.getElementById("resultCorrect").textContent = correct;
+    document.getElementById("resultWrong").textContent = wrong;
+    document.getElementById("resultPercentage").textContent = percentage + "%";
+    document.getElementById("resultCPF").textContent = student.cpf;
+    document.getElementById("resultDate").textContent = date;
+
+    const status = document.getElementById("resultStatus");
+
+    if (approved) {
+        status.textContent = "APROVADO";
+        status.className = "status approved";
+
+        document.getElementById("approvalMessage").classList.remove("hidden");
+        document.getElementById("failureMessage").classList.add("hidden");
+        document.getElementById("certificateActions").classList.remove("hidden");
+
+        prepareCertificate(percentage, date);
+    } else {
+        status.textContent = "REPROVADO";
+        status.className = "status failed";
+
+        document.getElementById("failureMessage").classList.remove("hidden");
+        document.getElementById("approvalMessage").classList.add("hidden");
+        document.getElementById("certificateActions").classList.add("hidden");
+        document.getElementById("certificate").style.display = "none";
+    }
+
+    buildReview();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* =========================================================
+   REVISÃO DAS RESPOSTAS
+========================================================= */
+
+function buildReview() {
+    const container = document.getElementById("reviewContainer");
+    container.innerHTML = "";
+
+    questions.forEach((question, index) => {
+        const selected = answers[index];
+        const correct = question.correct;
+        const isCorrect = selected === correct;
+
+        const item = document.createElement("div");
+        item.className = "review-item " + (isCorrect ? "correct" : "incorrect");
+
+        const title = document.createElement("h4");
+        title.textContent = `${index + 1}. ${question.question}`;
+
+        const selectedText = document.createElement("p");
+        selectedText.textContent =
+            `Sua resposta: ${letters[selected]}) ${question.options[selected]}`;
+
+        const correctText = document.createElement("p");
+        correctText.textContent =
+            `Resposta correta: ${letters[correct]}) ${question.options[correct]}`;
+
+        const status = document.createElement("div");
+        status.className = "review-status " + (isCorrect ? "correct" : "incorrect");
+        status.textContent = isCorrect ? "Resposta correta" : "Resposta incorreta";
+
+        item.appendChild(title);
+        item.appendChild(selectedText);
+        item.appendChild(correctText);
+        item.appendChild(status);
+
+        container.appendChild(item);
+    });
+}
+
+function toggleReview() {
+    const section = document.getElementById("reviewSection");
+    section.classList.toggle("hidden");
+
+    if (!section.classList.contains("hidden")) {
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
+/* =========================================================
+   CERTIFICADO
+========================================================= */
+
+function prepareCertificate(percentage, date) {
+    document.getElementById("certName").textContent = student.name;
+    document.getElementById("certCPF").textContent = student.cpf;
+    document.getElementById("certDate").textContent = date;
+    document.getElementById("certScore").textContent = percentage + "%";
+}
+
+function showCertificate() {
+    const certificate = document.getElementById("certificate");
+
+    certificate.style.display = "block";
+
+    certificate.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+function printCertificate() {
+    const certificate = document.getElementById("certificate");
+
+    if (certificate.style.display !== "block") {
+        alert("O certificado precisa ser visualizado antes da impressão.");
+        return;
+    }
+
+    window.print();
+}
+
+/* =========================================================
+   NOVA TENTATIVA
+========================================================= */
+
+function retakeQuiz() {
+    const confirmation = confirm(
+        "Deseja iniciar uma nova tentativa?\n\n" +
+        "O resultado atual será substituído."
+    );
+
+    if (!confirmation) return;
+
+    answers = new Array(questions.length).fill(null);
+    currentQuestion = 0;
+    evaluationFinished = false;
+
+    document.getElementById("result").classList.add("hidden");
+    document.getElementById("certificate").style.display = "none";
+    document.getElementById("reviewSection").classList.add("hidden");
+
+    document.getElementById("registration").classList.remove("hidden");
+
+    document.getElementById("studentName").value = student.name;
+    document.getElementById("studentCPF").value =
+        student.cpf === "Não informado" ? "" : student.cpf;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+/* =========================================================
+   FORMATAÇÃO DO CPF
+========================================================= */
+
+document.getElementById("studentCPF").addEventListener("input", function() {
+    let value = this.value.replace(/\D/g, "").slice(0, 11);
+
+    value = value.replace(/(\d{3})(\d)/, "$1.$2");
+    value = value.replace(/(\d{3})(\d)/, "$1.$2");
+    value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+    this.value = value;
+});
+
+/* =========================================================
+   NAVEGAÇÃO PELO TECLADO
+========================================================= */
+
+document.addEventListener("keydown", function(event) {
+    if (document.getElementById("quiz").classList.contains("hidden")) {
+        return;
+    }
+
+    if (event.key === "ArrowRight") {
+        nextQuestion();
+    }
+
+    if (event.key === "ArrowLeft") {
+        previousQuestion();
+    }
+});
+
+/* =========================================================
+   VERIFICAÇÃO DO BANCO DE QUESTÕES
+========================================================= */
+
+if (questions.length !== 40) {
+    console.error("Erro: o questionário deve conter exatamente 40 questões.");
+}
+
+questions.forEach((question, index) => {
+    if (
+        question.options.length !== 4 ||
+        !Number.isInteger(question.correct) ||
+        question.correct < 0 ||
+        question.correct > 3
+    ) {
+        console.error(`Erro na configuração da questão ${index + 1}.`);
+    }
+});
+</script>
+
+</body>
+</html>

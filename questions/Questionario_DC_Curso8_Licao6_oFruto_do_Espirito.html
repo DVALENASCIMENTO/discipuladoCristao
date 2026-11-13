@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação — O Fruto do Espírito | Escola Bíblica Atalaia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Text:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --navy: #10243b;
+    --navy2: #193653;
+    --gold: #b99a58;
+    --gold-light: #e4d2a6;
+    --paper: #fbf9f3;
+    --ink: #263447;
+    --muted: #718096;
+    --line: #e4e0d5;
+    --green: #276749;
+    --red: #a33b3b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #edf0f3;
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+}
+
+button, input { font: inherit; }
+
+.topbar {
+    background: var(--navy);
+    color: white;
+    padding: 17px 25px;
+    border-bottom: 3px solid var(--gold);
+}
+
+.topbar-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand {
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+}
+
+.brand small {
+    display: block;
+    color: var(--gold-light);
+    font: 10px 'Inter', sans-serif;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.top-label {
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.container {
+    width: min(950px, 94%);
+    margin: 35px auto 60px;
+}
+
+.intro {
+    background: var(--navy);
+    color: white;
+    padding: 42px 35px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold);
+}
+
+.intro:before, .intro:after {
+    content: "✦";
+    position: absolute;
+    color: rgba(228,210,166,.18);
+    font-size: 100px;
+}
+
+.intro:before { left: 20px; top: 5px; }
+.intro:after { right: 20px; bottom: -35px; }
+
+.eyebrow {
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.intro h1 {
+    font: 600 clamp(25px, 5vw, 39px) 'Cinzel', serif;
+    margin: 15px 0 10px;
+}
+
+.intro p {
+    color: #d9e1e9;
+    line-height: 1.7;
+    max-width: 620px;
+    margin: auto;
+    font-size: 14px;
+}
+
+.reference {
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 8px 18px;
+    font: 15px 'Crimson Text', serif;
+    letter-spacing: 1px;
+}
+
+.panel {
+    background: white;
+    margin-top: 22px;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(16,36,59,.045);
+}
+
+.section-title {
+    font: 600 19px 'Cinzel', serif;
+    color: var(--navy);
+    margin: 0 0 8px;
+}
+
+.section-subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.name-field {
+    margin-top: 22px;
+}
+
+.name-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 9px;
+}
+
+.name-field input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d5dbe2;
+    border-radius: 3px;
+    outline: none;
+    color: var(--navy);
+    background: #fff;
+}
+
+.name-field input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(185,154,88,.12);
+}
+
+.instructions {
+    margin-top: 20px;
+    padding: 15px 18px;
+    background: #f7f5ef;
+    border-left: 3px solid var(--gold);
+    font-size: 12px;
+    line-height: 1.8;
+    color: #596579;
+}
+
+.progress-area {
+    display: none;
+    margin-top: 22px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 9px;
+}
+
+.progress-track {
+    height: 7px;
+    background: #e9edf1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--gold);
+    transition: width .25s;
+}
+
+.quiz-panel { display: none; }
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.question-number {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.question-category {
+    color: var(--muted);
+    font-size: 11px;
+    text-align: right;
+}
+
+.question-text {
+    font: 600 23px/1.45 'Crimson Text', serif;
+    color: var(--navy);
+    margin: 0 0 24px;
+}
+
+.options {
+    display: grid;
+    gap: 11px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.option:hover {
+    border-color: var(--gold);
+    background: #fbfaf6;
+}
+
+.option.selected {
+    border-color: var(--navy2);
+    background: #f0f4f8;
+}
+
+.option input {
+    accent-color: var(--navy);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.option-letter {
+    color: var(--gold);
+    font-weight: 700;
+    min-width: 17px;
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 27px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.btn {
+    border: none;
+    padding: 13px 21px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    transition: .2s;
+}
+
+.btn-primary {
+    background: var(--navy);
+    color: white;
+}
+
+.btn-primary:hover { background: var(--navy2); }
+
+.btn-gold {
+    background: var(--gold);
+    color: #fff;
+}
+
+.btn-gold:hover { background: #a7894a; }
+
+.btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid #cbd2da;
+}
+
+.btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.question-map {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+}
+
+.map-dot {
+    width: 29px;
+    height: 29px;
+    border: 1px solid #d9dfe5;
+    color: #758195;
+    background: white;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.map-dot.answered {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+}
+
+.map-dot.current {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.result-panel {
+    display: none;
+    text-align: center;
+}
+
+.result-symbol {
+    width: 75px;
+    height: 75px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: var(--gold);
+    margin: 0 auto 20px;
+}
+
+.result-panel h2 {
+    font: 600 27px 'Cinzel', serif;
+    color: var(--navy);
+}
+
+.score {
+    font: 700 55px 'Cinzel', serif;
+    color: var(--navy);
+    margin: 15px 0 5px;
+}
+
+.result-message {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #647084;
+}
+
+.result-details {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.detail-box {
+    background: #f7f5ef;
+    padding: 17px 23px;
+    min-width: 115px;
+    border: 1px solid var(--line);
+}
+
+.detail-box strong {
+    display: block;
+    font: 600 23px 'Cinzel', serif;
+    color: var(--navy);
+}
+
+.detail-box span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.certificate-wrap {
+    display: none;
+    margin-top: 30px;
+}
+
+.certificate {
+    background: #fffefa;
+    color: var(--navy);
+    width: 100%;
+    min-height: 570px;
+    padding: 30px;
+    border: 8px double var(--gold);
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.certificate-inner {
+    border: 1px solid var(--gold-light);
+    padding: 35px 25px;
+    width: 100%;
+    min-height: 490px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-brand {
+    font: 600 19px 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+.cert-subtitle {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #8d7748;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.cert-ornament {
+    color: var(--gold);
+    font-size: 25px;
+    margin: 22px 0;
+}
+
+.cert-title {
+    font: 600 clamp(28px, 5vw, 39px) 'Cinzel', serif;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.cert-description {
+    font: 18px 'Crimson Text', serif;
+    color: #697487;
+    margin: 13px 0 25px;
+}
+
+.cert-name {
+    font: 600 27px 'Crimson Text', serif;
+    color: var(--navy);
+    border-bottom: 1px solid var(--gold);
+    padding: 0 20px 8px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.cert-text {
+    max-width: 620px;
+    font: 17px/1.7 'Crimson Text', serif;
+    color: #4b596b;
+    margin: 22px auto;
+}
+
+.cert-course {
+    font: 600 20px 'Cinzel', serif;
+    color: var(--navy);
+    margin: 8px 0;
+}
+
+.cert-reference {
+    color: #8d7748;
+    font: 16px 'Crimson Text', serif;
+}
+
+.cert-footer {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+    font-size: 11px;
+    color: #687386;
+}
+
+.cert-footer div {
+    border-top: 1px solid var(--gold-light);
+    padding-top: 9px;
+    width: 45%;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #8b95a3;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+@media(max-width:600px) {
+    .topbar-inner { align-items: flex-start; }
+    .top-label { font-size: 9px; }
+    .intro { padding: 35px 20px; }
+    .panel { padding: 21px 17px; }
+    .question-text { font-size: 21px; }
+    .quiz-navigation .btn { padding: 12px 13px; }
+    .certificate { padding: 12px; border-width: 5px; }
+    .certificate-inner { padding: 22px 12px; }
+    .cert-footer { font-size: 9px; }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    body { background: white !important; }
+    body * { visibility: hidden !important; }
+
+    #certificateWrap, #certificateWrap * {
+        visibility: visible !important;
+    }
+
+    #certificateWrap {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .certificate {
+        width: 100%;
+        height: 185mm;
+        min-height: 0;
+        border: 8px double var(--gold);
+        padding: 10mm;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .certificate-inner {
+        min-height: 0;
+        height: 100%;
+    }
+
+    .no-print { display: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">
+            ESCOLA BÍBLICA ATALAIA
+            <small>PROCLAMANDO A VERDADE. FORMANDO DISCÍPULOS.</small>
+        </div>
+        <div class="top-label">Avaliação de aprendizagem</div>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <div class="eyebrow">Discipulado Cristão · Módulo 2</div>
+        <h1>O Fruto do Espírito</h1>
+        <p>
+            Avaliação de conhecimentos bíblicos sobre o caráter cristão
+            e a manifestação do fruto do Espírito na vida do discípulo.
+        </p>
+        <div class="reference">Gálatas 5:22–23</div>
+    </section>
+
+    <section class="panel" id="registration">
+        <h2 class="section-title">Identificação do aluno</h2>
+        <p class="section-subtitle">
+            Informe seu nome completo antes de iniciar a avaliação.
+            Esse nome será utilizado na emissão do certificado.
+        </p>
+
+        <div class="name-field">
+            <label for="studentName">NOME COMPLETO</label>
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Digite seu nome completo"
+                autocomplete="name"
+                maxlength="100"
+            >
+        </div>
+
+        <div class="instructions">
+            <strong>Orientações:</strong><br>
+            • A avaliação contém 40 questões de múltipla escolha.<br>
+            • Cada questão apresenta quatro alternativas e apenas uma correta.<br>
+            • Selecione uma resposta para avançar.<br>
+            • A aprovação exige resultado superior a 70%.<br>
+            • O certificado será liberado automaticamente para quem alcançar a pontuação mínima.
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:22px;width:100%" onclick="startQuiz()">
+            INICIAR A AVALIAÇÃO →
+        </button>
+    </section>
+
+    <section class="progress-area" id="progressArea">
+        <div class="progress-info">
+            <span id="progressText">Questão 1 de 40</span>
+            <span id="answeredText">0 respondidas</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </section>
+
+    <section class="panel quiz-panel" id="quizPanel">
+        <div class="question-header">
+            <span class="question-number" id="questionNumber">QUESTÃO 01</span>
+            <span class="question-category" id="questionCategory"></span>
+        </div>
+
+        <h2 class="question-text" id="questionText"></h2>
+
+        <div class="options" id="optionsContainer"></div>
+
+        <div class="quiz-navigation">
+            <button class="btn btn-outline" id="previousBtn" onclick="previousQuestion()">
+                ← ANTERIOR
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">
+                PRÓXIMA →
+            </button>
+            <button class="btn btn-gold" id="finishBtn" onclick="finishQuiz()" style="display:none">
+                FINALIZAR AVALIAÇÃO
+            </button>
+        </div>
+
+        <div class="question-map" id="questionMap"></div>
+    </section>
+
+    <section class="panel result-panel" id="resultPanel">
+        <div class="result-symbol" id="resultSymbol">✓</div>
+        <div class="eyebrow" style="color:var(--gold)">Resultado da avaliação</div>
+        <h2 id="resultTitle">Avaliação concluída</h2>
+        <div class="score" id="scoreValue">0%</div>
+        <p class="result-message" id="resultMessage"></p>
+
+        <div class="result-details">
+            <div class="detail-box">
+                <strong id="correctCount">0</strong>
+                <span>Acertos</span>
+            </div>
+            <div class="detail-box">
+                <strong id="wrongCount">0</strong>
+                <span>Erros</span>
+            </div>
+            <div class="detail-box">
+                <strong>40</strong>
+                <span>Questões</span>
+            </div>
+        </div>
+
+        <div id="certificateMessage"></div>
+
+        <div class="no-print" style="margin-top:25px">
+            <button class="btn btn-outline" onclick="location.reload()">
+                REFAZER A AVALIAÇÃO
+            </button>
+        </div>
+    </section>
+
+    <section class="certificate-wrap" id="certificateWrap">
+        <div class="certificate">
+            <div class="certificate-inner">
+
+                <div class="cert-brand">ESCOLA BÍBLICA ATALAIA</div>
+                <div class="cert-subtitle">Proclamando a Verdade. Formando Discípulos.</div>
+
+                <div class="cert-ornament">✦ ✧ ✦</div>
+
+                <h2 class="cert-title">CERTIFICADO</h2>
+                <div class="cert-description">DE APROVAÇÃO</div>
+
+                <div class="cert-name" id="certStudentName">Nome do aluno</div>
+
+                <p class="cert-text">
+                    A Escola Bíblica Atalaia certifica que o(a) aluno(a)
+                    acima identificado(a) foi aprovado(a) na avaliação
+                    de aprendizagem referente ao conteúdo:
+                </p>
+
+                <div class="cert-course">O FRUTO DO ESPÍRITO</div>
+                <div class="cert-reference">Gálatas 5:22–23</div>
+
+                <p class="cert-text">
+                    Concluiu satisfatoriamente esta avaliação, demonstrando
+                    aproveitamento nos conhecimentos bíblicos estudados.
+                </p>
+
+                <div class="cert-footer">
+                    <div>
+                        <strong id="certDate"></strong><br>
+                        Data de emissão
+                    </div>
+                    <div>
+                        <strong id="certScore"></strong><br>
+                        Aproveitamento obtido
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="no-print" style="text-align:center;margin:20px 0">
+            <button class="btn btn-gold" onclick="window.print()">
+                <span>▤</span> IMPRIMIR / SALVAR CERTIFICADO EM PDF
+            </button>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    ESCOLA BÍBLICA ATALAIA · DISCIPULADO CRISTÃO
+</footer>
+
+<script>
+const questions = [
+
+{
+category: "Fundamento bíblico",
+question: "Em qual passagem bíblica encontramos a relação do fruto do Espírito?",
+options: ["Romanos 8:1–4", "Gálatas 5:22–23", "Efésios 6:10–18", "João 14:1–6"],
+answer: 1
+},
+
+{
+category: "Fundamento bíblico",
+question: "Segundo Gálatas 5:22, o fruto do Espírito começa com qual virtude?",
+options: ["Paciência", "Bondade", "Amor", "Domínio próprio"],
+answer: 2
+},
+
+{
+category: "Fundamento bíblico",
+question: "De acordo com Gálatas 5:22–23, quantas virtudes são mencionadas na relação do fruto do Espírito?",
+options: ["Cinco", "Sete", "Nove", "Doze"],
+answer: 2
+},
+
+{
+category: "Fundamento bíblico",
+question: "Qual alternativa apresenta corretamente as virtudes do fruto do Espírito?",
+options: [
+"Amor, fé, poder, autoridade e sabedoria",
+"Amor, alegria, paz, longanimidade, benignidade, bondade, fé, mansidão e domínio próprio",
+"Conhecimento, profecia, cura e milagres",
+"Coragem, riqueza, honra e prosperidade"
+],
+answer: 1
+},
+
+{
+category: "Fundamento bíblico",
+question: "Segundo Gálatas 5:23, existe lei contra as virtudes do fruto do Espírito?",
+options: [
+"Sim, contra algumas delas",
+"Somente contra a mansidão",
+"Não, contra essas coisas não há lei",
+"Somente contra o domínio próprio"
+],
+answer: 2
+},
+
+{
+category: "Amor",
+question: "Qual é a primeira virtude apresentada em Gálatas 5:22?",
+options: ["Alegria", "Amor", "Paz", "Bondade"],
+answer: 1
+},
+
+{
+category: "Amor",
+question: "Em 1 Coríntios 13:4, como o amor é descrito no início do versículo?",
+options: [
+"O amor é paciente e benigno",
+"O amor é orgulhoso e poderoso",
+"O amor procura seus próprios interesses",
+"O amor se alegra com a injustiça"
+],
+answer: 0
+},
+
+{
+category: "Amor",
+question: "Segundo João 13:34–35, como os discípulos de Jesus seriam reconhecidos?",
+options: [
+"Pelo conhecimento das tradições",
+"Pela posição que ocupassem",
+"Pelo amor uns aos outros",
+"Pela quantidade de bens"
+],
+answer: 2
+},
+
+{
+category: "Amor",
+question: "De acordo com 1 João 4:19, por que amamos?",
+options: [
+"Porque somos naturalmente superiores",
+"Porque ele nos amou primeiro",
+"Porque recebemos recompensas materiais",
+"Porque nunca cometemos erros"
+],
+answer: 1
+},
+
+{
+category: "Amor",
+question: "Qual atitude demonstra o amor cristão conforme 1 Coríntios 13?",
+options: [
+"Guardar ressentimento",
+"Buscar vingança",
+"Agir com paciência e bondade",
+"Desprezar o próximo"
+],
+answer: 2
+},
+
+{
+category: "Alegria",
+question: "Qual virtude aparece depois do amor em Gálatas 5:22?",
+options: ["Alegria", "Mansidão", "Fidelidade", "Bondade"],
+answer: 0
+},
+
+{
+category: "Alegria",
+question: "Segundo Filipenses 4:4, em quem o cristão deve se alegrar?",
+options: ["Nas riquezas", "No Senhor", "Na aprovação humana", "Nas circunstâncias favoráveis"],
+answer: 1
+},
+
+{
+category: "Alegria",
+question: "Em Tiago 1:2, como os cristãos são orientados a considerar as provações?",
+options: [
+"Como motivo para abandonar a fé",
+"Como algo que nunca deve acontecer",
+"Como motivo de toda alegria, ao passarem por provações",
+"Como prova de que Deus os abandonou"
+],
+answer: 2
+},
+
+{
+category: "Alegria",
+question: "Qual afirmação expressa melhor a alegria produzida pelo Espírito?",
+options: [
+"Depende exclusivamente de circunstâncias favoráveis",
+"É incompatível com qualquer dificuldade",
+"Está fundamentada na relação com Deus",
+"É a ausência permanente de problemas"
+],
+answer: 2
+},
+
+{
+category: "Paz",
+question: "Qual virtude aparece depois da alegria na lista de Gálatas 5:22?",
+options: ["Paz", "Fé", "Paciência", "Benignidade"],
+answer: 0
+},
+
+{
+category: "Paz",
+question: "Segundo Filipenses 4:7, o que guarda o coração e a mente dos que estão em Cristo Jesus?",
+options: [
+"A força física",
+"A paz de Deus",
+"A aprovação das pessoas",
+"A prosperidade financeira"
+],
+answer: 1
+},
+
+{
+category: "Paz",
+question: "Em Romanos 12:18, qual orientação é apresentada sobre a convivência com todas as pessoas?",
+options: [
+"Viver em conflito",
+"Evitar toda responsabilidade",
+"Se possível, quanto depender de nós, ter paz com todos",
+"Responder sempre com agressividade"
+],
+answer: 2
+},
+
+{
+category: "Paz",
+question: "Segundo João 14:27, quem oferece a paz mencionada por Jesus?",
+options: ["O mundo", "Os governantes", "Jesus", "As riquezas"],
+answer: 2
+},
+
+{
+category: "Longanimidade",
+question: "O que significa longanimidade no contexto do fruto do Espírito?",
+options: [
+"Impaciência diante das dificuldades",
+"Capacidade de suportar com paciência",
+"Ausência de responsabilidades",
+"Indiferença diante do sofrimento alheio"
+],
+answer: 1
+},
+
+{
+category: "Longanimidade",
+question: "Segundo Efésios 4:2, qual atitude deve acompanhar a humildade e a mansidão?",
+options: [
+"Suportar uns aos outros em amor",
+"Buscar reconhecimento",
+"Reagir com ira",
+"Desprezar os mais fracos"
+],
+answer: 0
+},
+
+{
+category: "Longanimidade",
+question: "Em Colossenses 3:12, qual característica aparece entre as virtudes que os cristãos devem revestir?",
+options: ["Arrogância", "Ira", "Longanimidade", "Inveja"],
+answer: 2
+},
+
+{
+category: "Longanimidade",
+question: "Qual atitude representa a longanimidade no relacionamento com outras pessoas?",
+options: [
+"Desistir de todos imediatamente",
+"Responder com paciência diante das falhas alheias",
+"Alimentar discussões",
+"Exigir perfeição de todos"
+],
+answer: 1
+},
+
+{
+category: "Benignidade",
+question: "Qual é o sentido de benignidade no fruto do Espírito?",
+options: [
+"Tratar as pessoas com bondade e consideração",
+"Impor a própria vontade",
+"Agir com desprezo",
+"Buscar vantagem sobre os outros"
+],
+answer: 0
+},
+
+{
+category: "Benignidade",
+question: "Em Efésios 4:32, os cristãos são orientados a serem benignos e compassivos, perdoando uns aos outros como quem?",
+options: [
+"Como os líderes políticos",
+"Como Deus os perdoou em Cristo",
+"Como os amigos os tratam",
+"Como as circunstâncias determinam"
+],
+answer: 1
+},
+
+{
+category: "Benignidade",
+question: "Qual atitude é um exemplo de benignidade?",
+options: [
+"Humilhar quem errou",
+"Negar ajuda por orgulho",
+"Tratar o próximo com consideração",
+"Espalhar ofensas"
+],
+answer: 2
+},
+
+{
+category: "Bondade",
+question: "Qual virtude vem depois da benignidade na relação de Gálatas 5:22?",
+options: ["Fé", "Bondade", "Paz", "Mansidão"],
+answer: 1
+},
+
+{
+category: "Bondade",
+question: "Segundo Efésios 5:9, em que consiste o fruto da luz?",
+options: [
+"Bondade, justiça e verdade",
+"Riqueza, fama e poder",
+"Conhecimento, influência e autoridade",
+"Tradição, aparência e posição"
+],
+answer: 0
+},
+
+{
+category: "Bondade",
+question: "Em Romanos 12:21, como o cristão deve vencer o mal?",
+options: [
+"Com vingança",
+"Com mais maldade",
+"Com o bem",
+"Com indiferença"
+],
+answer: 2
+},
+
+{
+category: "Bondade",
+question: "Qual comportamento demonstra a prática da bondade?",
+options: [
+"Praticar o bem e agir corretamente",
+"Explorar as dificuldades alheias",
+"Recompensar somente quem oferece vantagens",
+"Agir com falsidade"
+],
+answer: 0
+},
+
+{
+category: "Fidelidade",
+question: "Qual virtude aparece depois da bondade em Gálatas 5:22?",
+options: ["Mansidão", "Fidelidade", "Alegria", "Paz"],
+answer: 1
+},
+
+{
+category: "Fidelidade",
+question: "Qual característica está associada à fidelidade cristã?",
+options: [
+"Instabilidade permanente",
+"Compromisso e confiança",
+"Desistência diante de qualquer dificuldade",
+"Promessas sem responsabilidade"
+],
+answer: 1
+},
+
+{
+category: "Fidelidade",
+question: "Segundo 1 Coríntios 4:2, o que se requer dos despenseiros?",
+options: [
+"Que sejam famosos",
+"Que sejam ricos",
+"Que cada um seja encontrado fiel",
+"Que tenham muitos seguidores"
+],
+answer: 2
+},
+
+{
+category: "Fidelidade",
+question: "Em Hebreus 10:23, qual orientação é dada em relação à confissão da esperança?",
+options: [
+"Abandoná-la nas dificuldades",
+"Retê-la firmemente, porque fiel é quem fez a promessa",
+"Substituí-la por interesses pessoais",
+"Guardá-la somente quando houver benefícios"
+],
+answer: 1
+},
+
+{
+category: "Mansidão",
+question: "Qual virtude aparece depois da fidelidade em Gálatas 5:23?",
+options: ["Mansidão", "Poder", "Sabedoria", "Prosperidade"],
+answer: 0
+},
+
+{
+category: "Mansidão",
+question: "Como Jesus se descreve em Mateus 11:29?",
+options: [
+"Orgulhoso e autoritário",
+"Manso e humilde de coração",
+"Indiferente e distante",
+"Impaciente e severo"
+],
+answer: 1
+},
+
+{
+category: "Mansidão",
+question: "Segundo Gálatas 6:1, como alguém que foi surpreendido em alguma falta deve ser corrigido?",
+options: [
+"Com espírito de mansidão",
+"Com humilhação pública",
+"Com vingança",
+"Com desprezo"
+],
+answer: 0
+},
+
+{
+category: "Mansidão",
+question: "Em 1 Pedro 3:15, como o cristão deve responder sobre a razão da sua esperança?",
+options: [
+"Com agressividade e orgulho",
+"Com arrogância",
+"Com mansidão e temor",
+"Com desprezo pelos questionamentos"
+],
+answer: 2
+},
+
+{
+category: "Domínio próprio",
+question: "Qual é a última virtude mencionada em Gálatas 5:22–23?",
+options: ["Bondade", "Paz", "Domínio próprio", "Alegria"],
+answer: 2
+},
+
+{
+category: "Domínio próprio",
+question: "O que significa domínio próprio?",
+options: [
+"Controlar os outros pela força",
+"Ter controle sobre as próprias atitudes e desejos",
+"Fazer tudo o que se deseja",
+"Evitar qualquer responsabilidade"
+],
+answer: 1
+},
+
+{
+category: "Domínio próprio",
+question: "Segundo Provérbios 16:32, quem é melhor do que o poderoso?",
+options: [
+"O que domina o próprio espírito",
+"O que conquista muitas riquezas",
+"O que vence todas as discussões",
+"O que exerce autoridade sobre muitos"
+],
+answer: 0
+},
+
+{
+category: "Vida no Espírito",
+question: "Segundo Gálatas 5:16, qual orientação é dada para não satisfazer os desejos da carne?",
+options: [
+"Viver segundo os próprios impulsos",
+"Andar no Espírito",
+"Buscar somente interesses materiais",
+"Abandonar a comunhão"
+],
+answer: 1
+},
+
+{
+category: "Vida no Espírito",
+question: "Qual é a relação entre andar no Espírito e manifestar o fruto do Espírito?",
+options: [
+"São assuntos sem relação",
+"O andar no Espírito está relacionado a uma vida orientada pelo Espírito",
+"Manifestar o fruto depende somente de aparência exterior",
+"O fruto substitui a necessidade de viver pela fé"
+],
+answer: 1
+}
+
+];
+
+let currentQuestion = 0;
+let answers = new Array(questions.length).fill(null);
+let student = "";
+
+function startQuiz() {
+    const nameInput = document.getElementById("studentName");
+    student = nameInput.value.trim();
+
+    if (student.length < 3) {
+        alert("Por favor, informe seu nome completo.");
+        nameInput.focus();
+        return;
+    }
+
+    document.getElementById("registration").style.display = "none";
+    document.getElementById("progressArea").style.display = "block";
+    document.getElementById("quizPanel").style.display = "block";
+
+    createQuestionMap();
+    renderQuestion();
+}
+
+function createQuestionMap() {
+    const map = document.getElementById("questionMap");
+    map.innerHTML = "";
+
+    questions.forEach((q, index) => {
+        const button = document.createElement("button");
+        button.className = "map-dot";
+        button.textContent = index + 1;
+        button.id = "map-" + index;
+        button.title = "Ir para questão " + (index + 1);
+        button.onclick = () => {
+            currentQuestion = index;
+            renderQuestion();
+        };
+        map.appendChild(button);
+    });
+}
+
+function renderQuestion() {
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTÃO " + String(currentQuestion + 1).padStart(2, "0");
+
+    document.getElementById("questionCategory").textContent = q.category;
+    document.getElementById("questionText").textContent = q.question;
+
+    const container = document.getElementById("optionsContainer");
+    container.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+        const label = document.createElement("label");
+        label.className = "option" + (answers[currentQuestion] === index ? " selected" : "");
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "answer";
+        radio.value = index;
+        radio.checked = answers[currentQuestion] === index;
+
+        radio.addEventListener("change", () => {
+            answers[currentQuestion] = index;
+            renderQuestion();
+        });
+
+        const letter = document.createElement("span");
+        letter.className = "option-letter";
+        letter.textContent = String.fromCharCode(65 + index) + ".";
+
+        const text = document.createElement("span");
+        text.textContent = option;
+
+        label.append(radio, letter, text);
+        container.appendChild(label);
+    });
+
+    document.getElementById("previousBtn").disabled = currentQuestion === 0;
+
+    document.getElementById("nextBtn").style.display =
+        currentQuestion === questions.length - 1 ? "none" : "inline-block";
+
+    document.getElementById("finishBtn").style.display =
+        currentQuestion === questions.length - 1 ? "inline-block" : "none";
+
+    updateProgress();
+    updateQuestionMap();
+}
+
+function updateProgress() {
+    const answered = answers.filter(a => a !== null).length;
+
+    document.getElementById("progressText").textContent =
+        "Questão " + (currentQuestion + 1) + " de " + questions.length;
+
+    document.getElementById("answeredText").textContent =
+        answered + " respondidas";
+
+    document.getElementById("progressFill").style.width =
+        (answered / questions.length * 100) + "%";
+}
+
+function updateQuestionMap() {
+    questions.forEach((q, index) => {
+        const button = document.getElementById("map-" + index);
+        button.classList.toggle("answered", answers[index] !== null);
+        button.classList.toggle("current", index === currentQuestion);
+    });
+}
+
+function nextQuestion() {
+    if (answers[currentQuestion] === null) {
+        alert("Selecione uma alternativa antes de continuar.");
+        return;
+    }
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        renderQuestion();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        renderQuestion();
+    }
+}
+
+function finishQuiz() {
+    const unanswered = answers.filter(a => a === null).length;
+
+    if (unanswered > 0) {
+        alert("Ainda existem " + unanswered + " questão(ões) sem resposta. Responda todas antes de finalizar.");
+        const firstUnanswered = answers.findIndex(a => a === null);
+        currentQuestion = firstUnanswered;
+        renderQuestion();
+        return;
+    }
+
+    const correct = questions.reduce((total, question, index) => {
+        return total + (answers[index] === question.answer ? 1 : 0);
+    }, 0);
+
+    const wrong = questions.length - correct;
+    const percentage = (correct / questions.length) * 100;
+
+    // Aprovação: resultado estritamente superior a 70%.
+    const approved = percentage > 70;
+
+    document.getElementById("quizPanel").style.display = "none";
+    document.getElementById("progressArea").style.display = "none";
+
+    const result = document.getElementById("resultPanel");
+    result.style.display = "block";
+
+    document.getElementById("scoreValue").textContent =
+        percentage.toFixed(1).replace(".", ",") + "%";
+
+    document.getElementById("correctCount").textContent = correct;
+    document.getElementById("wrongCount").textContent = wrong;
+
+    document.getElementById("resultSymbol").textContent = approved ? "✓" : "×";
+    document.getElementById("resultSymbol").style.color =
+        approved ? "var(--green)" : "var(--red)";
+
+    document.getElementById("resultTitle").textContent =
+        approved ? "Parabéns! Você foi aprovado." : "Avaliação não concluída com aprovação";
+
+    document.getElementById("resultMessage").textContent =
+        approved
+        ? "Você alcançou o aproveitamento necessário nesta avaliação. Seu certificado está disponível abaixo."
+        : "Você não atingiu o percentual mínimo exigido. Revise o conteúdo sobre O Fruto do Espírito e tente novamente.";
+
+    const certificateMessage = document.getElementById("certificateMessage");
+
+    if (approved) {
+        certificateMessage.innerHTML =
+            '<p style="color:var(--green);font-weight:700">Certificado de aprovação liberado.</p>';
+
+        document.getElementById("certStudentName").textContent = student;
+        document.getElementById("certScore").textContent =
+            percentage.toFixed(1).replace(".", ",") + "%";
+
+        document.getElementById("certDate").textContent =
+            new Date().toLocaleDateString("pt-BR");
+
+        document.getElementById("certificateWrap").style.display = "block";
+    } else {
+        certificateMessage.innerHTML =
+            '<p style="color:var(--red);font-weight:600">Para obter o certificado, é necessário alcançar pelo menos 29 acertos.</p>';
+    }
+
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+</script>
+
+</body>
+</html>
