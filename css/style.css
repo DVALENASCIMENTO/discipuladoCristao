@@ -1692,3 +1692,246 @@ BOTÃO DA LIÇÃO
 .curso8-container.ativo > .curso8-conteudo {
     display: block;
 }
+
+
+
+/* =========================================
+   ORGANIZAÇÃO E SEPARAÇÃO DAS LIÇÕES
+   ESCOLA BÍBLICA ATALAIA
+========================================= */
+
+/* Cada lição principal */
+main#curso > section.licao {
+    position: relative;
+    margin: 42px auto;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e5dcc8;
+    border-radius: 16px;
+    box-shadow: 0 7px 24px rgba(15, 35, 60, 0.07);
+    overflow: hidden;
+}
+
+/* Detalhe dourado superior */
+main#curso > section.licao::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin-bottom: 20px;
+    background: linear-gradient(
+        90deg,
+        #142b49,
+        #b99a5c,
+        #e5d4ae
+    );
+    border-radius: 10px;
+}
+
+/* Cabeçalho da lição */
+main#curso > section.licao > .licao-btn {
+    display: block;
+    width: 100%;
+    padding: 19px 22px;
+    margin: 0 0 24px;
+
+    background: linear-gradient(
+        110deg,
+        #10243d,
+        #203b5c
+    );
+
+    color: #ffffff;
+    border: 1px solid #b99a5c;
+    border-radius: 10px;
+
+    font-family: 'Cinzel', serif;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: left;
+    line-height: 1.5;
+
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+main#curso > section.licao > .licao-btn:hover {
+    background: linear-gradient(
+        110deg,
+        #1d3859,
+        #294968
+    );
+    border-color: #d3b779;
+    transform: translateY(-2px);
+}
+
+/* Subtópicos de cada lição */
+main#curso > section.licao > article.subtopico {
+    margin: 22px 0;
+    padding: 23px;
+    background: #fbfaf7;
+    border: 1px solid #e9e2d5;
+    border-left: 4px solid #b99a5c;
+    border-radius: 10px;
+}
+
+/* Separação entre os subtópicos */
+main#curso > section.licao > article.subtopico + article.subtopico {
+    margin-top: 25px;
+}
+
+/* Títulos dos subtópicos */
+main#curso > section.licao > article.subtopico h3 {
+    color: #17314f;
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 12px 0 16px;
+}
+
+/* =========================================
+   CURSO 8 — LIÇÕES INTERNAS
+========================================= */
+
+/* Cartão individual de cada aula do módulo */
+main#curso > section.licao > article.licao {
+    position: relative;
+    display: block;
+    margin: 32px 0;
+    padding: 24px;
+
+    background: #ffffff;
+    border: 1px solid #7d5300;
+    border-radius: 14px;
+
+    box-shadow: 0 5px 18px rgba(15, 35, 60, 0.06);
+}
+
+/* Destaque superior dos cartões internos */
+main#curso > section.licao > article.licao::before {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 3px;
+    margin-bottom: 20px;
+    background: #b99a5c;
+    border-radius: 5px;
+}
+
+/* Cabeçalho com banner da aula */
+main#curso > section.licao > article.licao .topo-licao {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2d8c5;
+}
+
+main#curso > section.licao > article.licao .topo-licao img {
+    width: 190px;
+    max-width: 38%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 9px;
+    border: 1px solid #d8c49a;
+}
+
+main#curso > section.licao > article.licao .topo-licao h3 {
+    margin: 0 0 7px;
+    color: #b08d4e;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+main#curso > section.licao > article.licao .topo-licao h4 {
+    margin: 0;
+    color: #142b49;
+    font-family: 'Cinzel', serif;
+    font-size: 21px;
+    line-height: 1.4;
+}
+
+/* Texto de apresentação da aula */
+main#curso > section.licao > article.licao > p {
+    color: #424b56;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 18px 0;
+}
+
+/* Áudio */
+main#curso > section.licao > article.licao > audio {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Recursos da aula */
+main#curso > section.licao > article.licao .recursos-licao {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e2d8c5;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 768px) {
+
+    main#curso > section.licao {
+        margin: 28px 8px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    main#curso > section.licao > .licao-btn {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    main#curso > section.licao > article.subtopico {
+        padding: 16px;
+    }
+
+    main#curso > section.licao > article.licao {
+        margin: 23px 0;
+        padding: 16px;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao {
+        gap: 13px;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao img {
+        width: 125px;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao h4 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    main#curso > section.licao {
+        margin: 22px 4px;
+        padding: 12px;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao {
+        align-items: flex-start;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao img {
+        width: 105px;
+        max-width: 36%;
+    }
+
+    main#curso > section.licao > article.licao .topo-licao h4 {
+        font-size: 14px;
+    }
+}
